@@ -116,6 +116,7 @@ end
 content = directory_hash(ARGV[0])
 
 # Output results for use on the client side.
-puts "Dlow.Content = #{content.to_json};"
-puts "Dlow.mostRecentPostPath = '#{most_recent_post_path(ARGV[0])}';"
+puts "window.Dlow = window.Dlow || {};"
+puts "window.Dlow.content = #{content.to_json};"
+puts "window.Dlow.mostRecentPostPath = '#{most_recent_post_path(ARGV[0])}';"
 
