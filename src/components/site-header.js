@@ -2,13 +2,13 @@ import React from 'react';
 import SiteHeaderNavigation from './site-header-navigation';
 
 class SiteHeader extends React.Component {
-    constructor() {
-      super();
-    }
+  constructor() {
+    super();
+  }
 
-    render() {
-        return (
-            /* beautify ignore:start */
+  render() {
+    return (
+      /* beautify ignore:start */
       <header className="site-header">
         <div className="site-header-logo clearfix">
           <h1>d-low.com</h1>
