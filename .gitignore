@@ -26,6 +26,5 @@ jspm_packages
 www/bundle.js
 
 # d-low.com custom files
-todo.txt
 www/data/*
 !www/data/generate_content.rb

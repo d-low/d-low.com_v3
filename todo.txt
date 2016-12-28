@@ -1,0 +1,41 @@
+TODO:
+
+X Set up live reloading in webpack.
+X Set up source maps!
+  X See: 
+    X http://stackoverflow.com/questions/32296967/webpack-dev-server-doesnt-generate-source-maps
+    X $ npm-do webpack-dev-server -d --content-base www/ --inline --hot
+
+- Clean up node modules. Let's just use webpack-dev-server.
+
+- Home Page:
+  - Pass content into components as property
+  - Finish missing home page functionality
+  - Add static content:
+    - Hero images
+    - Icon fonts
+  - CSS:
+    - Use CSS modules. See:
+      - https://www.bensmithett.com/smarter-css-builds-with-webpack/
+      - http://glenmaddern.com/articles/css-modules
+      - https://css-tricks.com/css-modules-part-1-need/
+    - Reset
+    - Home page component styles
+
+- Add jshint
+- Where do we place common utilities in this new site?
+
+- Load data (/data/content.js) asynchrounously on page load and once loaded 
+  run the app! 
+
+- Set up client side routing
+  - 05-Colorado/
+  - 05-Colorado/11-Colorado-2016/
+  - 05-Colorado/11-Colorado-2016/04-Fall
+  - 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016
+  - Handle all of the above prefixed by "#content/" to remap Backbone routes
+
+- Render each of the above pages
+- CSS for the modules on each of the above pages
+- See old todo list...
+
