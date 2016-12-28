@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SiteFooterLinks extends React.Component {
+class SiteFooter extends React.Component {
   constructor() {
     super();
 
@@ -74,14 +74,16 @@ class SiteFooterLinks extends React.Component {
 
     return (
       /* beautify ignore:start */
-      <nav>
-        <ul className="list-inline"> 
-          {footerListItems} 
-        </ul> 
-      </nav>
+      <footer className="site-footer js-site-footer">
+        <nav>
+          <ul className="list-inline"> 
+            {footerListItems} 
+          </ul> 
+        </nav>
+      </footer>
       /* beautify ignore:end */
     );
   }
 }
 
-export default SiteFooterLinks;
+export default SiteFooter;

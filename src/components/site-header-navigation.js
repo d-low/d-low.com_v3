@@ -69,11 +69,13 @@ class SiteHeaderNavigation extends React.Component {
 
     return (
       /* beautify ignore:start */
-      <nav className="clearfix">
-        <ul className="list-unstyled">
-          {listItems} 
-        </ul>
-      </nav>
+      <div className="site-header-nav js-site-header-nav">
+        <nav className="clearfix">
+          <ul className="list-unstyled">
+            {listItems} 
+          </ul>
+        </nav>
+      </div>
       /* beautify ignore:end */
     );
   }
