@@ -38,4 +38,4 @@ X Set up source maps!
 - Render each of the above pages
 - CSS for the modules on each of the above pages
 - See old todo list...
-
+- Use content and data from d-low.com when running locally!
