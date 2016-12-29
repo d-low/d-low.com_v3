@@ -9,6 +9,7 @@ class SiteContent extends React.Component {
     return (
       /* beautify ignore:start */
       <section className="site-content js-site-content">
+        { this.props.children }
       </section>
       /* beautify ignore:end */
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeSiteContent from '../components/home-site-content';
 import SiteHeader from '../components/site-header';
 import SiteContent from '../components/site-content';
 import SiteFooter from '../components/site-footer';
@@ -13,7 +14,9 @@ class HomeView extends React.Component {
       /* beautify ignore:start */
       <div className="main-view">
         <SiteHeader></SiteHeader>
-        <SiteContent></SiteContent>
+        <SiteContent>
+          <HomeSiteContent></HomeSiteContent>
+        </SiteContent>
         <SiteFooter></SiteFooter>
       </div>
       /* beautify ignore:end */
