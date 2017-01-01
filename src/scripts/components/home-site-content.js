@@ -1,6 +1,6 @@
 import React from 'react';
-import selfPortrait from '../images/mike-the-elf-236x400.jpg';
-import familyPortrait from '../images/family-in-natural-playarea.jpg';
+import selfPortrait from '../../images/mike-the-elf-236x400.jpg';
+import familyPortrait from '../../images/family-in-natural-playarea.jpg';
 
 class HomeSiteContent extends React.Component {
   constructor() {

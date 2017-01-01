@@ -1,7 +1,7 @@
 var path = require('path');
 
 var config = {
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'src/scripts'),
   entry: [
     './main.js'
   ],
@@ -12,7 +12,7 @@ var config = {
   module: {
     loaders: [{
       test: /\.js$/,
-      include: __dirname + '/src',
+      include: __dirname + '/src/scripts',
       loaders: ['babel']
     }, {
       test: /\.scss/,

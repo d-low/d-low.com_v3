@@ -1,6 +1,6 @@
 import React from 'react';
 import SiteHeaderNavigation from './site-header-navigation';
-import heroImage from '../images/wendy-descending-saddle-between-watrous-and-woods-large.jpg';
+import heroImage from '../../images/wendy-descending-saddle-between-watrous-and-woods-large.jpg';
 
 class SiteHeader extends React.Component {
   constructor() {
