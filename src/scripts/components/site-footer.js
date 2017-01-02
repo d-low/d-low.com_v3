@@ -62,11 +62,10 @@ class SiteFooter extends React.Component {
           href={footerLink.anchor.href}
           target={footerLink.anchor.target}
           title={footerLink.text}>
-          <i className={"icon " + footerLink.iconClassName}>
-            <span> 
-              {footerLink.text} 
-            </span> 
-          </i> 
+          <i className={"icon " + footerLink.iconClassName}></i> 
+          <span> 
+            {footerLink.text} 
+          </span> 
         </a> 
       </li>
       /* beautify ignore:end */

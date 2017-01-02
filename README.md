@@ -25,13 +25,16 @@ To Do
         run the app! 
 
 - [ ] CSS:
-  - [ ] Use CSS modules. See:
+  - [x] Reset
+  - [ ] Layout 
+  - [ ] Element Defaults
+  - [x] Typography
+  - [x] Fonts
+    - [ ] Generate new icomoon fonts: Missing alternative formats, too many unused icons
+  - [ ] Use CSS modules where appropriate. See:
     - https://www.bensmithett.com/smarter-css-builds-with-webpack/
     - http://glenmaddern.com/articles/css-modules
     - https://css-tricks.com/css-modules-part-1-need/
-  - [ ] Reset
-  - [ ] Layout 
-  - [ ] Typography
 
 - [ ] Home Page:
   - [ ] Pass content into components as property
@@ -56,6 +59,8 @@ To Do
 - [ ] Render each of the above pages
 - [ ] CSS for the modules on each of the above pages
 
+- [ ] Performant parallax on home page hero image
+  - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
 - [ ] Lazy load images
 - [ ] Image carousel
   - [ ] Use ideal image slider but re-write as react component?

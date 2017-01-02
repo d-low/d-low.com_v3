@@ -1,13 +1,19 @@
-var path = require('path');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const sassLoaders = [
+  'css-loader?sourceMap',
+  'postcss-loader',
+  'sass-loader?includePaths[]=' + path.resolve(__dirname, './src')
+];
 
-var config = {
-  context: path.join(__dirname, 'src/scripts'),
-  entry: [
-    './main.js'
-  ],
+const config = {
+  entry: {
+    app: './src/scripts/main.js'
+  },
   output: {
-    path: path.join(__dirname, 'www'),
-    filename: 'bundle.js'
+    filename: '[name].js',
+    path: path.join(__dirname, 'www')
   },
   module: {
     loaders: [{
@@ -15,13 +21,19 @@ var config = {
       include: __dirname + '/src/scripts',
       loaders: ['babel']
     }, {
-      test: /\.scss/,
-      // TBD: include: __dirname + '/src', 
-      loaders: ['style', 'css', 'sass']
+      test: /\.scss$/,
+      include: __dirname + '/src/styles',
+      loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
     }, {
       test: /\.html/,
       // TBD: include: __dirname + '/src', 
       loader: 'html'
+    }, {
+      test: /\.ttf$/,
+      loader: 'url-loader',
+      options: {
+        limit: 50000
+      }
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [
@@ -30,15 +42,22 @@ var config = {
       ]
     }]
   },
+  plugins: [
+    new ExtractTextPlugin('[name].css')
+  ],
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ],
   resolveLoader: {
     root: [
       path.join(__dirname, 'node_modules')
     ]
   },
   resolve: {
-    root: [
-      path.join(__dirname, 'node_modules')
-    ]
+    extensions: ['', '.ttf', '.js', '.scss'],
+    root: [path.join(__dirname, './src')]
   }
 };
 module.exports = config;

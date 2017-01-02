@@ -30,13 +30,17 @@
     "webpack-dev-middleware": "^1.9.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.6.0",
     "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",
     "image-webpack-loader": "^3.1.0",
     "node-sass": "^4.1.1",
+    "postcss-loader": "^1.2.1",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack-dev-server": "^1.16.2"
   }
 }
