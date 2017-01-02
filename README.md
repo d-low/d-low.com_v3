@@ -36,6 +36,10 @@ To Do
     - http://glenmaddern.com/articles/css-modules
     - https://css-tricks.com/css-modules-part-1-need/
 
+- [ ] React component or utility method to fade in background images 
+  - Imagesloaded plugin from Desandro works on background images!
+    - See: https://www.npmjs.com/package/imagesloaded#background
+
 - [ ] Home Page:
   - [ ] Pass content into components as property
   - [ ] Finish missing home page functionality
@@ -44,6 +48,13 @@ To Do
     - [x] Hero images
     - [ ] Icon fonts
   - [ ] Home page component styles
+    - [x] Home page header
+    - [ ] Home page navigation
+    - [ ] Home page site content
+    - [ ] Home page footer
+
+ - [ ] Site header styles for home page vs. all other pages
+
 
 - [ ] Add jshint
 - [ ] Where do we place common utilities in this new site?
