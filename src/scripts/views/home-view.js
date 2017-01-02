@@ -10,6 +10,10 @@ class HomeView extends React.Component {
     super();
   }
 
+  componentDidMount() {
+    document.body.classList.toggle('home');
+  }
+
   render() {
     return (
       /* beautify ignore:start */

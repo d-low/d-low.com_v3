@@ -65,17 +65,12 @@
   }
 }
 
-/*
- * TBD: How will we differentiate between the site header on the home page vs.
- * all other pages?
-
 .home .site-header {
   background-attachment: fixed;
   border-top: 0 none;
-  min-height: 30rem;
   padding-bottom: 0;
 
-  @include fade_in_background_image();
+  // @include fade_in_background_image();
 
   .site-header-logo {
     position: fixed;
@@ -89,4 +84,3 @@
 .content .site-header {
   border-top: 5rem solid transparent;
 }
-*/
