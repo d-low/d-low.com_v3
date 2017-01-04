@@ -1,0 +1,6 @@
+/*
+ * Breakpoints (Bootstrap)
+ */
+
+@value screen_small_min_width: (min-width: 768px);
+@value screen_medium_min_width: (min-width: 992px);

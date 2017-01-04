@@ -1,6 +1,15 @@
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
+
+// Loaders for CSS modules
+const cssLoaders = [
+  'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+  'postcss-loader'
+];
+
+// Loaders for global SASS styles
+// REVIEW: These may be removed in favor of CSS modules
 const sassLoaders = [
   'css-loader?sourceMap',
   'postcss-loader',
@@ -24,6 +33,10 @@ const config = {
       test: /\.scss$/,
       include: __dirname + '/src/styles',
       loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
+    }, { 
+      test: /\.css$/, 
+      include: __dirname + '/src',
+      loader: ExtractTextPlugin.extract('style-loader', cssLoaders.join('!'))
     }, {
       test: /\.html/,
       // TBD: include: __dirname + '/src', 
@@ -56,8 +69,9 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['', '.ttf', '.js', '.scss'],
+    extensions: ['', '.css', '.js', '.ttf', '.scss'],
     root: [path.join(__dirname, './src')]
   }
 };
+
 module.exports = config;

@@ -1,0 +1,95 @@
+@value link_color from '../../../styles/base/colors.css';
+@value screen_small_min_width, screen_medium_min_width from '../../../styles/base/breakpoints.css';
+
+.siteHeader {
+  composes: header-gray from '../../../styles/base/colors.css';
+  background-image: url('./wendy-descending-saddle-between-watrous-and-woods.jpg');
+  background-position: 50% 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  text-transform: lowercase;
+  position: relative;
+  width: 100vw;
+}
+
+.siteHeaderContentPage {
+  composes: siteHeader;
+  border-top: 2.5rem solid link_color;
+}
+
+.siteHeaderHomePage {
+  composes: siteHeader;
+  background-attachment: fixed;
+  border-top: 0 none;
+  height: 100vh;
+  padding-bottom: 0;
+}
+
+@media screen and screen_small_min_width {
+  .siteHeader,
+  .siteHeaderContentPage,
+  .siteHeaderHomePage {
+    background-image: url('./wendy-descending-saddle-between-watrous-and-woods-large.jpg');
+    padding-bottom: 2rem;
+  }
+}
+
+.logo {
+  text-align: center;
+}
+
+@media screen and screen_small_min_width {
+  .logo {
+    position: fixed;
+    right: 5%;
+    text-align: right;
+    z-index: 2;
+  }
+}
+
+.logoContentPage {
+  composes: logo;
+  border-top: 5rem solid transparent;
+}
+
+.logoBigText {
+  line-height: 4rem;
+  padding: 20px 0 10px 0;
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and screen_small_min_width {
+  .logoBigText {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+}
+
+@media only screen and screen_medium_min_width {
+  .logoBigText {
+    font-size: 5.5rem;
+    line-height: 5.5rem;
+  }
+}
+
+.logoSmallText {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 0.88rem;
+  line-height: 0.88rem;
+}
+
+@media screen and screen_small_min_width {
+  .logoSmallText {
+    font-size: 1.1rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media only screen and screen_medium_min_width {
+  .logoSmallText {
+    font-size: 1.25rem;
+    line-height: 1.35rem;
+  }
+}

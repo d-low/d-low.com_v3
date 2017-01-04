@@ -1,0 +1,29 @@
+/* 
+ * Colors 
+ */
+
+@value off_white: #f9f9f9;
+@value light_gray: #cccccc;
+@value header_gray: #202020;
+@value border_gray: #999999;
+@value link_color: #303030;
+
+.off-white {
+  color: off_white;
+}
+
+.light-gray { 
+  color: light_gray;
+}
+
+.header-gray {
+  color: header_gray;
+}
+
+.border-gray {
+  color: border_gray;
+}
+
+.link-color {
+  color: link_color;
+}

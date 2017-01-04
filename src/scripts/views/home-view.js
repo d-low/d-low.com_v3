@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeSiteContent from '../components/home-site-content';
-import SiteHeader from '../components/site-header';
+import SiteHeader from '../components/site-header/site-header.js';
 import SiteHeaderNavigation from '../components/site-header-navigation';
 import SiteContent from '../components/site-content';
 import SiteFooter from '../components/site-footer';
@@ -10,13 +10,8 @@ class HomeView extends React.Component {
     super();
   }
 
-  componentDidMount() {
-    document.body.classList.toggle('home');
-  }
-
   render() {
     return (
-      /* beautify ignore:start */
       <div className="main-view">
         <SiteHeader></SiteHeader>
         <SiteContent>
@@ -25,7 +20,6 @@ class HomeView extends React.Component {
         </SiteContent>
         <SiteFooter></SiteFooter>
       </div>
-      /* beautify ignore:end */
     );
   }
 }
