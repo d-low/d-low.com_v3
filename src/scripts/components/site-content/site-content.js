@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './site-content.css';
 
 class SiteContent extends React.Component {
   constructor() {
@@ -7,11 +8,9 @@ class SiteContent extends React.Component {
 
   render() {
     return (
-      /* beautify ignore:start */
-      <section className="site-content js-site-content">
+      <section className={styles.container}>
         { this.props.children }
       </section>
-      /* beautify ignore:end */
     );
   }
 }
