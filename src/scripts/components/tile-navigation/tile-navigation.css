@@ -1,0 +1,46 @@
+@value border_gray, link_color, off_white from '../../../styles/base/colors.css';
+
+.item {
+  background-color: off_white;
+  border: 1px solid border_gray;
+  box-shadow: 0 5px 10px 1px rgba(0,0,0,.3);
+  display: block;
+  margin: 0 auto 1rem auto;
+  height: 12rem;
+  padding: 1rem;
+}
+
+.itemLink {
+  color: link_color;
+  display: block;
+  height: 100%;
+}
+
+.itemLink:link,
+.itemLink:visited,
+.itemLink:hover,
+.itemLink:active { 
+  text-decoration: none;
+}   
+
+.itemImage {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 85%;
+}
+
+.itemTitle {
+  /* 
+   * REVIEW: Do we need this vertical centering technique? 
+   * Vertically center text using this technique instead of line-height:
+   * See: http://css-tricks.com/centering-in-the-unknown/
+   */
+  display: block;
+  height: 15%;
+  margin-top: 0.25rem;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
