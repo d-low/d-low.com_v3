@@ -7,8 +7,14 @@ class TileNavigation extends React.Component {
   }
 
   render() {
+    let itemClassName = styles.item;
+
+    if (this.props.isHomePage) {
+      itemClassName = styles.itemHomePage;
+    }
+
     const listItems = this.props.links.map((link) =>
-      <li className={styles.item} key={link.name}>
+      <li className={itemClassName} key={link.name}>
         <a className={styles.itemLink} href={link.href} title={link.text}>
           <figure className={styles.itemImage} 
                   style={{ backgroundImage: 'url(' + link.image + ')' }} />
@@ -22,7 +28,7 @@ class TileNavigation extends React.Component {
     return (
       <div>
         <nav>
-          <ul>
+          <ul className={this.props.isHomePage ? styles.homePageItems : ''}>
             {listItems} 
           </ul>
         </nav>

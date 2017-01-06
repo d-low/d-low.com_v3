@@ -7,8 +7,14 @@ class SiteContent extends React.Component {
   }
 
   render() {
+    let className = styles.container;
+
+    if (this.props.isHomePage) {
+      className = styles.containerHomePageNav;
+    }
+
     return (
-      <section className={styles.container}>
+      <section className={className}>
         { this.props.children }
       </section>
     );

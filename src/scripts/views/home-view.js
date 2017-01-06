@@ -59,8 +59,10 @@ class HomeView extends React.Component {
     return (
       <div className="main-view">
         <SiteHeader></SiteHeader>
+        <SiteContent isHomePage={true}>
+          <TileNavigation isHomePage={true} links={links}></TileNavigation>
+        </SiteContent>
         <SiteContent>
-          <TileNavigation links={links}></TileNavigation>
           <HomeSiteContent></HomeSiteContent>
         </SiteContent>
         <SiteFooter></SiteFooter>

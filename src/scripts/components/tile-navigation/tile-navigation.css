@@ -1,4 +1,15 @@
 @value border_gray, link_color, off_white from '../../../styles/base/colors.css';
+@value screen_small_min_width from '../../../styles/base/breakpoints.css';
+
+@media screen and screen_small_min_width {
+  .homePageItems {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-around;
+  }
+}
 
 .item {
   background-color: off_white;
@@ -6,8 +17,19 @@
   box-shadow: 0 5px 10px 1px rgba(0,0,0,.3);
   display: block;
   margin: 0 auto 1rem auto;
-  height: 12rem;
+  height: 15rem;
   padding: 0.5rem 0.25rem 1rem 0.25rem;
+}
+
+.itemHomePage {
+  composes: item;
+}
+
+@media screen and screen_small_min_width {
+  .itemHomePage {
+    height: 20vw;
+    width: 20vw;
+  }
 }
 
 .itemLink {
