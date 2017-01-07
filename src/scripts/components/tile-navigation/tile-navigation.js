@@ -19,7 +19,9 @@ class TileNavigation extends React.Component {
           <figure className={styles.itemImage} 
                   style={{ backgroundImage: 'url(' + link.image + ')' }} />
           <span className={styles.itemTitle}> 
-            {link.name} 
+            <span>
+              {link.name.replace(/^\d\d-/, '').replace(/[-_]/g, ' ')} 
+            </span>
           </span> 
         </a> 
       </li>

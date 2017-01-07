@@ -18,7 +18,7 @@
   display: block;
   margin: 0 auto 1rem auto;
   height: 15rem;
-  padding: 0.5rem 0.25rem 1rem 0.25rem;
+  padding: 0.5rem 0.25rem 0rem 0.25rem;
 }
 
 .itemHomePage {
@@ -54,14 +54,10 @@
 }
 
 .itemTitle {
-  /* 
-   * REVIEW: Do we need this vertical centering technique? 
-   * Vertically center text using this technique instead of line-height:
-   * See: http://css-tricks.com/centering-in-the-unknown/
-   */
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 15%;
-  margin-top: 0.25rem;
+  justify-content: center;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
