@@ -40,14 +40,29 @@ class HomeView extends React.Component {
     };
 
     for (const key in Dlow.content) {
-
-      // TODO: Parse pretty name from directory name.
-
       links.push({
         name: key,
         href: '/' + key,
         image: findRandomImage(Dlow.content[key])
       });
+    }
+
+    // Add the most recent post to the beginning of the links
+
+    if (Dlow.mostRecentPostPath) {
+      let node = Dlow.content;
+
+      Dlow.mostRecentPostPath.split('/').forEach((part) => {
+        node = node[part];
+      });
+
+      if (node) {
+        links.splice(0, 0 , {
+          name: 'What\'s new?',
+          href: '/' + Dlow.mostRecentPostPath,
+          image: findRandomImage(node)
+        });
+      }
     }
 
     return links;
@@ -59,8 +74,8 @@ class HomeView extends React.Component {
     return (
       <div className="main-view">
         <SiteHeader></SiteHeader>
-        <SiteContent isHomePage={true}>
-          <TileNavigation isHomePage={true} links={links}></TileNavigation>
+        <SiteContent isHomePage>
+          <TileNavigation isHomePage links={links}></TileNavigation>
         </SiteContent>
         <SiteContent>
           <HomeSiteContent></HomeSiteContent>
