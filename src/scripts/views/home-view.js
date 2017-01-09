@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeSiteContent from '../components/home-site-content';
+import AboutMe from '../components/about-me/about-me.js';
 import SiteHeader from '../components/site-header/site-header.js';
 import TileNavigation from '../components/tile-navigation/tile-navigation.js';
 import SiteContent from '../components/site-content/site-content.js';
@@ -74,11 +74,11 @@ class HomeView extends React.Component {
     return (
       <div className="main-view">
         <SiteHeader></SiteHeader>
-        <SiteContent isHomePage>
+        <SiteContent isHomePageNav>
           <TileNavigation isHomePage links={links}></TileNavigation>
         </SiteContent>
         <SiteContent>
-          <HomeSiteContent></HomeSiteContent>
+          <AboutMe></AboutMe>
         </SiteContent>
         <SiteFooter></SiteFooter>
       </div>

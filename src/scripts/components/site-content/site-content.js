@@ -9,8 +9,11 @@ class SiteContent extends React.Component {
   render() {
     let className = styles.container;
 
-    if (this.props.isHomePage) {
+    if (this.props.isHomePageNav) {
       className = styles.containerHomePageNav;
+    }
+    else {
+      className = styles.container;
     }
 
     return (

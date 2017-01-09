@@ -1,0 +1,26 @@
+@value screen_medium_min_width from './breakpoints.css';
+
+.column {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and screen_medium_min_width {
+  .column4 {
+    composes: column;
+    float: left;
+    width: 33.33333%;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .column8 {
+    composes: column;
+    float: left;
+    width: 66.66667%;
+  }
+}
+
+.row {
+  composes: clearfix from './utils.css';
+}

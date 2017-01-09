@@ -1,0 +1,76 @@
+@value off_white, border_gray from '../../../styles/base/colors.css';
+@value screen_medium_min_width from '../../../styles/base/breakpoints.css';
+
+.container {
+  composes: row from '../../../styles/base/layout.css';
+}
+
+.leftColumn {
+  composes: column4 from '../../../styles/base/layout.css';
+  display: none;
+}
+
+@media screen and screen_medium_min_width {
+  .leftColumn {
+    display: block;
+  }
+}
+
+.rightColumn {
+  composes: column8 from '../../../styles/base/layout.css';
+}
+
+.imageContainer {
+  background-color: off_white;
+  border: 1px solid border_gray;
+  margin: 0 auto 1rem;
+  padding: 1rem;
+  box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.image {
+  background-position: center;
+  background-repeat: no-repeat;;
+  background-size: cover;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.selfPortraitContainer {
+  composes: imageContainer;
+  height: 500px;
+  width: 80%;
+}
+
+.selfPortraitImage {
+  composes: image;
+  background-image: url(./mike-the-elf-236x400.jpg);
+}
+
+.familyPortraitContainer {
+  composes: imageContainer;
+  height: 300px;
+}
+
+@media screen and (min-width: 600px) {
+  .familyPortraitContainer {
+    float: right;
+    margin-left: 2rem;
+    width: 50%;
+  }
+}
+
+.familyPortraitImage {
+  composes: image;
+  background-image: url(./family-in-natural-playarea.jpg);
+}
+
+.copy {
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.copy:first-child:first-letter {
+  font-size: 3rem;
+ }
