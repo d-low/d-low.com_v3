@@ -31,7 +31,7 @@ To Do
   - [x] Typography
   - [x] Fonts
     - [ ] Generate new icomoon fonts: Missing alternative formats, too many unused icons
-  - [ ] Use CSS modules where appropriate. See:
+  - [x] Use CSS modules where appropriate. See:
     - https://www.bensmithett.com/smarter-css-builds-with-webpack/
     - http://glenmaddern.com/articles/css-modules
     - https://css-tricks.com/css-modules-part-1-need/
@@ -43,20 +43,20 @@ To Do
 - [ ] Home Page:
   - [ ] Pass content into components as property
   - [ ] Finish missing home page functionality
-    - [ ] Most recent post
+    - [x] Most recent post
+    - [ ] Run logo fade code on page load
   - [ ] Add static content:
     - [x] Hero images
-    - [ ] Icon fonts
+    - [x] Icon fonts
   - [ ] Home page component styles
     - [x] Home page header
     - [ ] Home page navigation
-    - [ ] Home page site content
+    - [x] Home page site content
     - [ ] Home page footer
 
- - [ ] Site header styles for home page vs. all other pages
+- [ ] Site header styles for home page vs. all other pages
 
-
-- [ ] Add jshint
+- [ ] Add eshint
 - [ ] Where do we place common utilities in this new site?
 - [ ] Add tests
 
