@@ -1,0 +1,90 @@
+@value light_gray from '../../../styles/base/colors.css';
+@value screen_small_min_width from '../../../styles/base/breakpoints.css';
+
+@font-face {
+  font-family: 'icomoon';
+  src: url(./icomoon.ttf) format("truetype");
+}
+
+.container {
+  border-top: 1px solid light_gray;
+  margin: 1.875rem auto 3.125rem auto;
+  padding-top: 1.875rem;
+  width: 80%;
+}
+  
+.listItemNav { 
+  text-align: center;
+}
+
+.listItem {
+  display: inline-block;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.listItemLink:link,
+.listItemLink:visited,
+.listItemLink:hover,
+.listItemLink:active { 
+    text-decoration: none;
+}
+
+.listItemText {
+  display: none;
+}
+
+/* 
+ * Vector Icon Font from Icomoon
+ * TODO: Generate new font file, with only the icons actually used, and include
+ * all file formats, not just TTF.
+ */
+
+.icon {
+  font-family: 'icomoon';
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and screen_small_min_width {
+  .icon {
+    font-size: 2rem;
+  }
+}
+
+.iconMail,
+.iconFacebook,
+.iconGitHub,
+.iconLinkedIn,
+.iconTwitter {
+  composes: icon;
+}
+
+.iconMail:before {
+  content: "\e604";
+}
+
+.iconFacebook:before {
+  content: "\e60e";
+}
+
+.iconGitHub:before {
+  content: "\e60b";
+}
+
+.iconLinkedIn:before {
+  content: "\e607";
+}
+
+.iconTwitter:before {
+  content: "\e601";
+}
+
+
+

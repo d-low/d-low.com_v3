@@ -3,7 +3,7 @@ import AboutMe from '../components/about-me/about-me.js';
 import SiteHeader from '../components/site-header/site-header.js';
 import TileNavigation from '../components/tile-navigation/tile-navigation.js';
 import SiteContent from '../components/site-content/site-content.js';
-import SiteFooter from '../components/site-footer';
+import SiteFooter from '../components/site-footer/site-footer.js';
 
 class HomeView extends React.Component {
   constructor() {
