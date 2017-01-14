@@ -1,27 +1,29 @@
 import React from 'react';
 import styles from './site-content.css';
 
-class SiteContent extends React.Component {
-  constructor() {
-    super();
+const SiteContent = function SiteContent(props) {
+  let className = styles.container;
+
+  if (props.isHomePageNav) {
+    className = styles.containerHomePageNav;
+  } else {
+    className = styles.container;
   }
 
-  render() {
-    let className = styles.container;
+  return (
+    <section className={className}>
+      {props.children }
+    </section>
+  );
+};
 
-    if (this.props.isHomePageNav) {
-      className = styles.containerHomePageNav;
-    }
-    else {
-      className = styles.container;
-    }
+SiteContent.propTypes = {
+  children: React.PropTypes.node.isRequired,
+  isHomePageNav: React.PropTypes.bool,
+};
 
-    return (
-      <section className={className}>
-        { this.props.children }
-      </section>
-    );
-  }
-}
+SiteContent.defaultProps = {
+  isHomePageNav: false,
+};
 
 export default SiteContent;

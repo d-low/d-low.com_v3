@@ -25,6 +25,12 @@ const config = {
     path: path.join(__dirname, 'www')
   },
   module: {
+    preLoaders: [{
+      test: /\.js$/, 
+      include: __dirname + '/src/scripts',
+      loader: 'eslint-loader', 
+      exclude: /node_modules/
+    }],
     loaders: [{
       test: /\.js$/,
       include: __dirname + '/src/scripts',
@@ -54,6 +60,9 @@ const config = {
         'image-webpack?optimizationLevel=7&interlaced=false'
       ]
     }]
+  },
+  eslint: {
+    configFile: './.eslintrc'
   },
   plugins: [
     new ExtractTextPlugin('[name].css')
