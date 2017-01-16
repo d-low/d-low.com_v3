@@ -27,12 +27,12 @@
 }
 
 .siteHeaderHomePageImageHidden {
-  composes: siteHeader;
+  composes: siteHeaderHomePage;
   composes: imageHidden from '../../../styles/base/utils.css';
 }
 
 .siteHeaderHomePageImageVisible {
-  composes: siteHeader;
+  composes: siteHeaderHomePage;
   composes: imageVisible from '../../../styles/base/utils.css';
 }
 
