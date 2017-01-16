@@ -26,6 +26,16 @@
   padding-bottom: 0;
 }
 
+.siteHeaderHomePageImageHidden {
+  composes: siteHeader;
+  composes: imageHidden from '../../../styles/base/utils.css';
+}
+
+.siteHeaderHomePageImageVisible {
+  composes: siteHeader;
+  composes: imageVisible from '../../../styles/base/utils.css';
+}
+
 @media screen and screen_small_min_width {
   .siteHeader,
   .siteHeaderContentPage,

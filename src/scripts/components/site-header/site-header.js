@@ -1,3 +1,4 @@
+import imagesloaded from 'imagesloaded';
 import React from 'react';
 import styles from './site-header.css';
 
@@ -5,8 +6,11 @@ class SiteHeader extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      headerImageLoaded: false,
+    };
+
     this.didScroll = false;
-    this.logo = null;
     this.scrollInterval = null;
     this.scrollStopTimeout = null;
 
@@ -22,6 +26,9 @@ class SiteHeader extends React.Component {
     // when the site header is scrolled out of view.
     if (window.getComputedStyle(this.logo).position === 'fixed') {
       window.addEventListener('scroll', this.handleScroll);
+      imagesloaded(this.siteHeader, { background: true }, () => {
+        this.setState({ headerImageLoaded: true });
+      });
     }
   }
 
@@ -77,7 +84,13 @@ class SiteHeader extends React.Component {
     // logoContentPage
 
     return (
-      <header className={styles.siteHeaderHomePage}>
+      <header
+        className={
+          this.state.headerImageLoaded ?
+          styles.siteHeaderHomePageImageVisible :
+          styles.siteHeaderHomePageImageHidden
+        }
+        ref={(el) => { this.siteHeader = el; }}>
         <div className={styles.logo} ref={(el) => { this.logo = el; }}>
           <h1 className={styles.logoBigText}>
             d-low.com
