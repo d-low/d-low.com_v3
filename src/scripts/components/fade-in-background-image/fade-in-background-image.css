@@ -1,0 +1,38 @@
+/*
+ * Fade in background images by inserting a pseudo element over them and then
+ * fading it to be 100% transparent so that background shows. We do this so
+ * that we can fade in background images after they're loaded.
+ * 
+ * Note that since pseudo elements can't be composed we introduce the 
+ * imageHidden and imageVisible classes for composition and then do all the 
+ * work of hiding the image nad fading it in in the pseudo element rule sets.
+ *
+ * SEE: 
+ * https://css-tricks.com/snippets/css/transparent-background-images/
+ * https://github.com/css-modules/css-modules/issues/42
+ */
+
+.imageHidden {
+  position: relative;
+}
+
+.imageHidden::after {
+  background-color: white;
+  content: "";
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  right: 0;
+  transition: opacity 0.5s ease-in;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.imageVisible {
+  composes: imageHidden;
+}
+
+.imageVisible::after {
+  opacity: 0;
+}
