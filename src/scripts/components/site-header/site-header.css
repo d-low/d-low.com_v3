@@ -3,13 +3,9 @@
 
 .siteHeader {
   composes: header-gray from '../../../styles/base/colors.css';
-  background-image: url('./wendy-descending-saddle-between-watrous-and-woods.jpg');
-  background-position: 50% 0px;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 100vh;
-  text-transform: lowercase;
   position: relative;
+  text-transform: lowercase;
   width: 100vw;
 }
 
@@ -20,28 +16,34 @@
 
 .siteHeaderHomePage {
   composes: siteHeader;
-  background-attachment: fixed;
   border-top: 0 none;
-  height: 100vh;
   padding-bottom: 0;
 }
 
-.siteHeaderHomePageImageHidden {
-  composes: siteHeaderHomePage;
-  composes: imageHidden from '../../../styles/base/utils.css';
+@media screen and screen_small_min_width {
+  .siteHeaderContentPage {
+    padding-bottom: 2rem;
+  }
 }
 
-.siteHeaderHomePageImageVisible {
-  composes: siteHeaderHomePage;
-  composes: imageVisible from '../../../styles/base/utils.css';
+.image {
+  background-image: url('./wendy-descending-saddle-between-watrous-and-woods.jpg');
+  background-position: 50% 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.imageHomePage {
+  composes: image;
+  background-attachment: fixed;
 }
 
 @media screen and screen_small_min_width {
-  .siteHeader,
-  .siteHeaderContentPage,
-  .siteHeaderHomePage {
+  .imageHomePage {
     background-image: url('./wendy-descending-saddle-between-watrous-and-woods-large.jpg');
-    padding-bottom: 2rem;
   }
 }
 
@@ -54,6 +56,7 @@
     position: fixed;
     right: 5%;
     text-align: right;
+    top: 0;
     z-index: 2;
   }
 }

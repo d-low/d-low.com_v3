@@ -1,14 +1,10 @@
-import imagesloaded from 'imagesloaded';
 import React from 'react';
+import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
 import styles from './site-header.css';
 
 class SiteHeader extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      headerImageLoaded: false,
-    };
 
     this.didScroll = false;
     this.scrollInterval = null;
@@ -26,9 +22,6 @@ class SiteHeader extends React.Component {
     // when the site header is scrolled out of view.
     if (window.getComputedStyle(this.logo).position === 'fixed') {
       window.addEventListener('scroll', this.handleScroll);
-      imagesloaded(this.siteHeader, { background: true }, () => {
-        this.setState({ headerImageLoaded: true });
-      });
     }
   }
 
@@ -80,17 +73,10 @@ class SiteHeader extends React.Component {
   }
 
   render() {
-    // TODO: When not on the home page then use siteHeaderContentPage and
-    // logoContentPage
-
+    // TODO: Modify HTML to not display image when on home page.
     return (
-      <header
-        className={
-          this.state.headerImageLoaded ?
-          styles.siteHeaderHomePageImageVisible :
-          styles.siteHeaderHomePageImageHidden
-        }
-        ref={(el) => { this.siteHeader = el; }}>
+      <header className={styles.siteHeaderHomePage}>
+        <FadeInBackgroundImage className={styles.imageHomePage} />
         <div className={styles.logo} ref={(el) => { this.logo = el; }}>
           <h1 className={styles.logoBigText}>
             d-low.com
