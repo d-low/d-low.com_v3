@@ -1,7 +1,16 @@
 import React from 'react';
 import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
+import scrollEventsHandler from '../scroll-events-handler/scroll-events-handler.js';
 import styles from './site-header.css';
 
+/**
+ * @description The SiteHeader class renders and provides behavior for the site
+ * header component on all pages of the site. It uses the FadeInBackgroundImage
+ * component to fade in the hero image. It also uses the scrollEventsHandler 
+ * higher order component for responding to scroll events. As the page scrolls 
+ * the logo will be faded out and eventually hidden.
+ * @todo Add proper rendering and markup for other pages on site. 
+ */
 class SiteHeader extends React.Component {
   constructor() {
     super();
@@ -17,18 +26,16 @@ class SiteHeader extends React.Component {
 
   componentDidMount() {
     this.setLogoOpacity();
-
-    // When the logo is fixed on larger screens then we want to fade it out
-    // when the site header is scrolled out of view.
-    if (window.getComputedStyle(this.logo).position === 'fixed') {
-      window.addEventListener('scroll', this.handleScroll);
-    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+  /**
+   * @todo Should we use state to set the opacity and display? Or is it better
+   * to use DOM methods for this.
+   */
   setLogoOpacity() {
     const logoHeight = parseInt(window.getComputedStyle(this.logo).height, 10);
     let opacity = Number(1 - (window.pageYOffset / (window.innerHeight - logoHeight))).toFixed(2);
@@ -48,28 +55,13 @@ class SiteHeader extends React.Component {
     }
   }
 
-  handleScroll() {
-    this.didScroll = true;
-
-    if (!this.scrollInterval) {
-      this.checkIfScrolled();
-      this.scrollInterval = window.setInterval(this.checkIfScrolled, 16);
-    }
-  }
-
-  handleScrollStop() {
-    window.clearInterval(this.scrollInterval);
-    this.scrollInterval = null;
-  }
-
-  checkIfScrolled() {
-    if (this.didScroll) {
-      window.requestAnimationFrame(this.setLogoOpacity.bind(this));
-      window.clearTimeout(this.scrollStopTimeout);
-      this.scrollStopTimeout = window.setTimeout(this.handleScrollStop, 100);
-
-      this.didScroll = false;
-    }
+  /**
+   * @description The scrollEventsHandler() higher order component will call
+   * this method on its base class when a scroll event happens. So when one
+   * occurs we set our logo opacity
+   */
+  scroll() {
+    window.requestAnimationFrame(this.setLogoOpacity.bind(this));
   }
 
   render() {
@@ -90,4 +82,4 @@ class SiteHeader extends React.Component {
   }
 }
 
-export default SiteHeader;
+export default scrollEventsHandler(SiteHeader);
