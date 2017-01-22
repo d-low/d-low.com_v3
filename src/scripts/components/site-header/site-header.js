@@ -6,10 +6,10 @@ import styles from './site-header.css';
 /**
  * @description The SiteHeader class renders and provides behavior for the site
  * header component on all pages of the site. It uses the FadeInBackgroundImage
- * component to fade in the hero image. It also uses the scrollEventsHandler 
- * higher order component for responding to scroll events. As the page scrolls 
+ * component to fade in the hero image. It also uses the scrollEventsHandler
+ * higher order component for responding to scroll events. As the page scrolls
  * the logo will be faded out and eventually hidden.
- * @todo Add proper rendering and markup for other pages on site. 
+ * @todo Add proper rendering and markup for other pages on site.
  */
 class SiteHeader extends React.Component {
   constructor() {
@@ -68,7 +68,7 @@ class SiteHeader extends React.Component {
     // TODO: Modify HTML to not display image when on home page.
     return (
       <header className={styles.siteHeaderHomePage}>
-        <FadeInBackgroundImage className={styles.imageHomePage} />
+        <FadeInBackgroundImage className={styles.imageHomePage} fadeInNow />
         <div className={styles.logo} ref={(el) => { this.logo = el; }}>
           <h1 className={styles.logoBigText}>
             d-low.com

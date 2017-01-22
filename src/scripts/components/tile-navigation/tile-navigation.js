@@ -1,5 +1,9 @@
 import React from 'react';
+import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
+import scrollEventsHandler from '../scroll-events-handler/scroll-events-handler.js';
 import styles from './tile-navigation.css';
+
+const FadeInBackgroundImageWhenVisible = scrollEventsHandler(FadeInBackgroundImage);
 
 class TileNavigation extends React.PureComponent {
   render() {
@@ -12,9 +16,10 @@ class TileNavigation extends React.PureComponent {
     const listItems = this.props.links.map(link =>
       <li className={itemClassName} key={link.name}>
         <a className={styles.itemLink} href={link.href} title={link.text}>
-          <figure
+          <FadeInBackgroundImageWhenVisible
+            backgroundImage={link.image}
             className={styles.itemImage}
-            style={{ backgroundImage: `url(${link.image})` }} />
+            fadeInNow={false} />
           <span className={styles.itemTitle}>
             <span>
               {link.name.replace(/^\d\d-/, '').replace(/[-_]/g, ' ')}

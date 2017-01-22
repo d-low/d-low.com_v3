@@ -2,15 +2,13 @@
  * @description This higher order component provides common behavior to handle
  * scroll events in the wrapped component. When scrolling if the wrapped
  * component has a scroll() method it will be called so that the wrapped
- * component can handle it. And when srolling finishes if the wrapped component
- * has a scrollStop() method it will be called to handle that event.
+ * component can handle scoll events. And when srolling finishes if the wrapped
+ * component has a scrollStop() method it will be called to handle the scroll
+ * stop event. The wrapped component can implent the removeScrollEvents method
+ * and return true from it when it no longer needs to handle scroll events. The
+ * event handlers in this component will be removed in that case.
  * @see https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.wuc1vyrk2
  * @see http://ejohn.org/blog/learning-from-twitter/
- * @todo Somehow allow wrapped component to remove the scroll event listener
- * if needed. For example, when the FadeInBackgroundImage component is wrapped
- * it will want to stop listening for scroll events once its element is in the
- * viewport since it will fade in its background image then and once faded in
- * it doesn't need to fade it in again!
  */
 function scrollEventsHandler(WrappedComponent) {
   return class ScrollEventsHandler extends WrappedComponent {
@@ -37,6 +35,11 @@ function scrollEventsHandler(WrappedComponent) {
     }
 
     handleScroll() {
+      if (typeof super.removeScrollEvents === 'function' &&
+        super.removeScrollEvents()) {
+        this.removeEventListener();
+        return;
+      }
       this.didScroll = true;
 
       if (!this.scrollInterval) {
