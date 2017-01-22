@@ -22,7 +22,10 @@ To Do
 
 - [ ] Use content and data from d-low.com when running locally!
   - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
-        run the app! 
+        run the app!
+  - [ ] Pass parameter to webpack build?
+
+- [ ] Webpack production build
 
 - [ ] CSS:
   - [x] Reset
@@ -31,32 +34,27 @@ To Do
   - [x] Typography
   - [x] Fonts
     - [ ] Generate new icomoon fonts: Missing alternative formats, too many unused icons
-  - [x] Use CSS modules where appropriate. See:
-    - https://www.bensmithett.com/smarter-css-builds-with-webpack/
-    - http://glenmaddern.com/articles/css-modules
-    - https://css-tricks.com/css-modules-part-1-need/
+  - [x] Use CSS modules where appropriate
 
-- [ ] React component or utility method to fade in background images 
-  - Imagesloaded plugin from Desandro works on background images!
-    - See: https://www.npmjs.com/package/imagesloaded#background
+- [x] React component or utility method to fade in background images 
 
 - [ ] Home Page:
   - [ ] Pass content into components as property
-  - [ ] Finish missing home page functionality
+  - [x] Finish missing home page functionality
     - [x] Most recent post
-    - [ ] Run logo fade code on page load
-  - [ ] Add static content:
+    - [x] Run logo fade code on page load
+  - [x] Add static content:
     - [x] Hero images
     - [x] Icon fonts
-  - [ ] Home page component styles
+  - [x] Home page component styles
     - [x] Home page header
-    - [ ] Home page navigation
+    - [x] Home page navigation
     - [x] Home page site content
-    - [ ] Home page footer
+    - [x] Home page footer
 
 - [ ] Site header styles for home page vs. all other pages
 
-- [ ] Add eshint
+- [x] Add eshint
 - [ ] Where do we place common utilities in this new site?
 - [ ] Add tests
 
@@ -72,6 +70,6 @@ To Do
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
-- [ ] Lazy load images
+- [x] Lazy load images
 - [ ] Image carousel
   - [ ] Use ideal image slider but re-write as react component?
