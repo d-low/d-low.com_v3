@@ -5,7 +5,7 @@
   "main": "src/scripts/main.js",
   "scripts": {
     "compile": "webpack",
-    "watch": "webpack-dev-server -d --content-base www/ --inline --hot --host 0.0.0.0",
+    "watch": "webpack-dev-server -d --content-base www/ --inline --hot --host 0.0.0.0 --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
