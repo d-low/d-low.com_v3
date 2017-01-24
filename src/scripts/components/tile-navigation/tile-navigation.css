@@ -1,34 +1,49 @@
 @value border_gray, link_color, off_white from '../../../styles/base/colors.css';
 @value screen_small_min_width from '../../../styles/base/breakpoints.css';
+@value screen_medium_min_width from '../../../styles/base/breakpoints.css';
+@value screen_large_min_width from '../../../styles/base/breakpoints.css';
 
-@media screen and screen_small_min_width {
-  .homePageItems {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 100%;
-    justify-content: space-around;
-  }
+.homePageItems {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
+/*
+ * Tiles with 3:4 Aspect Radio
+ * See: http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
+ */
 .item {
   background-color: off_white;
   border: 1px solid border_gray;
   box-shadow: 0 5px 10px 1px rgba(0,0,0,.3);
-  display: block;
-  margin: 0 auto 1rem auto;
-  height: 15rem;
-  padding: 0.5rem 0.25rem 0rem 0.25rem;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 1rem;      
+  padding-bottom: 75%;
+  position: relative;
+  vertical-align: top;
+  width: 100%;
 }
 
 .itemHomePage {
   composes: item;
 }
 
-@media screen and screen_small_min_width {
+@media screen and screen_medium_min_width {
   .itemHomePage {
-    height: 20vw;
-    width: 25vw;
+    margin-bottom: 3rem;
+    padding-bottom: 33.75%;
+    width: 45%;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .itemHomePage {
+    margin-bottom: 4rem;
+    padding-bottom: 22.5%;
+    width: 30%;
   }
 }
 
@@ -36,6 +51,21 @@
   color: link_color;
   display: block;
   height: 100%;
+  padding: 0.25rem 0.25rem 0 0.25rem;
+  position: absolute;
+  width: 100%;
+}
+
+@media screen and screen_medium_min_width {
+  .itemLink {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .itemLink {
+    padding: 0.75rem 0.75rem 0 0.75rem;
+  }
 }
 
 .itemLink:link,
