@@ -1,11 +1,11 @@
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
-// Views (Pages)
-import HomeView from './views/home-view.js';
-import ListingView from './views/listing-view.js';
-import PostListingView from './views/post-listing-view.js';
-import PostView from './views/post-view.js';
+// Containers/Views/Pages
+import HomeView from './containers/home-view.js';
+import ListingView from './containers/listing-view.js';
+import PostListingView from './containers/post-listing-view.js';
+import PostView from './containers/post-view.js';
 
 export default (
   <Router history={browserHistory}>
