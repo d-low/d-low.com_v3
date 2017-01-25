@@ -20,10 +20,12 @@ npm watch
 To Do
 ---
 
-- [ ] Use content and data from d-low.com when running locally!
+- [ ] Pass links and posts to containers and then to components via props using Redux
+  - [ ] Use content and data from d-low.com when running locally for portability?
   - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
-        run the app!
-  - [ ] Pass parameter to webpack build?
+        run the app.
+  - [ ] Pass parameter to webpack build to determine when to load content dynamically
+        or just inspect the hostname..?
 
 - [ ] Webpack production build
 
@@ -39,7 +41,7 @@ To Do
 - [x] React component or utility method to fade in background images 
 
 - [ ] Home Page:
-  - [ ] Pass content into components as property
+  - [ ] Pass links to TileNavigation component as props
   - [x] Finish missing home page functionality
     - [x] Most recent post
     - [x] Run logo fade code on page load
@@ -52,7 +54,11 @@ To Do
     - [x] Home page site content
     - [x] Home page footer
 
-- [ ] Site header styles for home page vs. all other pages
+- [ ] Site header styles
+  - [ ] Home page
+  - [ ] All other pages
+    - [ ] Mobile navigation
+    - [ ] Desktop navigation
 
 - [x] Add eshint
 - [ ] Where do we place common utilities in this new site?
@@ -63,7 +69,8 @@ To Do
   - [ ] 05-Colorado/11-Colorado-2016/ (listing page)
   - [ ] 05-Colorado/11-Colorado-2016/04-Fall (articles page)
   - [ ] 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016 (article page)
-  - [ ] Handle all of the above prefixed by "#content/" to remap Backbone routes
+  - [ ] Handle all of the above prefixed by "#content/" to remap Backbone routes. Maybe
+        handle in Apache config?
 
 - [ ] Render each of the above pages
 - [ ] CSS for the modules on each of the above pages
