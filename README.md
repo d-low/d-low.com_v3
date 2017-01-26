@@ -7,6 +7,15 @@ iteration was built to showcase my skills as a front end web developer and learn
 new, modern, front end technologies. It is built with a mobile first approach, 
 written in ES6, using the React library, making use of CSS modules, and using 
 Webpack as the module bundler and build tool.
+
+You may be wondering why this repository is titled `d-low.com_v3` when it is
+the _fourth_ iteration of my personal website. The original version, written in
+PHP in 2005, used Subversion for source control. So when newer versions were 
+written, first in Ruby on Rails - which proved to be too slow, and then using
+Backbone.js as a single page web app, they were hosted in repositories named
+[d-low.com](https://github.com/d-low/d-low.com) and 
+[d-low.com_v2](https://github.com/d-low/d-low.com_v2), respectively. So this
+fourth iteration is hosted in the _v3_ repository in GitHub.
  
  
 Setup
