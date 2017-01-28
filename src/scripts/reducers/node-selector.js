@@ -2,12 +2,15 @@
  * @description Construction an array of links, one for each child node of the
  * current node that is not a post. Extracting the pretty name from each node
  * and select a random image from one of the nodes post nodes.
- * @param node The node we're workign with, e.g. /, /05-Colorado,
+ * @param path The path to the node we're working with.
+ * @param node The actual node we're working with, e.g. /, /05-Colorado,
  * /05-Colorado/11-Colorado-2016/04-Fall
  * @param includeMostRecent If true, the most recent post will be prepended to
  * the returned array of links.
+ * @todo Create separate reducers for links, posts and post and then combine
+ * them.
  */
-const getLinks = (node, includeMostRecent = false) => {
+const getLinks = function getLinks(path, node, includeMostRecent = false) {
   const links = [];
 
   const generateRandomNumber = (max, min) =>
@@ -29,8 +32,8 @@ const getLinks = (node, includeMostRecent = false) => {
   Object.keys(node).forEach((key) => {
     links.push({
       name: key.replace(/^\d\d-/, '').replace(/[-_]/g, ' '),
-      href: `/${key}`,
-      image: findRandomImage(window.Dlow.content[key]),
+      href: `${path === '/' ? '' : path}/${key}`,
+      image: findRandomImage(node[key]),
     });
   });
 
@@ -56,7 +59,7 @@ const getLinks = (node, includeMostRecent = false) => {
     links,
     post: null, // TODO: Return a post here or in a separate method?
     posts: [],
-    title: '', // TODO: How do we get the title from the current node?
+    title: path, // TODO: Prettify title!
   };
 };
 
@@ -74,16 +77,29 @@ const initialState = getLinks(window.Dlow.content, true);
  */
 const nodeSelector = (state = initialState, action) => {
   let currentNode = null;
+  let includeMostRecent = false;
+  let parts = null;
 
   switch (action.type) {
     case 'SELECT_NODE':
       currentNode = window.Dlow.content;
+      parts = action.path.split('/');
 
-      action.path.split('/').forEach((part) => {
-        currentNode = currentNode[part];
-      });
+      if (action.path !== '/') {
+        parts.forEach((part) => {
+          if (part) {
+            currentNode = currentNode[part];
+          }
+        });
+      } else {
+        includeMostRecent = true;
+      }
 
-      return Object.assign({}, state, getLinks(currentNode, false));
+      return Object.assign(
+        {},
+        state,
+        getLinks(action.path, currentNode, includeMostRecent),
+      );
 
     default:
       return state;
