@@ -1,4 +1,5 @@
 import React from 'react';
+import iconStyles from '../../../styles/base/icons/icons.css';
 import styles from './site-footer.css';
 
 class SiteFooter extends React.Component {
@@ -11,7 +12,7 @@ class SiteFooter extends React.Component {
         href: 'mailto:info@d-low.com',
         title: 'Send me an email',
       },
-      iconClassName: styles.iconMail,
+      iconClassName: iconStyles.iconMail,
       name: 'email',
     }, {
       anchor: {
@@ -21,7 +22,7 @@ class SiteFooter extends React.Component {
         target: '_blank',
         title: 'Friend me on Facebook',
       },
-      iconClassName: styles.iconFacebook,
+      iconClassName: iconStyles.iconFacebook,
       name: 'facebook',
     }, {
       anchor: {
@@ -31,7 +32,7 @@ class SiteFooter extends React.Component {
         target: '_blank',
         title: 'Check out my codes on Github',
       },
-      iconClassName: styles.iconGitHub,
+      iconClassName: iconStyles.iconGitHub,
       name: 'github',
     }, {
       anchor: {
@@ -41,7 +42,7 @@ class SiteFooter extends React.Component {
         target: '_blank',
         title: 'Connect with me on LinkedIn',
       },
-      iconClassName: styles.iconLinkedIn,
+      iconClassName: iconStyles.iconLinkedIn,
       name: 'linkedin',
     }, {
       anchor: {
@@ -51,7 +52,7 @@ class SiteFooter extends React.Component {
         target: '_blank',
         title: 'Follow my infrequent Tweets',
       },
-      iconClassName: styles.iconTwitter,
+      iconClassName: iconStyles.iconTwitter,
       name: 'twitter',
     }];
   }

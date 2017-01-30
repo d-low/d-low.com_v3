@@ -44,7 +44,7 @@ To Do
   - [ ] Element Defaults
   - [x] Typography
   - [x] Fonts
-    - [ ] Generate new icomoon fonts: Missing alternative formats, too many unused icons
+    - [x] Generate new icomoon fonts: Missing alternative formats, too many unused icons
   - [x] Use CSS modules where appropriate
 
 - [x] React component or utility method to fade in background images 

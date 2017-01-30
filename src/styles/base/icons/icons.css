@@ -1,0 +1,66 @@
+@value screen_small_min_width from '../breakpoints.css';
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('./icomoon.eot');
+  src: url('./icomoon.eot') format('embedded-opentype'),
+    url('./icomoon.ttf') format('truetype'),
+    url('./icomoon.woff') format('woff'),
+    url('./icomoon.svg') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-transform: none;
+  line-height: 1;
+  speak: none;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and screen_small_min_width {
+  .icon {
+    font-size: 2rem;
+  }
+}
+
+.iconMail,
+.iconFacebook,
+.iconGitHub,
+.iconLinkedIn,
+.iconTwitter {
+  composes: icon;
+}
+
+.iconMenu:before {
+  content: "\e9bd";
+}
+
+.iconMail:before {
+  content: "\ea85";
+}
+
+.iconFacebook:before {
+  content: "\ea91";
+}
+
+.iconTwitter:before {
+  content: "\ea96";
+}
+
+.iconGitHub:before {
+  content: "\eab0";
+}
+
+.iconLinkedIn:before {
+  content: "\eac9";
+}

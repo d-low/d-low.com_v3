@@ -48,7 +48,7 @@ const config = {
       // TBD: include: __dirname + '/src', 
       loader: 'html'
     }, {
-      test: /\.ttf$/,
+      test: /\.(eot|svg|ttf|woff)$/,
       loader: 'url-loader',
       options: {
         limit: 50000
