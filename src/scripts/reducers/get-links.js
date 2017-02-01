@@ -1,3 +1,7 @@
+export const prettifyTitle = function prettifyTitle(title) {
+  return title.replace(/^\d\d-/, '').replace(/[-_]/g, ' ');
+};
+
 /**
  * @description Construction an array of links, one for each child node of the
  * current node that is not a post. Extracting the pretty name from each node
@@ -7,10 +11,10 @@
  * /05-Colorado/11-Colorado-2016/04-Fall
  * @param includeMostRecent If true, the most recent post will be prepended to
  * the returned array of links.
- * @todo Create separate reducers for links, posts and post and then combine
- * them.
+ * @todo Don't pass node into this function, just pass the path, and we can
+ * then get the proper node here, using the recursion done in listingLinks()!
  */
-const getLinks = function getLinks(path, node, includeMostRecent = false) {
+export const getLinks = function getLinks(path, node, includeMostRecent = false) {
   const links = [];
 
   const generateRandomNumber = (max, min) =>
@@ -31,7 +35,7 @@ const getLinks = function getLinks(path, node, includeMostRecent = false) {
 
   Object.keys(node).forEach((key) => {
     links.push({
-      name: key.replace(/^\d\d-/, '').replace(/[-_]/g, ' '),
+      name: prettifyTitle(key),
       href: `${path === '/' ? '' : path}/${key}`,
       image: findRandomImage(node[key]),
     });
@@ -55,55 +59,5 @@ const getLinks = function getLinks(path, node, includeMostRecent = false) {
     }
   }
 
-  return {
-    links,
-    post: null, // TODO: Return a post here or in a separate method?
-    posts: [],
-    title: path, // TODO: Prettify title!
-  };
+  return links;
 };
-
-/**
- * @desccription The initial state is the list of links from the root node of
- * our content with the what's new section added.
- */
-const initialState = getLinks(window.Dlow.content, true);
-
-/**
- * @description When navigating to a new node the SELECT_NODE action will be
- * dispatched to the store and we'll handle it here by finding the current node
- * in our content and then returning either the links, post, or posts and title
- * as the current state.
- */
-const nodeSelector = (state = initialState, action) => {
-  let currentNode = null;
-  let includeMostRecent = false;
-  let parts = null;
-
-  switch (action.type) {
-    case 'SELECT_NODE':
-      currentNode = window.Dlow.content;
-      parts = action.path.split('/');
-
-      if (action.path !== '/') {
-        parts.forEach((part) => {
-          if (part) {
-            currentNode = currentNode[part];
-          }
-        });
-      } else {
-        includeMostRecent = true;
-      }
-
-      return Object.assign(
-        {},
-        state,
-        getLinks(action.path, currentNode, includeMostRecent),
-      );
-
-    default:
-      return state;
-  }
-};
-
-export default nodeSelector;

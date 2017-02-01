@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import HomePage from '../components/home-page.js';
 
 const mapStateToProps = state => ({
-  links: state.links,
+  links: state.topLinks.links,
 });
 
 const HomeView = connect(
