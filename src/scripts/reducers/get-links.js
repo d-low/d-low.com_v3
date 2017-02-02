@@ -6,15 +6,12 @@ export const prettifyTitle = function prettifyTitle(title) {
  * @description Construction an array of links, one for each child node of the
  * current node that is not a post. Extracting the pretty name from each node
  * and select a random image from one of the nodes post nodes.
- * @param path The path to the node we're working with.
- * @param node The actual node we're working with, e.g. /, /05-Colorado,
+ * @param path The path to the node we're working with. e.g. /, /05-Colorado,
  * /05-Colorado/11-Colorado-2016/04-Fall
  * @param includeMostRecent If true, the most recent post will be prepended to
  * the returned array of links.
- * @todo Don't pass node into this function, just pass the path, and we can
- * then get the proper node here, using the recursion done in listingLinks()!
  */
-export const getLinks = function getLinks(path, node, includeMostRecent = false) {
+export const getLinks = function getLinks(path, includeMostRecent = false) {
   const links = [];
 
   const generateRandomNumber = (max, min) =>
@@ -32,6 +29,17 @@ export const getLinks = function getLinks(path, node, includeMostRecent = false)
 
     return findRandomImage(currentNode[key]);
   };
+
+  // Iterate through the content object nodes from the top until we find the
+  // node corresponding to the specified path.
+  let node = window.Dlow.content;
+  const parts = path.split('/');
+
+  parts.forEach((part) => {
+    if (part) {
+      node = node[part];
+    }
+  });
 
   Object.keys(node).forEach((key) => {
     links.push({

@@ -1,26 +1,18 @@
 import { getLinks, prettifyTitle } from './get-links.js';
 
 /**
- * @description ...
+ * @description Get the listing links and pretty title for the current page.
  */
 const listingLinks = (state = {}, action) => {
-  let currentNode = null;
   let parts = null;
   let newState = null;
 
   switch (action.type) {
     case 'SELECT_NODE':
-      currentNode = window.Dlow.content;
       parts = action.path.split('/');
 
-      parts.forEach((part) => {
-        if (part) {
-          currentNode = currentNode[part];
-        }
-      });
-
       newState = {
-        links: getLinks(action.path, currentNode, false),
+        links: getLinks(action.path, false),
         title: prettifyTitle(parts[parts.length - 1]),
       };
 

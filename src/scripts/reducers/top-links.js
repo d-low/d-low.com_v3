@@ -1,11 +1,11 @@
 import { getLinks } from './get-links.js';
 
 /**
- * @description ...
+ * @description Get the top level links for the home page and site navigation.
  */
 const topLinks = (state = {}, action) => {
   const newState = {
-    links: getLinks('/', window.Dlow.content, true),
+    links: getLinks('/', true),
   };
 
   switch (action.type) {
