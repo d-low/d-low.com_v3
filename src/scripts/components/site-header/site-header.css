@@ -11,7 +11,7 @@
 
 .siteHeaderContentPage {
   composes: siteHeader;
-  border-top: 2.5rem solid link_color;
+  height: 12rem;
 }
 
 .siteHeaderHomePage {
@@ -41,8 +41,13 @@
   background-attachment: fixed;
 }
 
+.imageContentPage {
+  composes: image;
+}
+
 @media screen and screen_small_min_width {
-  .imageHomePage {
+  .imageHomePage,
+  .imageContentPage {
     background-image: url('./wendy-descending-saddle-between-watrous-and-woods-large.jpg');
   }
 }
@@ -57,18 +62,31 @@
 
 @media screen and screen_small_min_width {
   .logo {
-    position: fixed;
-    right: 5%;
-    text-align: right;
-    top: 0;
-    width: auto;
     z-index: 2;
   }
 }
 
 .logoContentPage {
   composes: logo;
-  border-top: 5rem solid transparent;
+}
+
+.logoHomePage {
+  composes: logo;
+}
+
+@media screen and screen_small_min_width {
+  .logoContentPage {
+    right: 0;
+  }
+}
+
+@media screen and screen_small_min_width {
+  .logoHomePage {
+    position: fixed;
+    right: 5%;
+    text-align: right;
+    width: auto;
+  }
 }
 
 .logoBigText {

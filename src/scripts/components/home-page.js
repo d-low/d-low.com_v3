@@ -7,7 +7,7 @@ import SiteFooter from '../components/site-footer/site-footer.js';
 
 const HomePage = ({ links }) => (
   <div className="main-view">
-    <SiteHeader />
+    <SiteHeader isHomePage />
     <SiteContent isHomePageNav>
       <TileNavigation isHomePage links={links} />
     </SiteContent>

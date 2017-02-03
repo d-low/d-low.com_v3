@@ -37,6 +37,12 @@ class SiteHeader extends React.Component {
    * to use DOM methods for this.
    */
   setLogoOpacity() {
+    if (!this.props.isHomePage) {
+      this.logo.style.opacity = 1;
+      this.logo.style.display = 'block';
+      return;
+    }
+
     const logoHeight = parseInt(window.getComputedStyle(this.logo).height, 10);
     let opacity = Number(1 - (window.pageYOffset / (window.innerHeight - logoHeight))).toFixed(2);
 
@@ -64,12 +70,29 @@ class SiteHeader extends React.Component {
     window.requestAnimationFrame(this.setLogoOpacity.bind(this));
   }
 
+  /**
+   * @description Remove scroll events immediately if we're not on the home
+   * page.
+   */
+  removeScrollEvents() {
+    return !this.props.isHomePage;
+  }
+
   render() {
-    // TODO: Modify HTML to not display image when on home page.
+    let siteHeaderClassName = styles.siteHeaderHomePage;
+    let imageClassName = styles.imageHomePage;
+    let logoClassName = styles.logoHomePage;
+
+    if (!this.props.isHomePage) {
+      siteHeaderClassName = styles.siteHeaderContentPage;
+      imageClassName = styles.imageContentPage;
+      logoClassName = styles.logoContentPage;
+    }
+
     return (
-      <header className={styles.siteHeaderHomePage}>
-        <FadeInBackgroundImage className={styles.imageHomePage} fadeInNow />
-        <div className={styles.logo} ref={(el) => { this.logo = el; }}>
+      <header className={siteHeaderClassName}>
+        <FadeInBackgroundImage className={imageClassName} fadeInNow />
+        <div className={logoClassName} ref={(el) => { this.logo = el; }}>
           <h1 className={styles.logoBigText}>
             d-low.com
           </h1>
@@ -81,5 +104,13 @@ class SiteHeader extends React.Component {
     );
   }
 }
+
+SiteHeader.propTypes = {
+  isHomePage: React.PropTypes.bool,
+};
+
+SiteHeader.defaultProps = {
+  isHomePage: false,
+};
 
 export default scrollEventsHandler(SiteHeader);
