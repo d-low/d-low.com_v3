@@ -11,7 +11,13 @@
 
 .siteHeaderContentPage {
   composes: siteHeader;
-  height: 12rem;
+  height: 12.5rem;
+}
+
+@media screen and screen_small_min_width {
+  .siteHeaderContentPage {
+    border-top: 5rem solid link_color;
+  }
 }
 
 .siteHeaderHomePage {
@@ -22,6 +28,7 @@
 
 @media screen and screen_small_min_width {
   .siteHeaderContentPage {
+    height: 18rem;
     padding-bottom: 2rem;
   }
 }
