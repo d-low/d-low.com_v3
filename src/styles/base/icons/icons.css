@@ -33,34 +33,40 @@
   }
 }
 
+.iconMenu,
 .iconMail,
 .iconFacebook,
 .iconGitHub,
 .iconLinkedIn,
-.iconTwitter {
+.iconTwitter,
+.iconClose {
   composes: icon;
 }
 
 .iconMenu:before {
-  content: "\e9bd";
+  content: "\e9be";
 }
 
 .iconMail:before {
-  content: "\ea85";
+  content: "\ea86";
 }
 
 .iconFacebook:before {
-  content: "\ea91";
+  content: "\ea92";
 }
 
 .iconTwitter:before {
-  content: "\ea96";
+  content: "\ea97";
 }
 
 .iconGitHub:before {
-  content: "\eab0";
+  content: "\eab1";
 }
 
 .iconLinkedIn:before {
-  content: "\eac9";
+  content: "\eaca";
+}
+
+.iconClose:before {
+  content: "\ea0d";
 }
