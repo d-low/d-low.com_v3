@@ -6,12 +6,13 @@ const SiteContent = function SiteContent(props) {
 
   if (props.isHomePageNav) {
     className = styles.containerHomePageNav;
-  } else {
-    className = styles.container;
   }
 
   return (
     <section className={className}>
+      {props.title &&
+        <h2 className={styles.title}>{ props.title }</h2>
+      }
       {props.children }
     </section>
   );
@@ -20,10 +21,12 @@ const SiteContent = function SiteContent(props) {
 SiteContent.propTypes = {
   children: React.PropTypes.node.isRequired,
   isHomePageNav: React.PropTypes.bool,
+  title: React.PropTypes.string,
 };
 
 SiteContent.defaultProps = {
   isHomePageNav: false,
+  title: '',
 };
 
 export default SiteContent;

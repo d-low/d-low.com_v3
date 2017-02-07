@@ -1,0 +1,9 @@
+/* 
+ * TODO: This file is poorly named. Do we need SASS? Can we omit it and combine
+ * it with the other typograhpy CSS file? Apparently having a .css and .scss 
+ * with the same name causes conflicts!
+ */
+
+.headerTextShadow {
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+}

@@ -1,29 +1,28 @@
 import React from 'react';
-import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
-import scrollEventsHandler from '../scroll-events-handler/scroll-events-handler.js';
+import FadeInBackgroundImageWhenVisible from '../fade-in-background-image-when-visible.js';
 import styles from './tile-navigation.css';
-
-const FadeInBackgroundImageWhenVisible = scrollEventsHandler(FadeInBackgroundImage);
 
 class TileNavigation extends React.PureComponent {
   render() {
     let itemClassName = styles.item;
+    let itemTitleClassName = styles.itemTitle;
 
-    if (this.props.isHomePage) {
+    if (this.props.isContentPage) {
+      itemClassName = styles.itemContentPage;
+    } else if (this.props.isHomePage) {
       itemClassName = styles.itemHomePage;
+      itemTitleClassName = styles.itemTitleHomePage;
     }
 
     const listItems = this.props.links.map(link =>
       <li className={itemClassName} key={link.name}>
-        <a className={styles.itemLink} href={link.href} title={link.text}>
+        <a className={styles.itemLink} href={link.href} title={link.name}>
           <FadeInBackgroundImageWhenVisible
             backgroundImage={link.image}
             className={styles.itemImage}
             fadeInNow={false} />
-          <span className={styles.itemTitle}>
-            <span>
-              {link.name.replace(/^\d\d-/, '').replace(/[-_]/g, ' ')}
-            </span>
+          <span className={itemTitleClassName}>
+            {link.name.replace(/^\d\d-/, '').replace(/[-_]/g, ' ')}
           </span>
         </a>
       </li>,
@@ -43,10 +42,12 @@ class TileNavigation extends React.PureComponent {
 
 TileNavigation.propTypes = {
   links: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  isContentPage: React.PropTypes.bool,
   isHomePage: React.PropTypes.bool,
 };
 
 TileNavigation.defaultProps = {
+  isContentPage: false,
   isHomePage: false,
 };
 

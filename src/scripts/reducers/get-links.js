@@ -10,8 +10,11 @@ export const prettifyTitle = function prettifyTitle(title) {
  * /05-Colorado/11-Colorado-2016/04-Fall
  * @param includeMostRecent If true, the most recent post will be prepended to
  * the returned array of links.
+ * @param descending If true, the links will be sorted in reverse order. This
+ * is used on the listing and post listing pages to show the most recent items
+ * first.
  */
-export const getLinks = function getLinks(path, includeMostRecent = false) {
+export const getLinks = function getLinks(path, includeMostRecent = false, descending = false) {
   const links = [];
 
   const generateRandomNumber = (max, min) =>
@@ -48,6 +51,10 @@ export const getLinks = function getLinks(path, includeMostRecent = false) {
       image: findRandomImage(node[key]),
     });
   });
+
+  if (descending === true) {
+    links.reverse();
+  }
 
   // Add the most recent post to the beginning of the links
 

@@ -7,7 +7,9 @@
 @value header_gray: #202020;
 @value border_gray: #999999;
 @value link_color: #303030;
+@value sky_blue: #6090d0;
 
+/* TODO: Switch to camel case for easier use in JavaScript */
 .off-white {
   color: off_white;
 }
@@ -26,4 +28,8 @@
 
 .link-color {
   color: link_color;
+}
+
+.borderGrayBackground {
+  background-color: border_gray;
 }

@@ -14,7 +14,7 @@ const listingLinks = (state = {}, action) => {
       parts = action.path.split('/');
 
       newState = {
-        links: getLinks(action.path, false),
+        links: getLinks(action.path, false, true),
         title: prettifyTitle(parts[parts.length - 1]),
         topLinks: [{ name: 'Home', href: '/', image: '' }].concat(getLinks('/', false)),
       };

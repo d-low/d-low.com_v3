@@ -28,8 +28,7 @@
 
 @media screen and screen_small_min_width {
   .siteHeaderContentPage {
-    height: 18rem;
-    padding-bottom: 2rem;
+    height: 16rem;
   }
 }
 
@@ -97,9 +96,9 @@
 }
 
 .logoBigText {
+  composes: headerTextShadow from '../../../styles/base/common.css';
   line-height: 4rem;
   padding: 20px 0 10px 0;
-  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and screen_small_min_width {
