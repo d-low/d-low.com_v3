@@ -23,13 +23,14 @@ Setup
  
 ```
 npm install
-npm watch 
+npm run watch 
 ```
 
 To Do
 ---
 
-- [ ] Pass links and posts to containers and then to components via props using Redux
+- [ ] Content
+  - [x] Pass links and posts to containers and then to components via props using Redux
   - [ ] Use content and data from d-low.com when running locally for portability?
   - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
         run the app.
@@ -38,46 +39,25 @@ To Do
 
 - [ ] Webpack production build
 
-- [ ] CSS:
-  - [x] Reset
-  - [ ] Layout 
-  - [ ] Element Defaults
-  - [x] Typography
-  - [x] Fonts
-    - [x] Generate new icomoon fonts: Missing alternative formats, too many unused icons
-  - [x] Use CSS modules where appropriate
-
-- [x] React component or utility method to fade in background images 
-
-- [ ] Home Page:
-  - [ ] Pass links to TileNavigation component as props
-  - [x] Finish missing home page functionality
-    - [x] Most recent post
-    - [x] Run logo fade code on page load
-  - [x] Add static content:
-    - [x] Hero images
-    - [x] Icon fonts
-  - [x] Home page component styles
-    - [x] Home page header
-    - [x] Home page navigation
-    - [x] Home page site content
-    - [x] Home page footer
-
 - [ ] Site header styles
-  - [ ] Home page
-  - [ ] All other pages
-    - [ ] Mobile navigation
-    - [ ] Desktop navigation
+  - [ ] Mobile navigation
+    - [ ] Change color to gray when scrolled down to appear over tiles
+    - [ ] Larger fontsize on small to medium screens.
 
-- [x] Add eshint
-- [ ] Where do we place common utilities in this new site?
+- [ ] CSS
+  - [ ] Do we need SASS?
+
+- [ ] Use consistent style for presentation components definition
+- [ ] Where do we place common utilities in new site?
 - [ ] Add tests
 
-- [ ] Set up client side routing
-  - [ ] 05-Colorado/ (listing page)
-  - [ ] 05-Colorado/11-Colorado-2016/ (listing page)
-  - [ ] 05-Colorado/11-Colorado-2016/04-Fall (articles page)
-  - [ ] 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016 (article page)
+- [ ] Rename Redux actions and reducers
+
+- [x] Set up client side routing
+  - [x] 05-Colorado/ (listing page)
+  - [x] 05-Colorado/11-Colorado-2016/ (listing page)
+  - [x] 05-Colorado/11-Colorado-2016/04-Fall (articles page)
+  - [x] 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016 (article page)
   - [ ] Handle all of the above prefixed by "#content/" to remap Backbone routes. Maybe
         handle in Apache config?
 
@@ -86,6 +66,5 @@ To Do
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
-- [x] Lazy load images
 - [ ] Image carousel
-  - [ ] Use ideal image slider but re-write as react component?
+  - [ ] Fork and re-write as React component?
