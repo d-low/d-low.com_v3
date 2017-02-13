@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import FadeInBackgroundImageWhenVisible from '../fade-in-background-image-when-visible.js';
 import styles from './tile-navigation.css';
 
@@ -16,7 +17,7 @@ class TileNavigation extends React.PureComponent {
 
     const listItems = this.props.links.map(link =>
       <li className={itemClassName} key={link.name}>
-        <a className={styles.itemLink} href={link.href} title={link.name}>
+        <Link className={styles.itemLink} title={link.name} to={link.href}>
           <FadeInBackgroundImageWhenVisible
             backgroundImage={link.image}
             className={styles.itemImage}
@@ -24,7 +25,7 @@ class TileNavigation extends React.PureComponent {
           <span className={itemTitleClassName}>
             {link.name.replace(/^\d\d-/, '').replace(/[-_]/g, ' ')}
           </span>
-        </a>
+        </Link>
       </li>,
     );
 

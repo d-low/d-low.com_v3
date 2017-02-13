@@ -51,6 +51,17 @@ To Do
 - [ ] Where do we place common utilities in new site?
 - [ ] Add tests
 
+- [ ] Fade in background image issues:
+  - [ ] Are images faded in too soon if set to fade in when scrolled into view?
+  - [ ] Don't fade in image a second time when returning to same page?
+
+- [ ] React Router
+  - [x] Use Link to avoid page reloads
+  - [ ] Scroll to top of page before navigating to new page.
+  - [ ] Use mobile page transitions (à la Clip Artist App)?
+  - [ ] Use Index route (TBD)
+  - [ ] Life cycle hook bug when scrollEventsHandler componentWillUnmount()?
+  
 - [ ] Rename Redux actions and reducers
 
 - [x] Set up client side routing

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import styles from './site-navigation.css';
 
 class SiteNavigation extends React.Component {
@@ -19,7 +20,7 @@ class SiteNavigation extends React.Component {
   render() {
     const listItems = this.props.links.map(link =>
       <li className={styles.link} key={link.name}>
-        <a className={styles.linkText} href={link.href}>{ link.name }</a>
+        <Link className={styles.linkText} to={link.href}>{ link.name }</Link>
       </li>,
     );
 

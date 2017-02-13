@@ -30,7 +30,12 @@ function scrollEventsHandler(WrappedComponent) {
     }
 
     componentWillUnmount() {
-      super.componentWillUnmount();
+      try {
+        super.componentWillUnmount();
+      } catch (exp) {
+        // TODO: Understand why parent component is no longer available when
+        // using Link from React Router for proper navigation!
+      }
       this.removeEventListener();
     }
 
