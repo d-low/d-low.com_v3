@@ -63,9 +63,19 @@ class FadeInBackgroundImage extends React.Component {
     return (rect.top <= window.innerHeight + window.pageYOffset);
   }
 
-  // TBD: Should we fade in images when scrolling instead of when scrolling
-  // stops?
+  /**
+   * @todo Should we fade in images when scrolling instead of when scrolling
+   * stops? Maybe this could depend on the scrolling speed? i.e. When scrolling
+   * slow fade in the images while scrolling, but not when scrolling fast.
+   */
   scrollStop() {
+    // When animating scrolling to top before navigating to next page we may be
+    // called after our element leaves the DOM due to scroll events being 
+    // throttled. In this case we just exit now to avoid rasing an error.
+    if (!this.element) {
+      return;
+    }
+
     if (this.isElementInViewport()) {
       if (this.props.backgroundImage) {
         this.setState({

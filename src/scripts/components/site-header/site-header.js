@@ -43,6 +43,13 @@ class SiteHeader extends React.Component {
       return;
     }
 
+    // When animating scrolling to top before navigating to next page we may be
+    // called after our element leaves the DOM due to scroll events being 
+    // throttled. In this case we just exit now to avoid rasing an error.
+    if (!this.logo) {
+      return;
+    }
+
     const logoHeight = parseInt(window.getComputedStyle(this.logo).height, 10);
     let opacity = Number(1 - (window.pageYOffset / (window.innerHeight - logoHeight))).toFixed(2);
 
