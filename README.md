@@ -64,6 +64,7 @@ To Do
   - [ ] Can we reduced re-rendered components when navigating from home page?
   
 - [ ] Rename Redux actions and reducers
+- [ ] Add down arrow at bottom of hero image on home page
 
 - [x] Set up client side routing
   - [x] 05-Colorado/ (listing page)
