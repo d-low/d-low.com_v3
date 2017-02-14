@@ -52,6 +52,7 @@ To Do
 - [ ] Add tests
 
 - [ ] Fade in background image issues:
+  - [ ] Image above the fold on page load doesn't fade in, it just appears.
   - [ ] Are images faded in too soon if set to fade in when scrolled into view?
   - [ ] Don't fade in image a second time when returning to same page?
 
