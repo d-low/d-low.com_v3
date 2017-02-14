@@ -35,7 +35,9 @@ export const getLinks = function getLinks(path, includeMostRecent = false, desce
 
   // Iterate through the content object nodes from the top until we find the
   // node corresponding to the specified path.
-  let node = window.Dlow.content;
+  // TODO: Remove conditional assignment when new generate_content.rb used on
+  // d-low.com!
+  let node = window.Dlow.content || window.Dlow.Content;
   const parts = path.split('/');
 
   parts.forEach((part) => {
@@ -57,9 +59,11 @@ export const getLinks = function getLinks(path, includeMostRecent = false, desce
   }
 
   // Add the most recent post to the beginning of the links
+  // TODO: Remove conditional assignment when new generate_content.rb used on
+  // d-low.com!
 
   if (includeMostRecent && window.Dlow.mostRecentPostPath) {
-    let mostRecentNode = window.Dlow.content;
+    let mostRecentNode = window.Dlow.content || window.Dlow.Content;
 
     window.Dlow.mostRecentPostPath.split('/').forEach((part) => {
       mostRecentNode = mostRecentNode[part];
@@ -74,5 +78,12 @@ export const getLinks = function getLinks(path, includeMostRecent = false, desce
     }
   }
 
-  return links;
+  // Use content from d-low.com
+  const mappedLinks = links.map(link => ({
+    name: link.name,
+    href: link.href,
+    image: `http://www.d-low.com/${link.image}`,
+  }));
+
+  return mappedLinks;
 };

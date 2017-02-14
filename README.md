@@ -31,7 +31,7 @@ To Do
 
 - [ ] Content
   - [x] Pass links and posts to containers and then to components via props using Redux
-  - [ ] Use content and data from d-low.com when running locally for portability?
+  - [x] Use content and data from d-low.com when running locally for portability?
   - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
         run the app.
   - [ ] Pass parameter to webpack build to determine when to load content dynamically
