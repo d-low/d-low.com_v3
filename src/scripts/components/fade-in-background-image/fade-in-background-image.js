@@ -70,7 +70,7 @@ class FadeInBackgroundImage extends React.Component {
    */
   scrollStop() {
     // When animating scrolling to top before navigating to next page we may be
-    // called after our element leaves the DOM due to scroll events being 
+    // called after our element leaves the DOM due to scroll events being
     // throttled. In this case we just exit now to avoid rasing an error.
     if (!this.element) {
       return;
