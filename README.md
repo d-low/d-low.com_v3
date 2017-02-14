@@ -57,10 +57,10 @@ To Do
 
 - [ ] React Router
   - [x] Use Link to avoid page reloads
-  - [ ] Scroll to top of page before navigating to new page.
+  - [x] Scroll to top of page before navigating to new page.
   - [ ] Use mobile page transitions (à la Clip Artist App)?
   - [ ] Use Index route (TBD)
-  - [ ] Life cycle hook bug when scrollEventsHandler componentWillUnmount()?
+  - [ ] Can we reduced re-rendered components when navigating from home page?
   
 - [ ] Rename Redux actions and reducers
 
