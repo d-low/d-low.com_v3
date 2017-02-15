@@ -52,7 +52,7 @@ To Do
 - [ ] Add tests
 
 - [ ] Fade in background image issues:
-  - [ ] Image above the fold on page load doesn't fade in, it just appears.
+  - [x] Image above the fold on page load doesn't fade in, it just appears.
   - [ ] Are images faded in too soon if set to fade in when scrolled into view?
   - [ ] Don't fade in image a second time when returning to same page?
 
@@ -60,7 +60,6 @@ To Do
   - [x] Use Link to avoid page reloads
   - [x] Scroll to top of page before navigating to new page.
   - [ ] Use mobile page transitions (à la Clip Artist App)?
-  - [ ] Use Index route (TBD)
   - [ ] Can we reduced re-rendered components when navigating from home page?
   
 - [ ] Rename Redux actions and reducers

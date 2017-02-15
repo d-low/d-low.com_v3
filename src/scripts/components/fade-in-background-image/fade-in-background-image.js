@@ -42,20 +42,27 @@ class FadeInBackgroundImage extends React.Component {
 
   fadeInImage() {
     // If we haven't yet set the inline style to specify the background image
-    // and we have one, then set it now, and then fade in the background image.
-    // Otherwise immediately fade in the background image.
+    // and we have one, then set it now, and then fade in the background image
+    // once the state has changed. Otherwise immediately fade in the background
+    // image.
+
+    const loadAndFadeInImage = () => {
+      imagesloaded(this.element, { background: true }, () => {
+        this.setState({ imageVisible: true });
+      });
+    };
 
     if (!this.state.style && this.props.backgroundImage) {
-      this.setState({
+      const newState = {
         style: {
           backgroundImage: `url(${this.props.backgroundImage})`,
         },
-      });
-    }
+      };
 
-    imagesloaded(this.element, { background: true }, () => {
-      this.setState({ imageVisible: true });
-    });
+      this.setState(newState, loadAndFadeInImage);
+    } else {
+      loadAndFadeInImage();
+    }
   }
 
   isElementInViewport() {
