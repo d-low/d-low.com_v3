@@ -45,7 +45,9 @@ To Do
     - [ ] Larger fontsize on small to medium screens.
 
 - [ ] CSS
+  - [x] Ensure global CSS (reset, typography, defaults) appears first in bundle
   - [ ] Do we need SASS?
+  - [ ] Self host web fonts using [typefaces node module](https://github.com/KyleAMathews/typefaces) 
 
 - [ ] Use consistent style for presentation components definition
 - [ ] Where do we place common utilities in new site?
