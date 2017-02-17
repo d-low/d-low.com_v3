@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import ListingPage from '../components/listing-page.js';
 
-const mapStateToProps = function mapStatetoProps(state) {
-  return {
-    listingLinks: state.listingLinks.links,
-    title: state.listingLinks.title,
-    topLinks: state.listingLinks.topLinks,
-  };
-};
+const mapStateToProps = state => ({
+  listingLinks: state.listingData.links,
+  title: state.listingData.title,
+  topLinks: state.listingData.topLinks,
+});
 
 const ListingView = connect(
   mapStateToProps,

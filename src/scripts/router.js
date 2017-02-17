@@ -4,8 +4,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import reducers from './reducers/index.js';
-import setTopLinks from './actions/set-top-links.js';
-import selectNode from './actions/select-node.js';
+import getHomeData from './actions/get-home-data.js';
+import getListingData from './actions/get-listing-data.js';
 
 // Containers/Views/Pages
 import HomeView from './containers/home-view.js';
@@ -58,7 +58,7 @@ const store = createStore(reducers);
 const onHomeEnter = function onHomeEnter(nextState, replace, done) {
   scrollToY(0)
     .then(() => {
-      store.dispatch(setTopLinks());
+      store.dispatch(getHomeData());
       done();
     });
 };
@@ -66,7 +66,7 @@ const onHomeEnter = function onHomeEnter(nextState, replace, done) {
 const onListingEnter = function onListingEnter(nextState, replace, done) {
   scrollToY(0)
     .then(() => {
-      store.dispatch(selectNode(nextState.location.pathname));
+      store.dispatch(getListingData(nextState.location.pathname));
       done();
     });
 };

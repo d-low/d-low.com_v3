@@ -1,16 +1,15 @@
 import { getLinks, prettifyTitle } from './get-links.js';
 
 /**
- * @description Get the listing links and pretty title for the current page.
- * @todo Now that we're getting the top links in this reducer should we rename
- * the action to ENTER_LISTING_VIEW and this function to enterListingView()?
+ * @description Set the listing links, pretty title, and top level links for
+ * for the current listing page.
  */
-const listingLinks = (state = {}, action) => {
+const setListingData = (state = {}, action) => {
   let parts = null;
   let newState = null;
 
   switch (action.type) {
-    case 'SELECT_NODE':
+    case 'GET_LISTING_DATA':
       parts = action.path.split('/');
 
       newState = {
@@ -30,4 +29,4 @@ const listingLinks = (state = {}, action) => {
   }
 };
 
-export default listingLinks;
+export default setListingData;

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import topLinks from './top-links.js';
-import listingLinks from './listing-links.js';
+import setHomeData from './set-home-data.js';
+import setListingData from './set-listing-data.js';
 
 const reducers = combineReducers({
-  topLinks,
-  listingLinks,
+  homeData: setHomeData,
+  listingData: setListingData,
 });
 
 export default reducers;
