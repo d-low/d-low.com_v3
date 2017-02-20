@@ -37,7 +37,11 @@ To Do
   - [ ] Pass parameter to webpack build to determine when to load content dynamically
         or just inspect the hostname..?
 
-- [ ] Webpack production build
+- [ ] Administration/Development
+  - [ ] Webpack production build
+  - [ ] Use [React dev tools](https://github.com/facebook/react-devtools)
+  - [ ] Use minimal .htaccess to enable CORS etc.
+  - [ ] [Upgrade to webpack 2](https://webpack.js.org/guides/migrating/)
 
 - [ ] Site header styles
   - [ ] Mobile navigation
