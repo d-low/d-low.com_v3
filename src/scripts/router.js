@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import reducers from './reducers/index.js';
 import getHomeData from './actions/get-home-data.js';
 import getListingData from './actions/get-listing-data.js';
+import getPostListingData from './actions/get-post-listing-data.js';
 
 // Containers/Views/Pages
 import HomeView from './containers/home-view.js';
@@ -71,8 +72,12 @@ const onListingEnter = function onListingEnter(nextState, replace, done) {
     });
 };
 
-const onPostListingEnter = function onPostListingEnter() {
-  // TODO: ...
+const onPostListingEnter = function onPostListingEnter(nextState, replace, done) {
+  scrollToY(0)
+    .then(() => {
+      store.dispatch(getPostListingData(nextState.location.pathname));
+      done();
+    });
 };
 
 const onPostEnter = function onPostEnter() {
