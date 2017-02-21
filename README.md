@@ -47,6 +47,7 @@ To Do
   - [ ] Mobile navigation
     - [ ] Change color to gray when scrolled down to appear over tiles
     - [ ] Larger fontsize on small to medium screens.
+    - [ ] Consider using a fixed bottom menu with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd)
 
 - [ ] CSS
   - [x] Ensure global CSS (reset, typography, defaults) appears first in bundle
