@@ -1,18 +1,6 @@
 @value screen_small_min_width from '../../../styles/base/breakpoints.css';
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
-
-/*
- * TODO: Attempting to use values or compose styles from colors.css leads to
- * the error:
- *
- * "Order in extracted chunk undefined"
- * 
- * Unfortunately, it's not clear why. So for now, the colors used here are 
- * hardcoded. I need to figure out why this happens!
- *
- * @value sky_blue from '../../../styles/base/colors.css';
- * composes: skyBlue from '../../../sstyles/base/colors.css';
- */
+@value sky_blue from '../../../styles/base/colors.css';
 
 .container {
   padding: 1rem 1rem 2rem 1rem;
@@ -20,7 +8,7 @@
 
 .containerHomePageNav {
   composes: container;
-  background: #6090d0 url(./resting_above_treeline.jpg) bottom left no-repeat;
+  background: sky_blue url(./resting_above_treeline.jpg) bottom left no-repeat;
   padding-bottom: 1rem;
 }
 

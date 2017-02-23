@@ -66,7 +66,9 @@ const config = {
     configFile: './.eslintrc'
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('[name].css', {
+      ignoreOrder: true
+    }),
     new webpack.ProvidePlugin({
       Promise: 'imports?this=>global!exports?global.Promise!es6-promise',
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
