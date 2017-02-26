@@ -22,9 +22,9 @@ class TileNavigation extends React.PureComponent {
             backgroundImage={link.image}
             className={styles.itemImage}
             fadeInNow={false} />
-          <span className={itemTitleClassName}>
+          <h3 className={itemTitleClassName}>
             {link.name.replace(/^\d\d-/, '').replace(/[-_]/g, ' ')}
-          </span>
+          </h3>
         </Link>
       </li>,
     );

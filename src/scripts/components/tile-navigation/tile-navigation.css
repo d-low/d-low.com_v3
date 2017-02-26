@@ -1,4 +1,3 @@
-@value border_gray, link_color, off_white from '../../../styles/base/colors.css';
 @value screen_small_min_width from '../../../styles/base/breakpoints.css';
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
 @value screen_large_min_width from '../../../styles/base/breakpoints.css';
@@ -15,16 +14,11 @@
  * See: http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
  */
 .item {
-  background-color: off_white;
-  border: 1px solid border_gray;
-  box-shadow: 0 5px 10px 1px rgba(0,0,0,.3);
-  cursor: pointer;
-  display: block;
-  margin: 0 auto 1rem auto;      
+  composes: contentItem from '../../../styles/base/common.css';
+  cursor: pointer;  
   padding-bottom: 75%;
   position: relative;
   vertical-align: top;
-  width: 100%;
 }
 
 .itemHomePage {
@@ -44,9 +38,7 @@
   }
 
   .itemContentPage {
-    margin-bottom: 5rem;
     padding-bottom: 600px;
-    width: 800px;
   }
 }
 
@@ -59,24 +51,12 @@
 }
 
 .itemLink {
-  color: link_color;
+  composes: contentItemGutter from '../../../styles/base/common.css';
   display: block;
   height: 100%;
-  padding: 0.25rem 0.25rem 0 0.25rem;
+  padding-bottom: 0;
   position: absolute;
   width: 100%;
-}
-
-@media screen and screen_medium_min_width {
-  .itemLink {
-    padding: 0.5rem 0.5rem 0 0.5rem;
-  }
-}
-
-@media screen and screen_large_min_width {
-  .itemLink {
-    padding: 0.75rem 0.75rem 0 0.75rem;
-  }
 }
 
 .itemLink:link,
@@ -95,18 +75,12 @@
 }
 
 .itemTitle {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
+  composes: contentItemTitle from '../../../styles/base/common.css';
   height: 15%;
-  justify-content: center;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .itemTitleHomePage {
-  composes: itemTitle;
+  composes: itemTitle
 }
 
 @media screen and (min-width: 668px) {
@@ -115,17 +89,7 @@
   }
 }
 
-@media screen and screen_small_min_width {
-  .itemTitle {
-    font-size: 1.25rem;
-  }
-}
-
 @media screen and screen_medium_min_width {
-  .itemTitle {
-    font-size: 1.5rem;
-  }
-
   .itemTitleHomePage {
     font-size: 1rem;
   }

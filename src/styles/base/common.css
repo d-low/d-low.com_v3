@@ -1,9 +1,86 @@
 /* 
- * TODO: This file is poorly named. Do we need SASS? Can we omit it and combine
- * it with the other typograhpy CSS file? Apparently having a .css and .scss 
- * with the same name causes conflicts!
+ * REVIEW: Should we rename this file to be more specific? "common" is a bit
+ * too generic. Also, can we stop using SASS and just use CSS modules? How do 
+ * we apply common styles in that case? Do we just apply a class name to the 
+ * body and then use that for our common styles selectors?
  */
+
+@value screen_medium_min_width from './breakpoints.css';
+@value screen_large_min_width from './breakpoints.css';
+@value border_gray, off_white from './colors.css';
 
 .headerTextShadow {
   text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+/*
+ * Content Item styles are used for tile navigation and posts 
+ */
+
+.contentItem {
+  background-color: off_white;
+  border: 1px solid border_gray;
+  box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto 1rem auto;    
+  width: 100%;
+}
+
+@media screen and screen_medium_min_width {
+  .contentItem {
+    margin-bottom: 5rem;
+    width: 800px;
+  }
+}
+
+.contentItemGutter {
+  padding: 0.25rem;
+}
+
+@media screen and screen_medium_min_width {
+  .contentItemGutter {
+    padding: 0.5rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .contentItemGutter {
+    padding: 0.75rem;
+  }
+}
+
+.contentItemTitle {
+  /* 
+   * REVIEW: This color comes from the SASS default styles so we don't have 
+   * access to it here. And we're specifying a color on this element to 
+   * override the default link color when this element is wrapped in an anchor.
+   * So there are some issues to review here...
+   */
+  color: #303030;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 450px) {
+  .contentItemTitle {
+    font-size: 2rem;
+  }
+}
+
+@media screen and screen_small_min_width {
+  .contentItemTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .contentItemTitle {
+    font-size: 3rem;
+  }
 }

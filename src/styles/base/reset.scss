@@ -39,6 +39,7 @@ body {
 }
 
 a {
+  cursor: pointer;
   outline: none;
 }
 
@@ -100,6 +101,11 @@ table {
 
 textarea { 
   overflow: auto;
+}
+
+b, 
+strong { 
+  font-weight: bold;
 }
 
 /* 

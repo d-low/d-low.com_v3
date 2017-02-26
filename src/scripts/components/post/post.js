@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-// import FadeInBackgroundImageWhenVisible from '../fade-in-background-image-when-visible.js';
-// import styles from './post.css';
+import FadeInBackgroundImageWhenVisible from '../fade-in-background-image-when-visible.js';
+import styles from './post.css';
 
 class Post extends React.Component {
   constructor() {
@@ -23,27 +23,34 @@ class Post extends React.Component {
   render() {
     const listItems = [];
 
-    this.props.link.thumbnails.forEach((thumbnail, index) => {
-      if (index <= 2) {
+    this.props.link.images.forEach((image, index) => {
+      if (index <= 3) {
         listItems.push(
-          <li key={thumbnail}>
-            <img alt="" src={thumbnail} />
+          <li className={styles.imageContainer} key={image}>
+            <FadeInBackgroundImageWhenVisible
+              backgroundImage={image}
+              className={styles.image}
+              fadeInNow={false} />
           </li>,
         );
       }
     });
 
+    const imagesContainerClassName = this.props.isReverseLayout === true ?
+      styles.imagesContainerReverse : styles.imagesContainer;
+
     return (
-      <div>
-        <h3>{this.props.link.name}</h3>
-        <ul>
-          <li key={this.props.link.heroImage}>
-            <img alt="" src={this.props.link.heroImage} />
-          </li>
+      <div className={styles.container}>
+        <h3 className={styles.title}>{this.props.link.name}</h3>
+        <ul className={imagesContainerClassName}>
           {listItems}
         </ul>
-        <div dangerouslySetInnerHTML={{ __html: this.state.text }} />
-        <Link to={this.props.link.href}>Read More</Link>
+        <div
+          className={styles.text}
+          dangerouslySetInnerHTML={{ __html: this.state.text }} />
+        <Link className={styles.readMoreLink} to={this.props.link.href}>
+          Read More
+        </Link>
       </div>
     );
   }
@@ -51,13 +58,17 @@ class Post extends React.Component {
 
 Post.propTypes = {
   link: React.PropTypes.shape({
-    heroImage: React.PropTypes.string,
     href: React.PropTypes.string,
     images: React.PropTypes.arrayOf(React.PropTypes.string),
     name: React.PropTypes.string,
     text: React.PropTypes.function,
     thumbnails: React.PropTypes.arrayOf(React.PropTypes.string),
   }).isRequired,
+  isReverseLayout: React.PropTypes.bool,
+};
+
+Post.defaultProps = {
+  isReverseLayout: false,
 };
 
 export default Post;

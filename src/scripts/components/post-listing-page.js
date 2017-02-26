@@ -10,9 +10,9 @@ import { borderGrayBackground } from '../../styles/base/colors.css';
 // i.e. Use "isListingView" instead of "isContentPage". It's more consistent to
 // use names that correspond with our views!
 const PostListingPage = ({ links, title, topLinks }) => {
-  const listItems = links.map(link =>
+  const listItems = links.map((link, index) =>
     <li key={link.name}>
-      <Post link={link} />
+      <Post link={link} isReverseLayout={index % 2 === 1} />
     </li>,
   );
 

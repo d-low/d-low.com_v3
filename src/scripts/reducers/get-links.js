@@ -144,7 +144,6 @@ export const getPost = function getPost(link, path) {
   return {
     name: link2.name,
     href: link2.href,
-    heroImage: link2.image,
     images: getPostImages(link2.href),
     text: () => new Promise((resolve) => {
       fetch(`http://www.d-low.com/data${link2.href}/index.html`)

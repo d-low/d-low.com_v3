@@ -1,0 +1,132 @@
+@value screen_medium_min_width from '../../../styles/base/breakpoints.css';
+@value screen_large_min_width from '../../../styles/base/breakpoints.css';
+
+.container {
+  composes: contentItem from '../../../styles/base/common.css';
+  composes: contentItemGutter from '../../../styles/base/common.css';
+}
+
+.title {
+  composes: contentItemTitle from '../../../styles/base/common.css';
+  font-size: 1.75rem;
+  min-height: 75px;
+}
+
+@media screen and screen_medium_min_width {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.imagesContainer {
+  composes: clearfix from '../../../styles/base/utils.css';
+  height: 50vw;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  text-align: left;
+} 
+
+.imagesContainerReverse { 
+  composes: imagesContainer;
+  text-align: right;
+}
+
+@media screen and screen_medium_min_width {
+  .imagesContainer,
+  .imagesContainerReverse {
+    max-height: 400px;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .imagesContainer,
+  .imagesContainerReverse {
+    max-height: 500px;
+  }
+}
+
+.imageContainer {
+  display: inline-block;
+  height: 33%;
+  margin-bottom: 0.5%;
+  width: 35%;
+}
+
+.imageContainer:last-child {
+  margin-bottom: 0;
+}
+
+.imageContainer:first-child {
+  float: right; 
+  height: 100%;
+  margin-bottom: 0;
+  width: 64.5%
+}
+
+.imagesContainerReverse .imageContainer:first-child {
+  float: left;
+}
+
+.image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 100%;
+}
+
+/* 
+ * NOTE: HTML element selectors are used for text styles b/c the HTML is 
+ * generated externally. 
+ */
+
+.text {
+  margin-bottom: 2.5rem;
+}
+
+.text p {
+  margin-bottom: 1rem;
+}
+
+.text p > b:first-child {
+  /* 
+   * REVIEW: This color comes from the SASS default styles so we don't have 
+   * access to it here. And we're specifying a color on this element to 
+   * override the default link color when this element is wrapped in an anchor.
+   * So there are some issues to review here...
+   */
+  color: #303030;
+  display: block;
+  font-family: 'Passion One', Helvetica, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+.text p a {
+  text-decoration: underline;
+}
+
+@media screen and screen_medium_min_width {
+  .text p > b:first-child {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .text p > b:first-child {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+}
+
+.readMoreLink {
+  display: none;
+}
