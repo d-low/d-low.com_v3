@@ -80,24 +80,30 @@
 }
 
 .itemTitleHomePage {
-  composes: itemTitle
+  composes: itemTitle;
+  font-size: 1.25rem;
 }
 
-@media screen and (min-width: 668px) {
+@media screen and (min-width: 568px) {
   .itemTitleHomePage {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and screen_small_min_width {
+  .itemTitleHomePage {
+    font-size: 1.75rem;
   }
 }
 
 @media screen and screen_medium_min_width {
   .itemTitleHomePage {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
 
 @media screen and screen_large_min_width {
   .itemTitleHomePage {
-    font-size: 0.9rem;
+    font-size: 1.25rem;
   }
 }
-
