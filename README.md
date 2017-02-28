@@ -52,7 +52,7 @@ To Do
 - [ ] CSS
   - [x] Ensure global CSS (reset, typography, defaults) appears first in bundle
   - [ ] Do we need SASS? If not how to we apply reset?
-  - [ ] Self host web fonts using [typefaces node module](https://github.com/KyleAMathews/typefaces) 
+  - [x] Self host web fonts using [typefaces node module](https://github.com/KyleAMathews/typefaces) 
   - [ ] Use consistent heading styles 
 
 - [ ] Use consistent coding style for presentation components definition

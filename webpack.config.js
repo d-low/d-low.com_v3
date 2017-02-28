@@ -42,14 +42,14 @@ const config = {
       loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
     }, { 
       test: /\.css$/, 
-      include: __dirname + '/src',
+      // include: __dirname + '/src',
       loader: ExtractTextPlugin.extract('style-loader', cssLoaders.join('!'))
     }, {
       test: /\.html/,
       // TBD: include: __dirname + '/src', 
       loader: 'html'
     }, {
-      test: /\.(eot|svg|ttf|woff)$/,
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
       loader: 'url-loader',
       options: {
         limit: 50000
@@ -85,7 +85,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['', '.css', '.js', '.ttf', '.scss'],
+    extensions: ['', '.css', '.js', '.scss'],
     root: [path.join(__dirname, './src')]
   }
 };
