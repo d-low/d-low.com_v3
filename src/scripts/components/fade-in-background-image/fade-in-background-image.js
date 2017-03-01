@@ -67,7 +67,7 @@ class FadeInBackgroundImage extends React.Component {
 
   isElementInViewport() {
     const rect = this.element.getBoundingClientRect();
-    return (rect.top <= window.innerHeight + window.pageYOffset);
+    return rect.top <= window.innerHeight;
   }
 
   /**
