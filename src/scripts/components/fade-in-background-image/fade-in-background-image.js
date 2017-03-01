@@ -48,6 +48,7 @@ class FadeInBackgroundImage extends React.Component {
 
     const loadAndFadeInImage = () => {
       imagesloaded(this.element, { background: true }, () => {
+        FadeInBackgroundImage.imageCache[this.props.backgroundImage] = true;
         this.setState({ imageVisible: true });
       });
     };
@@ -107,7 +108,9 @@ class FadeInBackgroundImage extends React.Component {
   render() {
     let className = `${this.props.className}`;
 
-    if (this.state.imageVisible) {
+    if (FadeInBackgroundImage.imageCache[this.props.backgroundImage]) {
+      className = `${className} ${styles.imageVisibleImmediately}`;
+    } else if (this.state.imageVisible) {
       className = `${className} ${styles.imageVisible}`;
     } else {
       className = `${className} ${styles.imageHidden}`;
@@ -123,6 +126,15 @@ class FadeInBackgroundImage extends React.Component {
     );
   }
 }
+
+/**
+ * @description Keep a cache of image that have already been faded in so that
+ * we don't fade them in a second time. The keys in the cache will be image
+ * names and the values will be true if the image has been faded in already.
+ * @todo Will the image cache get too big? Should we add new images in a setter
+ * method that will remov older records from the cache when adding new ones?
+ */
+FadeInBackgroundImage.imageCache = {};
 
 FadeInBackgroundImage.propTypes = {
   backgroundImage: React.PropTypes.string,

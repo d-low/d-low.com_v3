@@ -36,3 +36,8 @@
 .imageVisible::after {
   opacity: 0;
 }
+
+.imageVisibleImmediately {
+  composes: imageVisible;
+  transition-duration: 0s;
+}

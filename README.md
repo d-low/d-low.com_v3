@@ -62,7 +62,8 @@ To Do
 - [ ] Fade in background image issues:
   - [x] Image above the fold on page load doesn't fade in, it just appears.
   - [x] Are images faded in too soon if set to fade in when scrolled into view?
-  - [ ] Don't fade in image a second time when returning to same page?
+  - [x] Don't fade in image a second time when returning to same page?
+  - [ ] Clear image cache after X images inserted?
 
 - [ ] React Router
   - [x] Use Link to avoid page reloads
@@ -83,6 +84,10 @@ To Do
 
 - [ ] Render each of the above pages
 - [x] CSS for the modules on each of the above pages
+
+- [ ] Bugs
+  - [ ] Layout of post images in post image container when less than 4 images present!
+  - [ ] Disable CORS in fetch() request? Or use wild card for origin?
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
