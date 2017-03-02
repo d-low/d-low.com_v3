@@ -34,6 +34,10 @@ const getPostImages = function getPostImages(path) {
   const node = getNode(path);
   const images = [];
 
+  if (!Array.isArray(node.imgs)) {
+    return images;
+  }
+
   node.imgs.forEach((img) => {
     images.push(`http://www.d-low.com/data${path}/${img}`);
   });
@@ -50,6 +54,10 @@ const getPostImages = function getPostImages(path) {
 const getPostThumbnails = function getPostThumbnails(path, imageToExclude = '') {
   const node = getNode(path);
   const thumbnails = [];
+
+  if (!Array.isArray(node.imgs)) {
+    return thumbnails;
+  }
 
   node.imgs.forEach((img) => {
     if (!imageToExclude.match(img)) {
