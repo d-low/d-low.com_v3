@@ -89,6 +89,9 @@ export default (
     <Router history={browserHistory}>
       <Route path="/" component={HomeView} onEnter={onHomeEnter} />
       <Route path="/:place/:year/:season/:post" component={PostView} onEnter={onPostEnter} />
+      <Route path="/04-Central_America/:year" component={PostListingView} onEnter={onPostListingEnter} />
+      <Route path="/02-South_America/:month" component={PostListingView} onEnter={onPostListingEnter} />
+      <Route path="/03-CDT/:month" component={PostListingView} onEnter={onPostListingEnter} />
       <Route path="/:place/:year/:season" component={PostListingView} onEnter={onPostListingEnter} />
       <Route path="/:place/:year" component={ListingView} onEnter={onListingEnter} />
       <Route path="/:place" component={ListingView} onEnter={onListingEnter} />
