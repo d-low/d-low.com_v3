@@ -72,8 +72,8 @@ To Do
   - [ ] Can we reduce the number of re-rendered components when navigating from home page?
   
 - [x] Rename Redux actions and reducers
-- [ ] Add down arrow at bottom of hero image on home page
-  - [ ] Use HTML and CSS to render this element as seen in this [example](https://www.google.com/search?q=aye) from Google.
+- [x] Add down arrow at bottom of hero image on home page
+  - [x] Use HTML and CSS to render this element as seen in this [example](https://www.google.com/search?q=aye) from Google.
 
 - [x] Set up client side routing
   - [x] 05-Colorado/ (listing page)

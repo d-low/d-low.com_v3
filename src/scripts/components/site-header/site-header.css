@@ -1,8 +1,9 @@
+@value header_gray from '../../../styles/base/colors.css';
 @value link_color from '../../../styles/base/colors.css';
 @value screen_small_min_width, screen_medium_min_width from '../../../styles/base/breakpoints.css';
 
 .siteHeader {
-  composes: header-gray from '../../../styles/base/colors.css';
+  color: header_gray;
   height: 100vh;
   position: relative;
   text-transform: lowercase;
@@ -134,4 +135,54 @@
     font-size: 1.25rem;
     line-height: 1.35rem;
   }
+}
+
+.downArrow {
+  bottom: 1rem;
+  cursor: pointer;
+  display: block;
+  height: 3rem;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 10rem;
+  z-index: 3;
+}
+
+@media screen and screen_small_min_width {
+  .downArrow {
+    width: 12rem;
+  }
+}
+
+@media only screen and screen_medium_min_width {
+  .downArrow {
+    width: 16rem;
+  }
+}
+
+.downArrow::before,
+.downArrow::after {
+  background-color: header_gray;
+  border-radius: 0.25rem;
+  bottom: 0;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+  content: ' ';
+  height: 0.5rem;
+  position: absolute;
+  width: 50%;
+}
+
+/* Left half of down arrow */
+.downArrow::before {
+  right: calc(50% - 0.125rem);
+  transform: rotate(20deg);
+  transform-origin: 100% 50%;
+}
+
+/* Right half of down arrow */
+.downArrow::after {
+  left: calc(50% - 0.125rem);
+  transform: rotate(-20deg);
+  transform-origin: 0% 50%;
 }

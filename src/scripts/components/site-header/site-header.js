@@ -2,6 +2,7 @@ import React from 'react';
 import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
 import scrollEventsHandler from '../scroll-events-handler/scroll-events-handler.js';
 import styles from './site-header.css';
+import Utils from '../../utils.js';
 
 /**
  * @description The SiteHeader class renders and provides behavior for the site
@@ -22,6 +23,7 @@ class SiteHeader extends React.Component {
     this.checkIfScrolled = this.checkIfScrolled.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.handleScrollStop = this.handleScrollStop.bind(this);
+    this.scrollToNextSection = this.scrollToNextSection.bind(this);
   }
 
   componentDidMount() {
@@ -78,6 +80,16 @@ class SiteHeader extends React.Component {
   }
 
   /**
+   * @description Scroll to the next section when the user clicks the down
+   * arrow.
+   */
+  scrollToNextSection(e) {
+    e.preventDefault();
+    const y = this.element.getBoundingClientRect().height;
+    Utils.scrollToY(y);
+  }
+
+  /**
    * @description Remove scroll events immediately if we're not on the home
    * page.
    */
@@ -97,7 +109,9 @@ class SiteHeader extends React.Component {
     }
 
     return (
-      <header className={siteHeaderClassName}>
+      <header
+        className={siteHeaderClassName}
+        ref={(el) => { this.element = el; }}>
         <FadeInBackgroundImage className={imageClassName} fadeInNow />
         <div className={logoClassName} ref={(el) => { this.logo = el; }}>
           <h1 className={styles.logoBigText}>
@@ -107,6 +121,8 @@ class SiteHeader extends React.Component {
             Words and photos by Mike DiLorenzo
           </small>
         </div>
+        {this.props.isHomePage &&
+          <button className={styles.downArrow} onClick={this.scrollToNextSection} />}
       </header>
     );
   }
