@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 // Loaders for CSS modules
 const cssLoaders = [
-  'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+  'css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]',
   'postcss-loader'
 ];
 
