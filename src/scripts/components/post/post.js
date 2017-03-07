@@ -24,7 +24,13 @@ class Post extends React.Component {
     const listItems = [];
 
     this.props.link.images.forEach((image, index) => {
+      if (this.props.link.images.length < 4 && index > 0) {
+         // Display only one image if we don't have four to show.
+        return;
+      }
       if (index <= 3) {
+        // Show only the first four images here. Others will be viewed in the
+        // image overlay.
         listItems.push(
           <li className={styles.imageContainer} key={image}>
             <FadeInBackgroundImageWhenVisible

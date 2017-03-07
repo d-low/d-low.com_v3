@@ -87,7 +87,7 @@ To Do
 - [x] CSS for the modules on each of the above pages
 
 - [ ] Bugs
-  - [ ] Layout of post images in post image container when less than 4 images present!
+  - [x] Layout of post images in post image container when less than 4 images present!
   - [ ] Disable CORS in fetch() request? Or use wild card for origin?
 
 - [ ] Performant parallax on home page hero image

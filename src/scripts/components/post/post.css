@@ -32,6 +32,11 @@
   text-align: left;
 } 
 
+.imagesContainer:empty {
+  height: 0;
+  margin-bottom: 0;
+}
+
 .imagesContainerReverse { 
   composes: imagesContainer;
   text-align: right;
@@ -71,6 +76,12 @@
 
 .imagesContainerReverse .imageContainer:first-child {
   float: left;
+}
+
+.imageContainer:first-child:last-child,
+.imagesContainerReverse .imageContainer:first-child:last-child {
+  float: none;
+  width: 100%;
 }
 
 .image {
