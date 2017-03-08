@@ -1,10 +1,6 @@
 @value off_white, border_gray from '../../../styles/base/colors.css';
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
 
-.container {
-  composes: row from '../../../styles/base/layout.css';
-}
-
 .leftColumn {
   composes: column4 from '../../../styles/base/layout.css';
   display: none;

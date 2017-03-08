@@ -9,14 +9,6 @@ const cssLoaders = [
   'postcss-loader'
 ];
 
-// Loaders for global SASS styles
-// REVIEW: These may be removed in favor of CSS modules
-const sassLoaders = [
-  'css-loader?sourceMap',
-  'postcss-loader',
-  'sass-loader?includePaths[]=' + path.resolve(__dirname, './src')
-];
-
 const config = {
   entry: {
     app: './src/scripts/main.js'
@@ -36,10 +28,6 @@ const config = {
       test: /\.js$/,
       include: __dirname + '/src/scripts',
       loaders: ['babel']
-    }, {
-      test: /\.scss$/,
-      include: __dirname + '/src/styles',
-      loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
     }, { 
       test: /\.css$/, 
       // include: __dirname + '/src',
@@ -85,7 +73,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['', '.css', '.js', '.scss'],
+    extensions: ['', '.css', '.js'],
     root: [path.join(__dirname, './src')]
   }
 };

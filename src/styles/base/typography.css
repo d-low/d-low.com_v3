@@ -1,50 +1,53 @@
-@import "variables";
-
 /* 
  * Set fontsize on HTML for proper REM font sizing.
  * See: http://snook.ca/archives/html_and_css/font-size-with-rem
  */
-
-html {
-  font-size: $font_size_base;
+:global(html) {
+  font-size: 16px;
 }
 
-body { 
-  color: $body_color;
-  font-family: $font_family_base;
+:global(body) { 
+  font-family: 'Trebuchet MS', Arial, sans-serif;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
 /* REVIEW: Should all headings use the passion one font? */
-h1, h2, h3, h4, h5, h5 { 
-  font-family: $font_family_heading;
+:global(h1),
+:global(h2),
+:global(h3),
+:global(h4),
+:global(h5), 
+:global(h6) {
+  font-family: 'Passion One', Helvetica, sans-serif;
   text-align: center;
 }
 
-h1 {
+:global(h1) {
   font-size: 4rem;
   line-height: 4.25rem;
 }
 
-h2 { 
+:global(h2) { 
   font-size: 2.75rem;
   line-height: 3rem;
 }
 
-h3, h4, h5, h6 { 
+:global(h3), 
+:global(h4), 
+:global(h5), 
+:global(h6) { 
   font-size: 1.5rem;
   line-height: 1.75rem;
 }
 
-a {
-  color: $link_color;
+:global(a) {
   font-weight: bold;
   text-decoration: none;
+}
 
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration: underline;
-  }
+:global(a:hover),
+:global(a:focus),
+:global(a:active) {
+  text-decoration: underline;
 }

@@ -1,0 +1,11 @@
+@value body_color from './colors.css';
+@value link_color from './colors.css';
+
+:global(body) {
+  background-color: white;
+  color: body_color;
+}
+
+:global(a) { 
+  color: link_color;
+}

@@ -25,7 +25,6 @@
 }
 
 .imagesContainer {
-  composes: clearfix from '../../../styles/base/utils.css';
   height: 50vw;
   margin-bottom: 1.5rem;
   overflow: hidden;

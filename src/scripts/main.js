@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom';
+// TODO: If we can import a CSS file from this module then we can remove the
+// eslint rule that turns off requiring extensions on imports
 import 'typeface-passion-one';
 
-// Import SASS files before the router so that these global styles appear first
-// in the bundle when extracted by the extract-text-plugin.
-// TODO: Consider bunlding these into a single SASS manifest.
-import '../styles/base/reset';
-import '../styles/base/typography';
-import '../styles/base/element-defaults';
+// Import global styles before the router so that they appear first in the
+// bundle when extracted by the extract-text-plugin.
+import '../styles/base/reset.css';
+import '../styles/base/typography.css';
+import '../styles/base/element-defaults.css';
 
 import Router from './router';
 

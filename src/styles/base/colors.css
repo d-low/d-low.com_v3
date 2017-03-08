@@ -1,7 +1,19 @@
 /* 
  * Colors 
+ *
+ * TODO: Switch to camel case for easier use in JavaScript. Note that in doing
+ * so we can't have a value and a class name that are the same. For example, 
+ * the following won't work:
+ * 
+ * @value offWhite: #f9f9f9;
+ * .offWhite { 
+ *   color: offWhite;
+ * }
+ * 
+ * So when switching to camel cased names we'll have to be aware of this!
  */
 
+@value body_color: #444444;
 @value off_white: #f9f9f9;
 @value light_gray: #cccccc;
 @value header_gray: #202020;
@@ -9,7 +21,6 @@
 @value link_color: #303030;
 @value sky_blue: #6090d0;
 
-/* TODO: Switch to camel case for easier use in JavaScript */
 .off-white {
   color: off_white;
 }

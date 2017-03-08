@@ -51,7 +51,7 @@ To Do
 
 - [ ] CSS
   - [x] Ensure global CSS (reset, typography, defaults) appears first in bundle
-  - [ ] Do we need SASS? If not how to we apply reset?
+  - [X] Do we need SASS? If not how to we apply reset?
   - [x] Self host web fonts using [typefaces node module](https://github.com/KyleAMathews/typefaces) 
   - [ ] Use consistent heading styles 
 

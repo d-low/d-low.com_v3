@@ -3,7 +3,7 @@ import styles from './about-me.css';
 
 const AboutMe = function AboutMe() {
   return (
-    <article className={styles.container}>
+    <article className="clearfix">
       <div className={styles.leftColumn}>
         <figure className={styles.selfPortraitContainer}>
           <span className={styles.selfPortraitImage} />

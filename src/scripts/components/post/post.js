@@ -42,8 +42,10 @@ class Post extends React.Component {
       }
     });
 
-    const imagesContainerClassName = this.props.isReverseLayout === true ?
+    let imagesContainerClassName = this.props.isReverseLayout === true ?
       styles.imagesContainerReverse : styles.imagesContainer;
+
+    imagesContainerClassName = `${imagesContainerClassName} clearfix`;
 
     return (
       <div className={styles.container}>
