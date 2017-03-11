@@ -30,8 +30,6 @@ To Do
 ---
 
 - [ ] Content
-  - [x] Pass links and posts to containers and then to components via props using Redux
-  - [x] Use content and data from d-low.com when running locally for portability?
   - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
         run the app.
   - [ ] Pass parameter to webpack build to determine when to load content dynamically
@@ -50,9 +48,6 @@ To Do
     - [ ] Consider using a fixed bottom menu with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd)
 
 - [ ] CSS
-  - [x] Ensure global CSS (reset, typography, defaults) appears first in bundle
-  - [X] Do we need SASS? If not how to we apply reset?
-  - [x] Self host web fonts using [typefaces node module](https://github.com/KyleAMathews/typefaces) 
   - [ ] Use consistent heading styles 
 
 - [ ] Use consistent coding style for presentation components definition
@@ -60,35 +55,24 @@ To Do
 - [ ] Add tests
 
 - [ ] Fade in background image issues:
-  - [x] Image above the fold on page load doesn't fade in, it just appears.
-  - [x] Are images faded in too soon if set to fade in when scrolled into view?
-  - [x] Don't fade in image a second time when returning to same page?
   - [ ] Clear image cache after X images inserted?
 
 - [ ] React Router
-  - [x] Use Link to avoid page reloads
-  - [x] Scroll to top of page before navigating to new page.
   - [ ] Use mobile page transitions (à la Clip Artist App)?
   - [ ] Can we reduce the number of re-rendered components when navigating from home page?
   
-- [x] Rename Redux actions and reducers
-- [x] Add down arrow at bottom of hero image on home page
-  - [x] Use HTML and CSS to render this element as seen in this [example](https://www.google.com/search?q=aye) from Google.
-
-- [x] Set up client side routing
-  - [x] 05-Colorado/ (listing page)
-  - [x] 05-Colorado/11-Colorado-2016/ (listing page)
-  - [x] 05-Colorado/11-Colorado-2016/04-Fall (articles page)
+- [ ] Pages/Routing
   - [ ] 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016 (article page)
   - [ ] Handle all of the above prefixed by "#content/" to remap Backbone routes. Maybe
         handle in Apache config?
 
-- [ ] Render each of the above pages
-- [x] CSS for the modules on each of the above pages
-
-- [ ] Bugs
-  - [x] Layout of post images in post image container when less than 4 images present!
+- [ ] Bugs/Issues/Enhandements
   - [ ] Disable CORS in fetch() request? Or use wild card for origin?
+  - [ ] Explore easing algorithms for home page down arrow scroll down animation timing
+      - See: https://github.com/danro/easing-js/blob/master/easing.js
+  - [ ] Generate index.html
+      - [ ] See: https://www.npmjs.com/package/html-webpack-plugin
+      - [ ] May need JS to fetch d-low.com/data/content.js, with loading indicator, etc
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
