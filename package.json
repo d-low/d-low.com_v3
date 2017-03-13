@@ -5,7 +5,7 @@
   "main": "src/scripts/main.js",
   "scripts": {
     "build": "webpack --env production",
-    "start": "webpack-dev-server -d --content-base www/ --inline --hot --host 0.0.0.0 --history-api-fallback",
+    "start": "webpack-dev-server --debug --output-pathinfo --content-base www/ --inline --hot --host 0.0.0.0 --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -56,5 +56,9 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

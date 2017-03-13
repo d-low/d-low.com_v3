@@ -1,37 +1,12 @@
-const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
 // TODO:
-// 1) JS source maps are off by a few lines
+// 1) Soure map line numbering is off
 // 2) Enable:
-//    - autoprefixer via postcss
-//    - Promise and fetch polyfills
 //    - Image optimization (maybe?)
 // 3) Production build
-// 4) Does ESLINT work?
-
-// Loaders for CSS modules
-const cssLoaders = [
-  {
-    loader: 'css-loader',
-    options: {
-      sourceMap: true,
-      modules: true,
-      importLoaders: 1,
-      localIdentName: '[name]__[local]'
-    }
-  },
-  // {
-  //   loader: 'postcss-loader',
-  //   options: {
-  //     autoprefixer: {
-  //       browsers: ['last 2 versions']
-  //     }
-  //   }
-  // }
-];
 
 const config = {
   entry: {
@@ -41,6 +16,7 @@ const config = {
     filename: '[name].js',
     path: path.join(__dirname, 'www'),
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -62,7 +38,20 @@ const config = {
         test: /\.css$/, 
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          loader: cssLoaders,
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]'
+              }
+            },
+            {
+              loader: 'postcss-loader',
+            },
+          ],
         }),
       }, 
       {
@@ -92,10 +81,10 @@ const config = {
       filename: '[name].css',
       ignoreOrder: true,
     }),
-    // new webpack.ProvidePlugin({
-    //   Promise: 'imports-loader?this=>global!exports?global.Promise!es6-promise',
-    //   fetch: 'imports-loader?this=>global!exports?global.fetch!whatwg-fetch'
-    // })
+    new webpack.ProvidePlugin({
+      Promise: 'es6-promise',
+      fetch: 'whatwg-fetch',
+    }),
   ],
   resolve: {
     extensions: ['.css', '.js'],

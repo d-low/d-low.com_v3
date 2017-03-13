@@ -43,15 +43,11 @@ To Do
 
 - [ ] Site header styles
   - [ ] Mobile navigation
-    - [ ] Change color to gray when scrolled down to appear over tiles
-    - [ ] Larger fontsize on small to medium screens.
-    - [ ] Consider using a fixed bottom menu with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd)
+    - [ ] Fixed bottom menu with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd)
 
 - [ ] CSS
   - [ ] Use consistent heading styles 
 
-- [ ] Use consistent coding style for presentation components definition
-- [ ] Where do we place common utilities in new site?
 - [ ] Add tests
 
 - [ ] Fade in background image issues:
@@ -71,8 +67,12 @@ To Do
   - [ ] Explore easing algorithms for home page down arrow scroll down animation timing
       - See: https://github.com/danro/easing-js/blob/master/easing.js
   - [ ] Generate index.html
-      - [ ] See: https://www.npmjs.com/package/html-webpack-plugin
       - [ ] May need JS to fetch d-low.com/data/content.js, with loading indicator, etc
+      - See: 
+        - https://www.npmjs.com/package/html-webpack-plugin
+        - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
+  - [ ] Use consistent coding style for presentation components definition
+  - [ ] Unable to fetch() index.html files in Safari
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
