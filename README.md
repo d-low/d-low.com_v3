@@ -72,7 +72,9 @@ To Do
         - https://www.npmjs.com/package/html-webpack-plugin
         - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
   - [ ] Use consistent coding style for presentation components definition
-  - [ ] Unable to fetch() index.html files in Safari
+  - [x] Unable to fetch() index.html files in Safari
+    - [x] Is the whatwg-fetch polyfill being brought in?
+    - [x] We need to call `window.fetch()` not `fetch()`
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing

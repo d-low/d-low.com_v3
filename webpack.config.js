@@ -16,7 +16,7 @@ const config = {
     filename: '[name].js',
     path: path.join(__dirname, 'www'),
   },
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -83,7 +83,6 @@ const config = {
     }),
     new webpack.ProvidePlugin({
       Promise: 'es6-promise',
-      fetch: 'whatwg-fetch',
     }),
   ],
   resolve: {
