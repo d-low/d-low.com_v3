@@ -153,10 +153,15 @@ export const getPost = function getPost(link, path) {
     name: link2.name,
     href: link2.href,
     images: getPostImages(link2.href),
-    text: () => new Promise((resolve) => {
-      fetch(`http://www.d-low.com/data${link2.href}/index.html`)
-        .then(response => response.text())
-        .then(text => resolve(text));
+    text: () => new Promise((resolve, reject) => {
+      try {
+        fetch(`http://www.d-low.com/data${link2.href}/index.html`)
+          .then(response => response.text())
+          .then(text => resolve(text))
+          .catch(exp => reject(exp));
+      } catch (exp) {
+        reject(exp);
+      }
     }),
     thumbnails: getPostThumbnails(link2.href, link2.image),
   };

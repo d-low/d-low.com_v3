@@ -1,4 +1,4 @@
-/* eslint react/no-danger: 0 */
+/* eslint react/no-danger: 0, no-console: 0 */
 
 import React from 'react';
 import { Link } from 'react-router';
@@ -15,9 +15,15 @@ class Post extends React.Component {
   }
 
   componentDidMount() {
-    this.props.link.text().then(text =>
-      this.setState({ text }),
-    );
+    this.props.link
+      .text()
+      .then(text =>
+        this.setState({ text }),
+      )
+      .catch((exp) => {
+        console.error('Unable to get link text');
+        console.dir(exp);
+      });
   }
 
   render() {
