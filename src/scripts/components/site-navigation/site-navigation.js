@@ -11,16 +11,26 @@ class SiteNavigation extends React.Component {
     };
 
     this.toggleSiteNavigation = this.toggleSiteNavigation.bind(this);
+    this.toggleSiteNavigationWithDelay = this.toggleSiteNavigationWithDelay.bind(this);
   }
 
   toggleSiteNavigation() {
     this.setState({ expanded: !this.state.expanded });
   }
 
+  toggleSiteNavigationWithDelay() {
+    window.setTimeout(this.toggleSiteNavigation, 250);
+  }
+
   render() {
     const listItems = this.props.links.map(link =>
       <li className={styles.link} key={link.name}>
-        <Link className={styles.linkText} to={link.href}>{ link.name }</Link>
+        <Link
+          className={styles.linkText}
+          onClick={this.toggleSiteNavigationWithDelay}
+          to={link.href}>
+          { link.name }
+        </Link>
       </li>,
     );
 
