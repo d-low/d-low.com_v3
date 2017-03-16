@@ -48,17 +48,32 @@ class Post extends React.Component {
       }
     });
 
-    let imagesContainerClassName = this.props.isReverseLayout === true ?
-      styles.imagesContainerReverse : styles.imagesContainer;
+    let imagesContainerClassName = styles.imagesContainer;
+    let showMoreImagesClassName = styles.showMoreImages;
+
+    if (this.props.isReverseLayout) {
+      imagesContainerClassName = styles.imagesContainerReverse;
+      showMoreImagesClassName = styles.showMoreImagesReverse;
+    }
 
     imagesContainerClassName = `${imagesContainerClassName} clearfix`;
 
     return (
       <div className={styles.container}>
         <h3 className={styles.title}>{this.props.link.name}</h3>
-        <ul className={imagesContainerClassName}>
-          {listItems}
-        </ul>
+        <div className={imagesContainerClassName}>
+          <ul>
+            {listItems}
+          </ul>
+          { this.props.link.images.length > 4 &&
+            <button className={showMoreImagesClassName}>
+              <span className={styles.showMoreImagesText}>View All</span>
+              <small className={styles.showMoreImagesCount}>
+                +{this.props.link.images.length - 3} more
+              </small>
+            </button>
+          }
+        </div>
         <div
           className={styles.text}
           dangerouslySetInnerHTML={{ __html: this.state.text }} />

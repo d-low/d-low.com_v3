@@ -3,7 +3,14 @@
 @value sky_blue from '../../../styles/base/colors.css';
 
 .container {
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1rem 0.5rem 2rem 0.5rem;
+}
+
+@media screen and (min-width: 400px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }  
 }
 
 .containerHomePageNav {

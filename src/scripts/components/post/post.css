@@ -1,9 +1,23 @@
+@value screen_small_min_width from '../../../styles/base/breakpoints.css';
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
 @value screen_large_min_width from '../../../styles/base/breakpoints.css';
 
 .container {
   composes: contentItem from '../../../styles/base/common.css';
   composes: contentItemGutter from '../../../styles/base/common.css';
+  margin-bottom: 2.5rem;
+}
+
+@media screen and screen_medium_min_width {
+  .container {
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .container {
+    margin-bottom: 4.5rem;
+  }
 }
 
 .title {
@@ -28,6 +42,7 @@
   height: 50vw;
   margin-bottom: 1.5rem;
   overflow: hidden;
+  position: relative;
   text-align: left;
 } 
 
@@ -89,6 +104,76 @@
   background-size: cover;
   display: block;
   height: 100%;
+}
+
+/*
+ * TBD: Can we construct the gausian blur effect with the large image here in 
+ * the show more images button using some sort of combination of the following
+ * techniques?
+ * 
+ * http://stackoverflow.com/questions/22816065/using-data-attributes-in-css-before-after-for-a-background-image
+ * https://css-tricks.com/frosting-glass-css-filters/
+ */
+.showMoreImages { 
+  align-items: center;
+  background: radial-gradient(at top left, rgba(36, 41, 46, 0.15), rgba(36, 41, 46, 0.85));
+  border-bottom: 1px solid hsl(210, 12%, 8%);
+  border-left: 1px solid hsl(210, 12%, 24%);
+  border-right: 1px solid hsl(210, 12%, 8%);
+  border-top: 1px solid hsl(210, 12%, 24%);
+  bottom: 0.5%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 35%;
+  position: absolute;
+  right: 0.5%;
+  width: 35%;
+  z-index: 1;
+}
+
+@media screen and screen_small_min_width {
+  .showMoreImages {
+    height: 30%;
+    width: 30%;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .showMoreImages {
+    height: 25%;
+    width: 25%;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .showMoreImages {
+    height: 20%;
+    width: 20%;
+  }
+}
+
+.showMoreImagesText,
+.showMoreImagesCount {
+  display: block;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.showMoreImagesCount {
+  font-size: 0.775rem;
+}
+
+.showMoreImagesReverse {
+  composes: showMoreImages;
+  background: radial-gradient(at top right, rgba(36, 41, 46, 0.15), rgba(36, 41, 46, 0.85));
+  border-bottom: 1px solid hsl(210, 12%, 24%);
+  border-left: 1px solid hsl(210, 12%, 8%);
+  border-right: 1px solid hsl(210, 12%, 24%);
+  border-top: 1px solid hsl(210, 12%, 8%);
+  left: 0.5%;
+  right: auto;
 }
 
 /* 
