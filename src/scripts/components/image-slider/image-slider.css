@@ -1,0 +1,20 @@
+.container {
+  display: none;
+}
+
+.containerVisible { 
+  composes: container;
+  display: block;
+}
+
+.items {
+}
+
+.item {
+}
+
+.image {
+}
+
+.caption {
+}

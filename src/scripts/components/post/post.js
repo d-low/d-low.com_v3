@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import FadeInBackgroundImageWhenVisible from '../fade-in-background-image-when-visible.js';
+import ImageSlider from '../image-slider/image-slider.js';
 import styles from './post.css';
 
 class Post extends React.Component {
@@ -26,7 +27,23 @@ class Post extends React.Component {
       });
   }
 
+  populateImageSliderImages() {
+    return this.props.link.images.map((href) => {
+      const parts = href.split('/');
+      const caption = parts[parts.length - 1]
+        .replace(/^\d\d\d\d-\d\d-\d\d-\d\d-/, '')
+        .replace(/\.\w+$/, '')
+        .replace(/([a-z])([A-Z])/g, '$1 $2');
+
+      return {
+        caption,
+        href,
+      };
+    });
+  }
+
   render() {
+    const imageSliderImages = this.populateImageSliderImages();
     const listItems = [];
 
     this.props.link.images.forEach((image, index) => {
@@ -60,26 +77,29 @@ class Post extends React.Component {
 
     return (
       <div className={styles.container}>
-        <h3 className={styles.title}>{this.props.link.name}</h3>
-        <div className={imagesContainerClassName}>
-          <ul>
-            {listItems}
-          </ul>
-          { this.props.link.images.length > 4 &&
-            <button className={showMoreImagesClassName}>
-              <span className={styles.showMoreImagesText}>View All</span>
-              <small className={styles.showMoreImagesCount}>
-                +{this.props.link.images.length - 3} more
-              </small>
-            </button>
-          }
+        <div>
+          <h3 className={styles.title}>{this.props.link.name}</h3>
+          <div className={imagesContainerClassName}>
+            <ul>
+              {listItems}
+            </ul>
+            { this.props.link.images.length > 4 &&
+              <button className={showMoreImagesClassName}>
+                <span className={styles.showMoreImagesText}>View All</span>
+                <small className={styles.showMoreImagesCount}>
+                  +{this.props.link.images.length - 3} more
+                </small>
+              </button>
+            }
+          </div>
+          <div
+            className={styles.text}
+            dangerouslySetInnerHTML={{ __html: this.state.text }} />
+          <Link className={styles.readMoreLink} to={this.props.link.href}>
+            Read More
+          </Link>
         </div>
-        <div
-          className={styles.text}
-          dangerouslySetInnerHTML={{ __html: this.state.text }} />
-        <Link className={styles.readMoreLink} to={this.props.link.href}>
-          Read More
-        </Link>
+        <ImageSlider images={imageSliderImages} />
       </div>
     );
   }
