@@ -1,19 +1,64 @@
+.fullWidthAndHeight {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100vw;
+}
+
 .container {
   display: none;
 }
 
 .containerVisible { 
   composes: container;
+  composes: fullWidthAndHeight;
   display: block;
+  position: fixed;
+  z-index: 1001;
+}
+
+.containerVisible:after {
+  background-color: black;
+  bottom: 0;
+  content: "";
+  height: 100vh;
+  left: 0;
+  opacity: 0.75;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
 }
 
 .items {
+  composes: fullWidthAndHeight;
+  list-style: none;
+  overflow: scroll;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 1002;
 }
 
 .item {
+  align-items: center;
+  display: inline-flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 
 .image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  max-height: 1200px;
+  max-width: 1200px;
+  height: 100%;
+  width: 100%;
 }
 
 .caption {
