@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 // eslint rule that turns off requiring extensions on imports
 import 'typeface-passion-one';
 
-// Including the fetch polyfill in webpack.config.js using webpack.ProvidePlugin()
-// isn't working, so it's brought in here directly.
+// Include polyfills here that don't work properly with webpack.ProvidePlugin()
 import 'whatwg-fetch';
+import 'element-closest';
 
 // Import global styles before the router so that they appear first in the
 // bundle when extracted by the extract-text-plugin.
