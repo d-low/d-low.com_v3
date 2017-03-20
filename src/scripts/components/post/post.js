@@ -11,8 +11,12 @@ class Post extends React.Component {
     super();
 
     this.state = {
+      currentImage: 0,
+      imageSliderVisible: false,
       text: '',
     };
+
+    this.viewImage = this.viewImage.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +46,17 @@ class Post extends React.Component {
     });
   }
 
+  viewImage(e) {
+    e.preventDefault();
+    const imageLink = e.target.closest('.js-image-link');
+    const imageIndex = Number(imageLink.dataset.imageIndex);
+
+    this.setState({
+      currentImage: imageIndex,
+      imageSliderVisible: true,
+    });
+  }
+
   render() {
     const imageSliderImages = this.populateImageSliderImages();
     const listItems = [];
@@ -56,10 +71,18 @@ class Post extends React.Component {
         // image overlay.
         listItems.push(
           <li className={styles.imageContainer} key={image}>
-            <FadeInBackgroundImageWhenVisible
-              backgroundImage={image}
-              className={styles.image}
-              fadeInNow={false} />
+            <a
+              className="js-image-link"
+              data-image-index={index}
+              href={image}
+              onClick={this.viewImage}
+              rel="noopener noreferrer"
+              target="_blank">
+              <FadeInBackgroundImageWhenVisible
+                backgroundImage={image}
+                className={styles.image}
+                fadeInNow={false} />
+            </a>
           </li>,
         );
       }
@@ -84,7 +107,10 @@ class Post extends React.Component {
               {listItems}
             </ul>
             { this.props.link.images.length > 4 &&
-              <button className={showMoreImagesClassName}>
+              <button
+                className={showMoreImagesClassName}
+                data-image-index="0"
+                onClick={this.viewImage}>
                 <span className={styles.showMoreImagesText}>View All</span>
                 <small className={styles.showMoreImagesCount}>
                   +{this.props.link.images.length - 3} more
@@ -99,7 +125,10 @@ class Post extends React.Component {
             Read More
           </Link>
         </div>
-        <ImageSlider images={imageSliderImages} />
+        <ImageSlider
+          currentImage={this.state.currentImage}
+          images={imageSliderImages}
+          visible={this.state.imageSliderVisible} />
       </div>
     );
   }
