@@ -9,6 +9,9 @@
  * event handlers in this component will be removed in that case.
  * @see https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.wuc1vyrk2
  * @see http://ejohn.org/blog/learning-from-twitter/
+ * @todo
+ * 1) Use requestAnimationFrame() instead of setInterval(..., 16)?
+ * 2) Cancel timeout and interval in componentWillUnmount()
  */
 function scrollEventsHandler(WrappedComponent) {
   return class ScrollEventsHandler extends WrappedComponent {
