@@ -106,21 +106,9 @@
   height: 100%;
 }
 
-/*
- * TBD: Can we construct the gausian blur effect with the large image here in 
- * the show more images button using some sort of combination of the following
- * techniques?
- * 
- * http://stackoverflow.com/questions/22816065/using-data-attributes-in-css-before-after-for-a-background-image
- * https://css-tricks.com/frosting-glass-css-filters/
- */
 .showMoreImages { 
+  composes: imageLabelBackground from '../../../styles/base/common.css';
   align-items: center;
-  background: radial-gradient(at top left, rgba(36, 41, 46, 0.15), rgba(36, 41, 46, 0.85));
-  border-bottom: 1px solid hsl(210, 12%, 8%);
-  border-left: 1px solid hsl(210, 12%, 24%);
-  border-right: 1px solid hsl(210, 12%, 8%);
-  border-top: 1px solid hsl(210, 12%, 24%);
   bottom: 0.5%;
   display: flex;
   flex-wrap: wrap;
@@ -155,9 +143,6 @@
 .showMoreImagesText,
 .showMoreImagesCount {
   display: block;
-  color: white;
-  font-weight: bold;
-  text-align: center;
   width: 100%;
 }
 
