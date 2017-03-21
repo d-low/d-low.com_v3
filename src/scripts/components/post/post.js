@@ -1,4 +1,4 @@
-/* eslint react/no-danger: 0, no-console: 0 */
+/* eslint react/no-danger: 0, no-console: 0, no-script-url: 0 */
 
 import React from 'react';
 import { Link } from 'react-router';
@@ -107,15 +107,16 @@ class Post extends React.Component {
               {listItems}
             </ul>
             { this.props.link.images.length > 4 &&
-              <button
-                className={showMoreImagesClassName}
+              <a
+                className={`${showMoreImagesClassName} js-image-link`}
                 data-image-index="0"
+                href="javascript:void(0);"
                 onClick={this.viewImage}>
                 <span className={styles.showMoreImagesText}>View All</span>
                 <small className={styles.showMoreImagesCount}>
                   +{this.props.link.images.length - 3} more
                 </small>
-              </button>
+              </a>
             }
           </div>
           <div

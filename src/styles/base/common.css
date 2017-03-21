@@ -32,6 +32,19 @@
   text-align: center;
 }
 
+.noAnchorDecoration {
+  text-decoration: none;
+}
+
+.noAnchorDecoration:link,
+.noAnchorDecoration:visited,
+.noAnchorDecoration:hover,
+.noAnchorDecoration:active {
+  cursor: pointer;
+  text-decoration: none
+}
+
+
 /*
  * Content Item styles are used for tile navigation and posts 
  */
