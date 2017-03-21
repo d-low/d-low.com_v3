@@ -7,7 +7,7 @@
 
 @value screen_medium_min_width from './breakpoints.css';
 @value screen_large_min_width from './breakpoints.css';
-@value border_gray, off_white from './colors.css';
+@value border_gray, off_white, link_color from './colors.css';
 
 .headerTextShadow {
   text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
@@ -50,13 +50,7 @@
 }
 
 .contentItemTitle {
-  /* 
-   * REVIEW: This color comes from the SASS default styles so we don't have 
-   * access to it here. And we're specifying a color on this element to 
-   * override the default link color when this element is wrapped in an anchor.
-   * So there are some issues to review here...
-   */
-  color: #303030;
+  color: link_color;
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
