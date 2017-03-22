@@ -15,13 +15,14 @@
   composes: container;
   composes: fullWidthAndHeight;
   display: block;
+  overflow: hidden;
   position: fixed;
   z-index: 1001;
 }
 
 /* 
  * NOTE: composes doesn't work with pseudo elements. So the full width and 
- * height styles are duplicated here.
+ * height styles are duplicated here in the smoke layer.
  */
 .containerVisible:after {
   background-color: black;
@@ -38,10 +39,10 @@
 }
 
 .items {
-  composes: fullWidthAndHeight;
+  height: 100%;
   list-style: none;
-  overflow: scroll;
   position: absolute;
+  transition: transform 700ms ease-out;
   white-space: nowrap;
   z-index: 1002;
 }
@@ -49,10 +50,10 @@
 .item {
   align-items: center;
   display: inline-flex;
-  height: 100%;
+  height: 100vh;
   justify-content: center;
   padding: 3rem;
-  width: 100%;
+  width: 100vw;
 }
 
 .image {
