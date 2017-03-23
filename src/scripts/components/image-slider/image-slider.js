@@ -1,5 +1,3 @@
-/* eslint react/no-unused-prop-types: 0, no-console: 0, class-methods-use-this: 0 */
-
 import React from 'react';
 import Hammer from 'react-hammerjs';
 import styles from './image-slider.css';
@@ -8,14 +6,12 @@ import styles from './image-slider.css';
  * @description Image slider React component based on Gilbert Pellegrom's Ideal
  * Image Slider.
  * @see https://github.com/Codeinwp/Ideal-Image-Slider-JS
+ * @todo Convert this back to a pure component since all state is now being
+ * handled by the parent component.
  */
 class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentImage: props.currentImage,
-    };
 
     this.handleSwipe = this.handleSwipe.bind(this);
   }
@@ -36,14 +32,10 @@ class ImageSlider extends React.Component {
    * coded their values, 2 and 4, here.
    */
   handleSwipe(e) {
-    if (e.direction === 2 && this.state.currentImage + 1 < this.props.images.length - 1) {
-      this.setState({
-        currentImage: this.state.currentImage + 1,
-      });
-    } else if (e.direction === 4 && this.state.currentImage - 1 >= 0) {
-      this.setState({
-        currentImage: this.state.currentImage - 1,
-      });
+    if (e.direction === 2 && this.props.currentImage + 1 < this.props.images.length - 1) {
+      this.props.onChangeCurrentImage(this.props.currentImage + 1);
+    } else if (e.direction === 4 && this.props.currentImage - 1 >= 0) {
+      this.props.onChangeCurrentImage(this.props.currentImage - 1);
     }
   }
 
@@ -64,10 +56,13 @@ class ImageSlider extends React.Component {
 
     return (
       <div className={containerClassName}>
+        <button className={styles.closeButton} onClick={this.props.onCloseImageSlider}>
+          <span className={styles.closeButtonText}>+</span>
+        </button>
         <Hammer onSwipe={this.handleSwipe}>
           <ul
             className={styles.items}
-            style={{ transform: `translateX(${this.state.currentImage * -100}vw)` }}>
+            style={{ transform: `translateX(${this.props.currentImage * -100}vw)` }}>
             {listItems}
           </ul>
         </Hammer>
@@ -82,6 +77,8 @@ ImageSlider.propTypes = {
     caption: React.PropTypes.string.isRequired,
     href: React.PropTypes.string.isRequired,
   })).isRequired,
+  onChangeCurrentImage: React.PropTypes.func.isRequired,
+  onCloseImageSlider: React.PropTypes.func.isRequired,
   visible: React.PropTypes.bool,
 };
 

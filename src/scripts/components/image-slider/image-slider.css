@@ -38,6 +38,28 @@
   z-index: 1000;
 }
 
+.closeButton {
+  border: 2px solid white;
+  border-radius: 1.5rem;
+  height: 3rem;
+  position: absolute;
+  right: 3rem;
+  text-align: center;
+  top: 3rem;
+  width: 3rem;
+  z-index: 1050;
+}
+
+.closeButtonText {
+  color: white;
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  vertical-align: middle;
+  transform: rotate(45deg);
+}
+
 .items {
   height: 100%;
   list-style: none;

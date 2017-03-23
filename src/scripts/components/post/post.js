@@ -16,6 +16,8 @@ class Post extends React.Component {
       text: '',
     };
 
+    this.changeCurrentImage = this.changeCurrentImage.bind(this);
+    this.closeImageSlider = this.closeImageSlider.bind(this);
     this.viewImage = this.viewImage.bind(this);
   }
 
@@ -43,6 +45,19 @@ class Post extends React.Component {
         caption,
         href,
       };
+    });
+  }
+
+  changeCurrentImage(currentImage) {
+    this.setState({
+      currentImage,
+    });
+  }
+
+  closeImageSlider(e) {
+    e.preventDefault();
+    this.setState({
+      imageSliderVisible: false,
     });
   }
 
@@ -129,6 +144,8 @@ class Post extends React.Component {
         <ImageSlider
           currentImage={this.state.currentImage}
           images={imageSliderImages}
+          onChangeCurrentImage={this.changeCurrentImage}
+          onCloseImageSlider={this.closeImageSlider}
           visible={this.state.imageSliderVisible} />
       </div>
     );
