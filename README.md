@@ -32,14 +32,11 @@ To Do
 - [ ] Content
   - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
         run the app.
-  - [ ] Pass parameter to webpack build to determine when to load content dynamically
-        or just inspect the hostname..?
 
 - [ ] Administration/Development
   - [ ] Webpack production build
   - [ ] Use [React dev tools](https://github.com/facebook/react-devtools)
   - [ ] Use minimal .htaccess to enable CORS etc.
-  - [ ] [Upgrade to webpack 2](https://webpack.js.org/guides/migrating/)
 
 - [ ] Site header styles
   - [ ] Mobile navigation
@@ -59,8 +56,7 @@ To Do
   
 - [ ] Pages/Routing
   - [ ] 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016 (article page)
-  - [ ] Handle all of the above prefixed by "#content/" to remap Backbone routes. Maybe
-        handle in Apache config?
+  - [ ] Handle old "#content/" routes to remap Backbone routes. Maybe handle in Apache config?
 
 - [ ] Bugs/Issues/Enhandements
   - [ ] Disable CORS in fetch() request? Or use wild card for origin?
@@ -72,14 +68,18 @@ To Do
         - https://www.npmjs.com/package/html-webpack-plugin
         - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
   - [ ] Use consistent coding style for presentation components definition
-  - [x] Unable to fetch() index.html files in Safari
-    - [x] Is the whatwg-fetch polyfill being brought in?
-    - [x] We need to call `window.fetch()` not `fetch()`
 
 - [ ] Performant parallax on home page hero image
   - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
 
 - [ ] Post features:
   - [ ] Image carousel
-    - [ ] Fork and re-write Ideal Image Slider as React component?
+    - [ ] Preload images
+    - [ ] Loading indicator
+    - [ ] Animations for open/close carousel
+    - [ ] Float last child right in image container
+    - [ ] Arrow key navigation
+    - [ ] Show arrow buttons on hover, or only when no touch?
+    - [ ] Style issues on mobile
+
   - [ ] Read more link to toggle long text on mobile?
