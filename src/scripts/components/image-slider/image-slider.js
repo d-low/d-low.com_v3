@@ -14,6 +14,8 @@ class ImageSlider extends React.Component {
     super(props);
 
     this.handleSwipe = this.handleSwipe.bind(this);
+    this.nextNavClick = this.nextNavClick.bind(this);
+    this.prevNavClick = this.prevNavClick.bind(this);
   }
 
   // /**
@@ -39,16 +41,36 @@ class ImageSlider extends React.Component {
     }
   }
 
+  nextNavClick(e) {
+    e.preventDefault();
+
+    if (this.props.currentImage < this.props.images.length - 1) {
+      this.props.onChangeCurrentImage(this.props.currentImage + 1);
+    } else {
+      this.props.onChangeCurrentImage(0);
+    }
+  }
+
+  prevNavClick(e) {
+    e.preventDefault();
+
+    if (this.props.currentImage - 1 >= 0) {
+      this.props.onChangeCurrentImage(this.props.currentImage - 1);
+    } else {
+      this.props.onChangeCurrentImage(this.props.images.length - 1);
+    }
+  }
+
   render() {
     const containerClassName = this.props.visible ? styles.containerVisible : styles.container;
-    const listItems = this.props.images.map(image =>
+    const listItems = this.props.images.map((image, index) =>
       <li className={styles.item} key={image.href}>
         <figure
           className={styles.image}
           data-image={image.href}
           style={{ backgroundImage: `url(${image.href})` }}>
           <figcaption className={styles.caption}>
-            {image.caption}
+            {`${image.caption} - ${index + 1} of ${this.props.images.length}`}
           </figcaption>
         </figure>
       </li>,
@@ -56,6 +78,8 @@ class ImageSlider extends React.Component {
 
     return (
       <div className={containerClassName}>
+        <button className={styles.prevNavButton} onClick={this.prevNavClick} />
+        <button className={styles.nextNavButton} onClick={this.nextNavClick} />
         <button className={styles.closeButton} onClick={this.props.onCloseImageSlider}>
           <span className={styles.closeButtonText}>+</span>
         </button>

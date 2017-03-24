@@ -38,6 +38,64 @@
   z-index: 1000;
 }
 
+.navButton {
+  height: 5rem;
+  margin-top: -2.5rem;
+  position: absolute;
+  top: 50%;
+  width: 0.5rem;
+  z-index: 1050;
+}
+
+.navButton::before,
+.navButton::after {
+  background-color: white;
+  border-radius: 0.25rem;
+  content: ' ';
+  cursor: pointer;
+  height: 50%;
+  position: absolute;
+  width: 100%;
+}
+
+.navButton::before {
+  top: 0.125rem;
+}
+
+.navButton::after {
+  bottom: 0.125rem;
+}
+
+.prevNavButton {
+  composes: navButton;
+  left: 3rem;
+}
+
+.prevNavButton::before {
+  transform: rotate(20deg);
+  transform-origin: 0% 100%;
+}
+
+.prevNavButton::after {
+  transform: rotate(-20deg);
+  transform-origin: 100% 0%;
+}
+
+.nextNavButton {
+  composes: navButton;
+  right: 3rem;
+}
+
+.nextNavButton::before {
+  transform: rotate(-20deg);
+  transform-origin: 0% 100%;
+}
+
+.nextNavButton::after {
+  transform: rotate(20deg);
+  transform-origin: 100% 0%;
+}
+
 .closeButton {
   border: 2px solid white;
   border-radius: 1.5rem;
