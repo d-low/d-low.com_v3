@@ -43,7 +43,6 @@
   margin-bottom: 1.5rem;
   overflow: hidden;
   position: relative;
-  text-align: left;
 } 
 
 .imagesContainer:empty {
@@ -51,51 +50,58 @@
   margin-bottom: 0;
 }
 
-.imagesContainerReverse { 
-  composes: imagesContainer;
-  text-align: right;
-}
-
 @media screen and screen_medium_min_width {
-  .imagesContainer,
-  .imagesContainerReverse {
+  .imagesContainer {
     max-height: 400px;
   }
 }
 
 @media screen and screen_large_min_width {
-  .imagesContainer,
-  .imagesContainerReverse {
+  .imagesContainer {
     max-height: 500px;
   }
 }
 
 .imageContainer {
-  display: inline-block;
+  display: block;
   height: 33%;
   margin-bottom: 0.5%;
   width: 35%;
 }
 
-.imageContainer:last-child {
-  margin-bottom: 0;
-}
-
-.imageContainer:first-child {
-  float: right; 
+.singleImageContainer {
+  display: block;
   height: 100%;
-  margin-bottom: 0;
-  width: 64.5%
+  width: 100%;
 }
 
-.imagesContainerReverse .imageContainer:first-child {
+.imageContainerRegular {
+  composes: imageContainer;
+  clear: left;
   float: left;
 }
 
-.imageContainer:first-child:last-child,
-.imagesContainerReverse .imageContainer:first-child:last-child {
-  float: none;
-  width: 100%;
+.imageContainerReverse {
+  composes: imageContainer;
+  clear: right;
+  float: right;
+}
+
+.heroImageContainer {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 64.5%;
+}
+
+.heroImageContainerRegular {
+  composes: heroImageContainer;
+  right: 0;
+}
+
+.heroImageContainerReverse {
+  composes: heroImageContainer;
+  left: 0;
 }
 
 .image {

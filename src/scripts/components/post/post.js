@@ -75,17 +75,38 @@ class Post extends React.Component {
   render() {
     const imageSliderImages = this.populateImageSliderImages();
     const listItems = [];
+    let imageContainerClassName = '';
 
+    // In the regular layout the first three images are floated left taking up
+    // 33% of the available height and 35% of the available width and the
+    // fourth image, the hero image, is positioned at the top right taking up
+    // 100% of the available height and 64.5% of the available width. In the
+    // reverse layout the first image is the hero image and it is positioned at
+    // the top left. The other three images float to the right of it.
     this.props.link.images.forEach((image, index) => {
+      // Determine image container class name
+      if (this.props.link.images.length < 4 && index === 0) {
+        imageContainerClassName = styles.singleImageContainer;
+      } else if (this.props.isReverseLayout && index === 0) {
+        imageContainerClassName = styles.heroImageContainerReverse;
+      } else if (this.props.isReverseLayout && index > 0) {
+        imageContainerClassName = styles.imageContainerReverse;
+      } else if (!this.props.isReverseLayout && index < 3) {
+        imageContainerClassName = styles.imageContainerRegular;
+      } else if (!this.props.isReverseLayout && index === 3) {
+        imageContainerClassName = styles.heroImageContainerRegular;
+      }
+
+      // Display only one image if we don't have four to show.
       if (this.props.link.images.length < 4 && index > 0) {
-         // Display only one image if we don't have four to show.
         return;
       }
+
+      // Show only the first four images here. Others will be viewed in the
+      // image overlay.
       if (index <= 3) {
-        // Show only the first four images here. Others will be viewed in the
-        // image overlay.
         listItems.push(
-          <li className={styles.imageContainer} key={image}>
+          <li className={imageContainerClassName} key={image}>
             <a
               className="js-image-link"
               data-image-index={index}
@@ -103,21 +124,17 @@ class Post extends React.Component {
       }
     });
 
-    let imagesContainerClassName = styles.imagesContainer;
     let showMoreImagesClassName = styles.showMoreImages;
 
     if (this.props.isReverseLayout) {
-      imagesContainerClassName = styles.imagesContainerReverse;
       showMoreImagesClassName = styles.showMoreImagesReverse;
     }
-
-    imagesContainerClassName = `${imagesContainerClassName} clearfix`;
 
     return (
       <div className={styles.container}>
         <div>
           <h3 className={styles.title}>{this.props.link.name}</h3>
-          <div className={imagesContainerClassName}>
+          <div className={`${styles.imagesContainer} clearfix`}>
             <ul>
               {listItems}
             </ul>
