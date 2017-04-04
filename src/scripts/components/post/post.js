@@ -55,7 +55,9 @@ class Post extends React.Component {
   }
 
   closeImageSlider(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     this.setState({
       imageSliderVisible: false,
     });

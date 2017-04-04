@@ -4,7 +4,8 @@ import styles from './image-slider.css';
 
 /**
  * @description Image slider React component based on Gilbert Pellegrom's Ideal
- * Image Slider.
+ * Image Slider. Note that we use hammer.js to detect touch gestures, rather
+ * than wiring that up ourself.
  * @see https://github.com/Codeinwp/Ideal-Image-Slider-JS
  * @todo Convert this back to a pure component since all state is now being
  * handled by the parent component.
@@ -13,6 +14,7 @@ class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleSwipe = this.handleSwipe.bind(this);
     this.nextNavClick = this.nextNavClick.bind(this);
     this.prevNavClick = this.prevNavClick.bind(this);
@@ -28,6 +30,28 @@ class ImageSlider extends React.Component {
   //   }
   // }
 
+  componentDidUpdate() {
+    if (this.props.visible) {
+      document.addEventListener('keyup', this.handleKeyUp);
+    } else {
+      document.removeEventListener('keyup', this.handleKeyUp);
+    }
+  }
+
+  /**
+   * @todo Ensure that key and keyCode work in all browsers! They should, as
+   * key is new and keyCode is old and deprecated.
+   */
+  handleKeyUp(e) {
+    if (e.key === 'ArrowLeft' || e.keyCode === 37) {
+      this.prevImage();
+    } else if (e.key === 'ArrowRight' || e.keyCode === 39) {
+      this.nextImage();
+    } else if (e.key === 'Escape' || e.keyCode === 27) {
+      this.props.onCloseImageSlider();
+    }
+  }
+
   /**
    * @todo Note that the Hammer.DIRECTION_LEFT and Hammer.DIRECTION_RIGHT
    * constants are not available on the React Hammer component so we've hard
@@ -35,15 +59,23 @@ class ImageSlider extends React.Component {
    */
   handleSwipe(e) {
     if (e.direction === 2 && this.props.currentImage + 1 < this.props.images.length - 1) {
-      this.props.onChangeCurrentImage(this.props.currentImage + 1);
+      this.nextImage();
     } else if (e.direction === 4 && this.props.currentImage - 1 >= 0) {
-      this.props.onChangeCurrentImage(this.props.currentImage - 1);
+      this.prevImage();
     }
   }
 
   nextNavClick(e) {
     e.preventDefault();
+    this.nextImage();
+  }
 
+  prevNavClick(e) {
+    e.preventDefault();
+    this.prevImage();
+  }
+
+  nextImage() {
     if (this.props.currentImage < this.props.images.length - 1) {
       this.props.onChangeCurrentImage(this.props.currentImage + 1);
     } else {
@@ -51,9 +83,7 @@ class ImageSlider extends React.Component {
     }
   }
 
-  prevNavClick(e) {
-    e.preventDefault();
-
+  prevImage() {
     if (this.props.currentImage - 1 >= 0) {
       this.props.onChangeCurrentImage(this.props.currentImage - 1);
     } else {
