@@ -77,8 +77,8 @@ To Do
     - [ ] Preload images
     - [ ] Loading indicator
     - [ ] Animations for open/close carousel
-    - [ ] Float last child right in image container
-    - [ ] Arrow key navigation
+    - [x] Float last child right in image container
+    - [x] Arrow key navigation
     - [ ] Show arrow buttons on hover, or only when no touch?
     - [ ] Style issues on mobile
 
