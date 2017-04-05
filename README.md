@@ -49,6 +49,7 @@ To Do
 
 - [ ] Fade in background image issues:
   - [ ] Clear image cache after X images inserted?
+  - [ ] Parameterize component to use different background colors (i.e. black)
 
 - [ ] React Router
   - [ ] Use mobile page transitions (à la Clip Artist App)?
@@ -74,7 +75,7 @@ To Do
 
 - [ ] Post features:
   - [ ] Image carousel
-    - [ ] Preload images
+    - [x] Preload images
     - [ ] Loading indicator
     - [ ] Animations for open/close carousel
     - [x] Float last child right in image container
