@@ -41,6 +41,9 @@ class FadeInBackgroundImage extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
+    if (nextProps.fadeInNow === this.props.fadeInNow) {
+      return;
+    }
     if (nextProps.fadeInNow || this.isElementInViewport()) {
       this.fadeInImage();
     }
