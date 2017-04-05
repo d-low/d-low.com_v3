@@ -1,5 +1,6 @@
 import React from 'react';
 import Hammer from 'react-hammerjs';
+import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
 import styles from './image-slider.css';
 
 /**
@@ -14,6 +15,9 @@ class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
 
+    this.imageVisible = [];
+    this.props.images.forEach(() => this.imageVisible.push(false));
+
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleSwipe = this.handleSwipe.bind(this);
     this.nextNavClick = this.nextNavClick.bind(this);
@@ -21,7 +25,7 @@ class ImageSlider extends React.Component {
   }
 
   // /**
-  //  * TODO:
+  //  * @todo
   //  * 1) If visible then load the current, previous and next images
   //  * 2) Then show the slider
   //  */
@@ -30,6 +34,35 @@ class ImageSlider extends React.Component {
   //   }
   // }
 
+  /**
+   * @description Prior to receiving new props and re-rendering we set the
+   * current, previous and next images to be visible so that they will fade in.
+   */
+  componentWillUpdate(nextProps) {
+    if (nextProps.visible) {
+      this.imageVisible[nextProps.currentImage] = true;
+
+      if (nextProps.currentImage + 1 < nextProps.images.length) {
+        this.imageVisible[nextProps.currentImage + 1] = true;
+      } else {
+        this.imageVisible[0] = true;
+      }
+
+      if (nextProps.currentImage - 1 >= 0) {
+        this.imageVisible[nextProps.currentImage - 1] = true;
+      } else {
+        this.imageVisible[nextProps.images.length - 1] = true;
+      }
+    }
+  }
+  /**
+   * @description After rendering, if the component is visible, the add an
+   * event listener for the keyup event on the document to handle keyboard
+   * navigation.
+   * @todo When transitioning from hidden to visible fade in the smoke and then
+   * slide down the current image. Will we ues React transition groups for this?
+   * @see https://facebook.github.io/react/docs/animation.html
+   */
   componentDidUpdate() {
     if (this.props.visible) {
       document.addEventListener('keyup', this.handleKeyUp);
@@ -95,14 +128,14 @@ class ImageSlider extends React.Component {
     const containerClassName = this.props.visible ? styles.containerVisible : styles.container;
     const listItems = this.props.images.map((image, index) =>
       <li className={styles.item} key={image.href}>
-        <figure
+        <FadeInBackgroundImage
+          backgroundImage={image.href}
           className={styles.image}
-          data-image={image.href}
-          style={{ backgroundImage: `url(${image.href})` }}>
-          <figcaption className={styles.caption}>
+          fadeInNow={this.imageVisible[index]}>
+          <span className={styles.caption}>
             {`${image.caption} - ${index + 1} of ${this.props.images.length}`}
-          </figcaption>
-        </figure>
+          </span>
+        </FadeInBackgroundImage>
       </li>,
     );
 

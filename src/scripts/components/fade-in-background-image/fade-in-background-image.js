@@ -40,6 +40,12 @@ class FadeInBackgroundImage extends React.Component {
     }
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.fadeInNow || this.isElementInViewport()) {
+      this.fadeInImage();
+    }
+  }
+
   fadeInImage() {
     // If we haven't yet set the inline style to specify the background image
     // and we have one, then set it now, and then fade in the background image
@@ -68,7 +74,11 @@ class FadeInBackgroundImage extends React.Component {
 
   isElementInViewport() {
     const rect = this.element.getBoundingClientRect();
-    return rect.top <= window.innerHeight;
+    return rect.height > 0 &&
+      rect.width > 0 &&
+      rect.top <= window.innerHeight &&
+      rect.left <= window.innerWidth &&
+      rect.right > 0;
   }
 
   /**
@@ -128,7 +138,7 @@ class FadeInBackgroundImage extends React.Component {
 }
 
 /**
- * @description Keep a cache of image that have already been faded in so that
+ * @description Keep a cache of images that have already been faded in so that
  * we don't fade them in a second time. The keys in the cache will be image
  * names and the values will be true if the image has been faded in already.
  * @todo Will the image cache get too big? Should we add new images in a setter
