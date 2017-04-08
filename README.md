@@ -45,8 +45,6 @@ To Do
 - [ ] CSS
   - [ ] Use consistent heading styles 
 
-- [ ] Add tests
-
 - [ ] Fade in background image issues:
   - [ ] Clear image cache after X images inserted?
   - [ ] Parameterize component to use different background colors (i.e. black)
@@ -70,14 +68,10 @@ To Do
         - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
   - [ ] Use consistent coding style for presentation components definition
 
-- [ ] Performant parallax on home page hero image
-  - See: https://developers.google.com/web/updates/2016/12/performant-parallaxing
-
 - [ ] Post features:
   - [ ] Image carousel
     - [x] Preload images
-    - [ ] Loading indicator
-    - [ ] Animations for open/close carousel
+    - [x] Animations for open/close carousel
     - [x] Float last child right in image container
     - [x] Arrow key navigation
     - [ ] Show arrow buttons on hover, or only when no touch?

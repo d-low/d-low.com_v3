@@ -6,7 +6,12 @@ import styles from './image-slider.css';
 /**
  * @description Image slider React component based on Gilbert Pellegrom's Ideal
  * Image Slider. Note that we use hammer.js to detect touch gestures, rather
- * than wiring that up ourself.
+ * than wiring that up ourself. We also use our own staggered animations to
+ * fade in the smoke and slide down the image when showing the image slider and
+ * to slide up the image and fade out the smoke when hiding the image slider.
+ * While they do use timeouts in the JS that correspond to transition delays
+ * and timings in the CSS, the desired staggered animations just didn't seem
+ * possible using React Transition Group.
  * @see https://github.com/Codeinwp/Ideal-Image-Slider-JS
  * @todo Convert this back to a pure component since all state is now being
  * handled by the parent component.
@@ -22,6 +27,7 @@ class ImageSlider extends React.Component {
     this.handleSwipe = this.handleSwipe.bind(this);
     this.nextNavClick = this.nextNavClick.bind(this);
     this.prevNavClick = this.prevNavClick.bind(this);
+    this.closeSlider = this.closeSlider.bind(this);
   }
 
   // /**
@@ -81,7 +87,7 @@ class ImageSlider extends React.Component {
     } else if (e.key === 'ArrowRight' || e.keyCode === 39) {
       this.nextImage();
     } else if (e.key === 'Escape' || e.keyCode === 27) {
-      this.props.onCloseImageSlider();
+      this.closeSlider();
     }
   }
 
@@ -108,6 +114,12 @@ class ImageSlider extends React.Component {
     this.prevImage();
   }
 
+  closeSlider() {
+    window.setTimeout(() => this.props.onCloseImageSlider(), 700);
+    this.container.classList.add(styles.containerHiding);
+    this.items.classList.add(styles.itemsHiding);
+  }
+
   nextImage() {
     if (this.props.currentImage < this.props.images.length - 1) {
       this.props.onChangeCurrentImage(this.props.currentImage + 1);
@@ -125,7 +137,14 @@ class ImageSlider extends React.Component {
   }
 
   render() {
-    const containerClassName = this.props.visible ? styles.containerVisible : styles.container;
+    if (this.props.visible) {
+      window.setTimeout(() => {
+        this.container.classList.add(styles.containerShowing);
+        this.items.classList.add(styles.itemsShowing);
+      }, 0);
+    } else {
+      return null;
+    }
     const listItems = this.props.images.map((image, index) =>
       <li className={styles.item} key={image.href}>
         <FadeInBackgroundImage
@@ -140,15 +159,18 @@ class ImageSlider extends React.Component {
     );
 
     return (
-      <div className={containerClassName}>
+      <div
+        className={styles.container}
+        ref={(el) => { this.container = el; }} >
         <button className={styles.prevNavButton} onClick={this.prevNavClick} />
         <button className={styles.nextNavButton} onClick={this.nextNavClick} />
-        <button className={styles.closeButton} onClick={this.props.onCloseImageSlider}>
+        <button className={styles.closeButton} onClick={this.closeSlider}>
           <span className={styles.closeButtonText}>+</span>
         </button>
         <Hammer onSwipe={this.handleSwipe}>
           <ul
             className={styles.items}
+            ref={(el) => { this.items = el; }}
             style={{ transform: `translateX(${this.props.currentImage * -100}vw)` }}>
             {listItems}
           </ul>
