@@ -35,8 +35,9 @@ To Do
 
 - [ ] Administration/Development
   - [ ] Webpack production build
-  - [ ] Use [React dev tools](https://github.com/facebook/react-devtools)
+  - [x] Use [React dev tools](https://github.com/facebook/react-devtools)
   - [ ] Use minimal .htaccess to enable CORS etc.
+  - [ ] Upgrade to React 15.5.0
 
 - [ ] Site header styles
   - [ ] Mobile navigation
