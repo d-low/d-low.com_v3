@@ -47,7 +47,7 @@ To Do
 
 - [ ] Fade in background image issues:
   - [ ] Clear image cache after X images inserted?
-  - [ ] Parameterize component to use different background colors (i.e. black)
+  - [x] Parameterize component to use different background colors (i.e. black)
 
 - [ ] React Router
   - [ ] Use mobile page transitions (à la Clip Artist App)?

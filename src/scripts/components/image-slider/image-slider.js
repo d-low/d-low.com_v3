@@ -148,6 +148,7 @@ class ImageSlider extends React.Component {
     const listItems = this.props.images.map((image, index) =>
       <li className={styles.item} key={image.href}>
         <FadeInBackgroundImage
+          backgroundColor={this.props.backgroundColor}
           backgroundImage={image.href}
           className={styles.image}
           fadeInNow={this.imageVisible[index]}>
@@ -181,6 +182,7 @@ class ImageSlider extends React.Component {
 }
 
 ImageSlider.propTypes = {
+  backgroundColor: React.PropTypes.string,
   currentImage: React.PropTypes.number,
   images: React.PropTypes.arrayOf(React.PropTypes.shape({
     caption: React.PropTypes.string.isRequired,
@@ -192,6 +194,7 @@ ImageSlider.propTypes = {
 };
 
 ImageSlider.defaultProps = {
+  backgroundColor: 'white',
   currentImage: 0,
   visible: false,
 };

@@ -129,6 +129,11 @@ class FadeInBackgroundImage extends React.Component {
       className = `${className} ${styles.imageHidden}`;
     }
 
+    // TODO: Support other background colors if necessary
+    if (this.props.backgroundColor === 'black') {
+      className = `${className} ${styles.imageHiddenBlack}`;
+    }
+
     return (
       <div
         className={className}
@@ -150,6 +155,7 @@ class FadeInBackgroundImage extends React.Component {
 FadeInBackgroundImage.imageCache = {};
 
 FadeInBackgroundImage.propTypes = {
+  backgroundColor: React.PropTypes.string,
   backgroundImage: React.PropTypes.string,
   children: React.PropTypes.node,
   className: React.PropTypes.string,
@@ -157,6 +163,7 @@ FadeInBackgroundImage.propTypes = {
 };
 
 FadeInBackgroundImage.defaultProps = {
+  backgroundColor: 'white',
   backgroundImage: '',
   children: null,
   className: '',

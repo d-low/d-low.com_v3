@@ -29,6 +29,10 @@
   z-index: 1;
 }
 
+.imageHiddenBlack::after {
+  background-color: black;
+}
+
 .imageVisible {
   composes: imageHidden;
 }

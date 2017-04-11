@@ -161,6 +161,7 @@ class Post extends React.Component {
           </Link>
         </div>
         <ImageSlider
+          backgroundColor="black"
           currentImage={this.state.currentImage}
           images={imageSliderImages}
           onChangeCurrentImage={this.changeCurrentImage}
