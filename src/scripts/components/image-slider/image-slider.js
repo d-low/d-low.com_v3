@@ -20,25 +20,27 @@ class ImageSlider extends React.Component {
   constructor(props) {
     super(props);
 
+    // Keep track of which images have been loaded and are visible
     this.imageVisible = [];
     this.props.images.forEach(() => this.imageVisible.push(false));
 
+    // Bound event handlers
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleSwipe = this.handleSwipe.bind(this);
     this.nextNavClick = this.nextNavClick.bind(this);
     this.prevNavClick = this.prevNavClick.bind(this);
     this.closeSlider = this.closeSlider.bind(this);
+
+    // Refs
+    this.container = null;
+    this.items = null;
+    this.item = [];
+
+    // Keep track of the translate X value of the items so that the proper item
+    // is slid into view.
+    this.translateX = '0';
   }
 
-  // /**
-  //  * @todo
-  //  * 1) If visible then load the current, previous and next images
-  //  * 2) Then show the slider
-  //  */
-  // componentDidMount() {
-  //   if (this.props.visible) {
-  //   }
-  // }
 
   /**
    * @description Prior to receiving new props and re-rendering we set the
@@ -59,15 +61,19 @@ class ImageSlider extends React.Component {
       } else {
         this.imageVisible[nextProps.images.length - 1] = true;
       }
+
+      // Once we're visible then we have refs to each item and we can set the
+      // translateX value for the items based on the next current image and
+      // whether our CSS sets a margin left on the current item.
+      if (this.props.visible) {
+        this.setTranslateX(nextProps.currentImage);
+      }
     }
   }
   /**
    * @description After rendering, if the component is visible, the add an
    * event listener for the keyup event on the document to handle keyboard
    * navigation.
-   * @todo When transitioning from hidden to visible fade in the smoke and then
-   * slide down the current image. Will we ues React transition groups for this?
-   * @see https://facebook.github.io/react/docs/animation.html
    */
   componentDidUpdate() {
     if (this.props.visible) {
@@ -75,6 +81,14 @@ class ImageSlider extends React.Component {
     } else {
       document.removeEventListener('keyup', this.handleKeyUp);
     }
+  }
+
+  setTranslateX(imageIndex) {
+    const marginLeft = parseInt(
+      window.getComputedStyle(this.item[imageIndex]).marginLeft,
+      10,
+    );
+    this.translateX = `calc(${imageIndex * -100}vw - ${imageIndex * marginLeft}px)`;
   }
 
   /**
@@ -137,16 +151,26 @@ class ImageSlider extends React.Component {
   }
 
   render() {
-    if (this.props.visible) {
+    if (!this.props.visible) {
+      return null;
+    }
+
+    // Set a timeout to show the container if we don't yet have a reference to
+    // it which is the case when we initially render the image slider. On later
+    // renders, when the container and items are already visible, this is no
+    // longer necessary.
+    if (!this.container) {
       window.setTimeout(() => {
         this.container.classList.add(styles.containerShowing);
         this.items.classList.add(styles.itemsShowing);
       }, 0);
-    } else {
-      return null;
     }
+
     const listItems = this.props.images.map((image, index) =>
-      <li className={styles.item} key={image.href}>
+      <li
+        className={styles.item}
+        key={image.href}
+        ref={(el) => { this.item[index] = el; }}>
         <FadeInBackgroundImage
           backgroundColor={this.props.backgroundColor}
           backgroundImage={image.href}
@@ -172,7 +196,7 @@ class ImageSlider extends React.Component {
           <ul
             className={styles.items}
             ref={(el) => { this.items = el; }}
-            style={{ transform: `translateX(${this.props.currentImage * -100}vw)` }}>
+            style={{ transform: `translateX(${this.translateX})` }}>
             {listItems}
           </ul>
         </Hammer>

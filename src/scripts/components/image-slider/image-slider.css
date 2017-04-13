@@ -1,3 +1,7 @@
+@value screen_small_min_width from '../../../styles/base/breakpoints.css';
+@value screen_medium_min_width from '../../../styles/base/breakpoints.css';
+@value screen_large_min_width from '../../../styles/base/breakpoints.css';
+
 .fullWidthAndHeight {
   bottom: 0;
   height: 100vh;
@@ -146,8 +150,31 @@
   display: inline-flex;
   height: 100vh;
   justify-content: center;
-  padding: 3rem;
+  margin-left: 2rem;
   width: 100vw;
+}
+
+.item:first-child {
+  margin-left: 0;
+}
+
+@media screen and screen_small_min_width { 
+  .item {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+
+@media screen and screen_medium_min_width { 
+  .item {
+    padding: 2rem;
+  }
+}
+
+@media screen and screen_large_min_width { 
+  .item {
+    padding: 3rem;
+  }
 }
 
 .image {
