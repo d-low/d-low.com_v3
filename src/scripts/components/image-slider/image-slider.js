@@ -62,12 +62,7 @@ class ImageSlider extends React.Component {
         this.imageVisible[nextProps.images.length - 1] = true;
       }
 
-      // Once we're visible then we have refs to each item and we can set the
-      // translateX value for the items based on the next current image and
-      // whether our CSS sets a margin left on the current item.
-      if (this.props.visible) {
-        this.setTranslateX(nextProps.currentImage);
-      }
+      this.setTranslateX(nextProps.currentImage);
     }
   }
   /**
@@ -83,12 +78,35 @@ class ImageSlider extends React.Component {
     }
   }
 
+  /**
+   * @description Set the translateX position of the items based on the index
+   * of the image being showm. Note that if we don't have a ref to each of the
+   * items yet, then we have to hard code knowlege of our CSS here to set the
+   * left margin, which is a bit of a hack, but only done for the first render.
+   */
   setTranslateX(imageIndex) {
-    const marginLeft = parseInt(
-      window.getComputedStyle(this.item[imageIndex]).marginLeft,
-      10,
-    );
-    this.translateX = `calc(${imageIndex * -100}vw - ${imageIndex * marginLeft}px)`;
+    let marginLeft = null;
+
+    if (this.item.length && this.item[imageIndex]) {
+      marginLeft = imageIndex * parseInt(
+        window.getComputedStyle(this.item[imageIndex]).marginLeft,
+        10,
+      );
+
+      if (marginLeft > 0) {
+        marginLeft = `${marginLeft}px`;
+      }
+    } else if (window.innerWidth < 768 && imageIndex > 0) {
+      marginLeft = `${imageIndex * 2}rem`;
+    }
+
+    // We omit the margin left and use of calc if there is none as that appears
+    // to be an invalid style and doesn't get rendered!
+    if (marginLeft) {
+      this.translateX = `calc(${imageIndex * -100}vw - ${marginLeft})`;
+    } else {
+      this.translateX = `${imageIndex * -100}vw`;
+    }
   }
 
   /**
