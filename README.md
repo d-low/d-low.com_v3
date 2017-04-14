@@ -79,6 +79,7 @@ To Do
     - [ ] Style issues on mobile
       - [x] Full screen image with margin between them in mobile view
       - [x] Show arrow buttons only when no touch 
+        - [ ] Always show on larger screens when there is enough room (TBD: Remove show on hover?)
       - [x] Larger target area for buttons
       - [ ] Better positioning of close button and caption on mobile
   - [ ] Read more link to toggle long text on mobile?
