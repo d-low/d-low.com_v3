@@ -78,7 +78,7 @@ To Do
     - [x] Arrow key navigation
     - [ ] Style issues on mobile
       - [x] Full screen image with margin between them in mobile view
-      - [ ] Show arrow buttons on hover, or only when no touch? 
-      - [ ] Larger target area for buttons
+      - [x] Show arrow buttons only when no touch 
+      - [x] Larger target area for buttons
       - [ ] Better positioning of close button and caption on mobile
   - [ ] Read more link to toggle long text on mobile?

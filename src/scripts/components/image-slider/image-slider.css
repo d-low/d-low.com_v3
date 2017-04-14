@@ -2,6 +2,13 @@
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
 @value screen_large_min_width from '../../../styles/base/breakpoints.css';
 
+/* TODO: Move these to a z-index.css file */
+@value z_index_container: 1001;
+@value z_index_container_after: 1000;
+@value z_index_nav_button: 1025;
+@value z_index_close_button: 1050;
+@value z_index_items: 1002;
+
 .fullWidthAndHeight {
   bottom: 0;
   height: 100vh;
@@ -15,7 +22,7 @@
   composes: fullWidthAndHeight;
   overflow: hidden;
   position: fixed;
-  z-index: 1001;
+  z-index: z_index_container;
 }
 
 /* 
@@ -33,7 +40,7 @@
   right: 0;
   top: 0;
   width: 100vw;
-  z-index: 1000;
+  z-index: z_index_container_after;
 }
 
 .containerShowing:after {
@@ -47,16 +54,65 @@
 }
 
 .navButton {
+  height: 100vh;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.25s ease-in;
+  width: 3rem;
+  z-index: z_index_nav_button;
+}
+
+.hasTouch .navButton {
+  display: none;
+}
+
+@media screen and screen_small_min_width {
+  .navButton {
+    width: 5rem;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .navButton {
+    width: 7rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .navButton {
+    width: 10rem;
+  }
+}
+
+.navButton:hover {
+  opacity: 0.5;
+}
+
+.navButton:active {
+  opacity: 1;
+}
+
+.prevNavButton {
+  composes: navButton;
+  left: 0rem;
+}
+
+.nextNavButton {
+  composes: navButton;
+  right: 0rem;
+}
+
+.navButtonArrow {
   height: 5rem;
   margin-top: -2.5rem;
   position: absolute;
   top: 50%;
   width: 0.5rem;
-  z-index: 1050;
 }
 
-.navButton::before,
-.navButton::after {
+.navButtonArrow::before,
+.navButtonArrow::after {
   background-color: white;
   border-radius: 0.25rem;
   content: ' ';
@@ -66,40 +122,40 @@
   width: 100%;
 }
 
-.navButton::before {
+.navButtonArrow::before {
   top: 0.125rem;
 }
 
-.navButton::after {
+.navButtonArrow::after {
   bottom: 0.125rem;
 }
 
-.prevNavButton {
-  composes: navButton;
-  left: 3rem;
+.prevNavButtonArrow {
+  composes: navButtonArrow;
+  left: calc(50% - 1rem);
 }
 
-.prevNavButton::before {
+.prevNavButtonArrow::before {
   transform: rotate(20deg);
   transform-origin: 0% 100%;
 }
 
-.prevNavButton::after {
+.prevNavButtonArrow::after {
   transform: rotate(-20deg);
   transform-origin: 100% 0%;
 }
 
-.nextNavButton {
-  composes: navButton;
-  right: 3rem;
+.nextNavButtonArrow {
+  composes: navButtonArrow;
+  left: calc(50% + 1rem);
 }
 
-.nextNavButton::before {
+.nextNavButtonArrow::before {
   transform: rotate(-20deg);
   transform-origin: 0% 100%;
 }
 
-.nextNavButton::after {
+.nextNavButtonArrow::after {
   transform: rotate(20deg);
   transform-origin: 100% 0%;
 }
@@ -108,12 +164,18 @@
   border: 2px solid white;
   border-radius: 1.5rem;
   height: 3rem;
+  opacity: 0.5;
   position: absolute;
   right: 3rem;
   text-align: center;
+  transition: opacity 0.25s ease-in;
   top: 3rem;
   width: 3rem;
-  z-index: 1050;
+  z-index: z_index_close_button;
+}
+
+.closeButton:active {
+  opacity: 1;
 }
 
 .closeButtonText {
@@ -133,7 +195,7 @@
   position: absolute;
   transition: transform 700ms ease-out, 500ms margin-top 250ms ease-in;
   white-space: nowrap;
-  z-index: 1002;
+  z-index: z_index_items;
 }
 
 .itemsShowing {
