@@ -15,7 +15,7 @@
   left: 0;
   right: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .container {
@@ -39,7 +39,7 @@
   position: fixed;
   right: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
   z-index: z_index_container_after;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .navButton {
-  height: 100vh;
+  height: 100%;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -166,16 +166,37 @@
   height: 3rem;
   opacity: 0.5;
   position: absolute;
-  right: 3rem;
+  right: 0.5rem;
   text-align: center;
   transition: opacity 0.25s ease-in;
-  top: 3rem;
+  top: 0.5rem;
   width: 3rem;
   z-index: z_index_close_button;
 }
 
 .closeButton:active {
   opacity: 1;
+}
+
+@media screen and screen_small_min_width {
+  .closeButton {
+    right: 1rem;
+    top: 1rem;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .closeButton {
+    right: 2rem;
+    top: 2rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .closeButton {
+    right: 3rem;
+    top: 3rem;
+  }
 }
 
 .closeButtonText {
@@ -186,6 +207,35 @@
   line-height: 2rem;
   vertical-align: middle;
   transform: rotate(45deg);
+}
+
+.itemsWrapper {
+  height: 100vw;
+  margin-top: 3.5rem;
+  max-height: 600px;
+  position: relative;
+}
+
+@media screen and screen_small_min_width {
+  .itemsWrapper {
+    height: calc(100% - 4rem);
+    margin-top: 4rem;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .itemsWrapper {
+    height: calc(100% - 5rem);
+    margin-top: 5rem;
+    max-height: none;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .itemsWrapper {
+    height: calc(100% - 6rem);
+    margin-top: 6rem;
+  }
 }
 
 .items {
@@ -210,7 +260,7 @@
 .item {
   align-items: center;
   display: inline-flex;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   margin-left: 2rem;
   width: 100vw;
@@ -220,20 +270,20 @@
   margin-left: 0;
 }
 
-@media screen and screen_small_min_width { 
+@media screen and screen_small_min_width {
   .item {
     margin-left: 0;
     padding: 1rem;
   }
 }
 
-@media screen and screen_medium_min_width { 
+@media screen and screen_medium_min_width {
   .item {
     padding: 2rem;
   }
 }
 
-@media screen and screen_large_min_width { 
+@media screen and screen_large_min_width {
   .item {
     padding: 3rem;
   }

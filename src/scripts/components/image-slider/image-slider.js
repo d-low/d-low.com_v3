@@ -206,23 +206,25 @@ class ImageSlider extends React.Component {
       <div
         className={`${styles.container} ${hasTouch ? styles.hasTouch : ''}`}
         ref={(el) => { this.container = el; }} >
-        <button className={styles.prevNavButton} onClick={this.prevNavClick}>
-          <span className={styles.prevNavButtonArrow} />
-        </button>
-        <button className={styles.nextNavButton} onClick={this.nextNavClick}>
-          <span className={styles.nextNavButtonArrow} />
-        </button>
         <button className={styles.closeButton} onClick={this.closeSlider}>
           <span className={styles.closeButtonText}>+</span>
         </button>
-        <Hammer onSwipe={this.handleSwipe}>
-          <ul
-            className={styles.items}
-            ref={(el) => { this.items = el; }}
-            style={{ transform: `translateX(${this.translateX})` }}>
-            {listItems}
-          </ul>
-        </Hammer>
+        <div className={styles.itemsWrapper}>
+          <Hammer onSwipe={this.handleSwipe}>
+            <ul
+              className={styles.items}
+              ref={(el) => { this.items = el; }}
+              style={{ transform: `translateX(${this.translateX})` }}>
+              {listItems}
+            </ul>
+          </Hammer>
+          <button className={styles.prevNavButton} onClick={this.prevNavClick}>
+            <span className={styles.prevNavButtonArrow} />
+          </button>
+          <button className={styles.nextNavButton} onClick={this.nextNavClick}>
+            <span className={styles.nextNavButtonArrow} />
+          </button>
+        </div>
       </div>
     );
   }
