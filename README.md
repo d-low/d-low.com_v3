@@ -35,7 +35,6 @@ To Do
 
 - [ ] Administration/Development
   - [ ] Webpack production build
-  - [x] Use [React dev tools](https://github.com/facebook/react-devtools)
   - [ ] Use minimal .htaccess to enable CORS etc.
   - [ ] Upgrade to React 15.5.0
 
@@ -49,7 +48,6 @@ To Do
 
 - [ ] Fade in background image issues:
   - [ ] Clear image cache after X images inserted?
-  - [x] Parameterize component to use different background colors (i.e. black)
   - [ ] Previously loaded images aren't displayed immediately
 
 - [ ] React Router
@@ -73,14 +71,6 @@ To Do
 
 - [ ] Posts
   - [ ] Image carousel
-    - [x] Preload images
-    - [x] Animations for open/close carousel
-    - [x] Float last child right in image container
-    - [x] Arrow key navigation
-    - [x] Style issues on mobile
-      - [x] Full screen image with margin between them in mobile view
-      - [x] Show arrow buttons only when no touch 
-        - [ ] Always show on larger screens when there is enough room (TBD: Remove show on hover?)
-      - [x] Larger target area for buttons
-      - [x] Better positioning of close button and caption on mobile
+      - [ ] Always show arrow buttons on larger screens when there is enough room (Remove show on hover)
+      - [ ] Reduce top margin above `.image-slider__itemsWrapper`
   - [ ] Read more link to toggle long text on mobile?
