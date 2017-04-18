@@ -136,6 +136,7 @@ class Post extends React.Component {
       <div className={styles.container}>
         <div>
           <h3 className={styles.title}>{this.props.link.name}</h3>
+          <h4 className={styles.date}>{this.props.link.date}</h4>
           <div className={`${styles.imagesContainer} clearfix`}>
             <ul>
               {listItems}
@@ -174,6 +175,7 @@ class Post extends React.Component {
 
 Post.propTypes = {
   link: React.PropTypes.shape({
+    date: React.PropTypes.string,
     href: React.PropTypes.string,
     images: React.PropTypes.arrayOf(React.PropTypes.string),
     name: React.PropTypes.string,

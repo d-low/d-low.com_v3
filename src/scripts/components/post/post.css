@@ -23,18 +23,45 @@
 .title {
   composes: contentItemTitle from '../../../styles/base/common.css';
   font-size: 1.75rem;
-  min-height: 75px;
+  min-height: 2.25rem;
+  white-space: normal;
 }
 
 @media screen and screen_medium_min_width {
   .title {
     font-size: 2rem;
+    min-height: 2.25rem;
   }
 }
 
 @media screen and screen_large_min_width {
   .title {
     font-size: 2.25rem;
+    min-height: 2.5rem;
+  }
+}
+
+.date {
+  composes: contentItemTitle from '../../../styles/base/common.css';
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  min-height: 2rem;
+  white-space: normal;
+}
+
+@media screen and screen_medium_min_width {
+  .date {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+    min-height: 2.25rem;
+  }
+}
+
+@media screen and screen_large_min_width {
+  .date {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    min-height: 2.5rem;
   }
 }
 

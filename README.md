@@ -42,7 +42,7 @@ To Do
 - [ ] Mobile/tablet style issues;
   - [ ] Use fixed bottom site header with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
   - [ ] Text in site header should wrap in tablet view
-  - [ ] Post title should wrap and maybe truncate in mobile view
+  - [x] Post title should wrap and maybe truncate in mobile view
 
 - [ ] CSS
   - [ ] Use consistent heading styles 
@@ -50,6 +50,7 @@ To Do
 - [ ] Fade in background image issues:
   - [ ] Clear image cache after X images inserted?
   - [x] Parameterize component to use different background colors (i.e. black)
+  - [ ] Previously loaded images aren't displayed immediately
 
 - [ ] React Router
   - [ ] Use mobile page transitions (à la Clip Artist App)?

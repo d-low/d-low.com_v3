@@ -2,8 +2,50 @@
  * @todo This module no longer just gets links. It now provides more generic
  * node processing methods. We need to rename it appropriately.
  */
-export const prettifyTitle = function prettifyTitle(title) {
-  return title.replace(/^\d\d-/, '').replace(/[-_]/g, ' ');
+
+/**
+ * Remove initial digits, split on the title/date separator and keeping both
+ * the title and the date, and then replace underscores with white space.
+ * @example
+ * 05-Colorado -> Colorado
+ * Colorado-2016 -> Colorado 2016
+ * 01-A_Few_Snowy_Adventures-Apr_11_2017 -> A Few Snowy Adventures Apr 11 2017
+ */
+export const prettifyTitle = function prettifyTitle(keyName) {
+  return keyName.replace(/^\d\d-/, '').replace(/[-_]/g, ' ');
+};
+
+/**
+ * Remove initial digits, split on the title/date separator and keeping the
+ * title, and then replace underscores with white space.
+ * @example
+ * 05-Colorado -> Colorado
+ * 01-A_Few_Snowy_Adventures-Apr_11_2017 -> A Few Snowy Adventures
+ */
+const prettifyTitleOnly = function prettifyTitleOnly(keyName) {
+  return keyName.replace(/^\d\d-/, '').split(/-/)[0].replace(/_/g, ' ');
+};
+
+/**
+ * Remove initial digits, split on the title/date separator and keeping the
+ * date, and then replace underscores with white space, and insert a comma
+ * after the day of the month.
+ * @example
+ * 05-Colorado -> ''
+ * 01-A_Few_Snowy_Adventures-Apr_11_2017 -> Apr 11, 2017
+ */
+const prettifyDateOnly = function prettifyDate(keyName) {
+  const datePart = keyName.replace(/^\d\d-/, '').split(/-/);
+
+  if (datePart.length > 1) {
+    try {
+      return datePart[1].replace(/_/g, ' ').replace(/ (\d\d\d\d)$/, ', $1');
+    } catch (exp) {
+      return '';
+    }
+  } else {
+    return '';
+  }
 };
 
 /**
@@ -80,7 +122,12 @@ const getPostThumbnails = function getPostThumbnails(path, imageToExclude = '') 
  * is used on the listing and post listing pages to show the most recent items
  * first.
  */
-export const getLinks = function getLinks(path, includeMostRecent = false, descending = false) {
+export const getLinks = function getLinks(
+  path,
+  includeMostRecent = false,
+  descending = false,
+  makeTitlePretty = true,
+) {
   const links = [];
 
   const generateRandomNumber = (max, min) =>
@@ -103,7 +150,7 @@ export const getLinks = function getLinks(path, includeMostRecent = false, desce
 
   Object.keys(node).forEach((key) => {
     links.push({
-      name: prettifyTitle(key),
+      name: makeTitlePretty ? prettifyTitle(key) : key,
       href: `${path === '/' ? '' : path}/${key}`,
       image: findRandomImage(node[key]),
     });
@@ -148,9 +195,10 @@ export const getLinks = function getLinks(path, includeMostRecent = false, desce
  * post object.
  */
 export const getPost = function getPost(link, path) {
-  const link2 = link || getLinks(path, false, true)[0];
+  const link2 = link || getLinks(path, false, true, false)[0];
   return {
-    name: link2.name,
+    name: prettifyTitleOnly(link2.name),
+    date: prettifyDateOnly(link2.name),
     href: link2.href,
     images: getPostImages(link2.href),
     text: () => new Promise((resolve, reject) => {
@@ -173,7 +221,7 @@ export const getPost = function getPost(link, path) {
  * @see http://redux.js.org/docs/advanced/AsyncFlow.html
  */
 export const getPostListingLinks = function getPostListingLinks(path) {
-  const links = getLinks(path, false, true);
+  const links = getLinks(path, false, true, false);
   const postListingLinks = [];
 
   links.forEach((link) => {
