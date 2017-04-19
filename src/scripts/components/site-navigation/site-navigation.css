@@ -78,11 +78,17 @@
     opacity: 1;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0 5rem 0 5rem;
+    padding: 0 3rem 0 3rem;
     position: fixed;
     text-align: center;
     transform: translateX(0);
     transition: none;
+  }
+}
+
+@media screen and screen_medium_min_width {
+  .links {
+    padding: 0 5rem 0 5rem;
   }
 }
 
@@ -124,6 +130,6 @@
 
 @media screen and screen_small_min_width {
   .linkText {
-    padding-left: 0;
+    padding: 0 1rem 0 1rem;
   }
 }

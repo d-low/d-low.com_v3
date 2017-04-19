@@ -40,7 +40,7 @@ To Do
 
 - [ ] Mobile/tablet style issues;
   - [ ] Use fixed bottom site header with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
-  - [ ] Text in site header should wrap in tablet view
+  - [x] Text in site header should wrap in tablet view
   - [x] Post title should wrap and maybe truncate in mobile view
 
 - [ ] CSS
