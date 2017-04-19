@@ -55,7 +55,8 @@ To Do
   - [ ] Can we reduce the number of re-rendered components when navigating from home page?
   
 - [ ] Pages/Routing
-  - [ ] 05-Colorado/11-Colorado-2016/04-Fall/02-The_Walkway-Nov_25_2016 (article page)
+  - [ ] What's New/Article Page - No need for an article page, just link to an internal anchor
+        e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`
   - [ ] Handle old "#content/" routes to remap Backbone routes. Maybe handle in Apache config?
 
 - [ ] Bugs/Issues/Enhandements
@@ -71,6 +72,5 @@ To Do
 
 - [ ] Posts
   - [ ] Image carousel
-      - [ ] Always show arrow buttons on larger screens when there is enough room (Remove show on hover)
-      - [ ] Reduce top margin above `.image-slider__itemsWrapper`
+      - [ ] Reduce top margin above `.image-slider__itemsWrapper` on larger screens
   - [ ] Read more link to toggle long text on mobile?
