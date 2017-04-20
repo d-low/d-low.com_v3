@@ -155,6 +155,16 @@
   z-index: 1;
 }
 
+.image, 
+.showMoreImages {
+  transition: opacity 0.25s ease;
+}
+
+.image:hover, 
+.showMoreImages:hover {
+  opacity: 0.75;
+}
+
 @media screen and screen_small_min_width {
   .showMoreImages {
     height: 30%;
