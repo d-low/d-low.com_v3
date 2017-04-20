@@ -29,48 +29,34 @@ npm run watch
 To Do
 ---
 
-- [ ] Content
-  - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
-        run the app.
-
-- [ ] Administration/Development
-  - [ ] Webpack production build
-  - [ ] Use minimal .htaccess to enable CORS etc.
-  - [ ] Upgrade to React 15.5.0
-
-- [ ] Mobile/tablet style issues;
-  - [ ] Use fixed bottom site header with a show more option instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
-  - [x] Text in site header should wrap in tablet view
-  - [x] Post title should wrap and maybe truncate in mobile view
-
-- [ ] CSS
-  - [ ] Use consistent heading styles 
-
-- [ ] Fade in background image issues:
-  - [ ] Clear image cache after X images inserted?
-  - [ ] Previously loaded images aren't displayed immediately
-
-- [ ] React Router
-  - [ ] Use mobile page transitions (à la Clip Artist App)?
-  - [ ] Can we reduce the number of re-rendered components when navigating from home page?
-  
-- [ ] Pages/Routing
-  - [ ] What's New/Article Page - No need for an article page, just link to an internal anchor
+- **Required for Launch**:
+  - [ ] Read more link to toggle lengthy text
+  - [ ] Reduce top margin above `.image-slider__itemsWrapper` on larger screens
+  - [ ] What's New/Article Page - Link to an internal anchor:
         e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`
-  - [ ] Handle old "#content/" routes to remap Backbone routes. Maybe handle in Apache config?
-
-- [ ] Bugs/Issues/Enhandements
-  - [ ] Disable CORS in fetch() request? Or use wild card for origin?
-  - [ ] Explore easing algorithms for home page down arrow scroll down animation timing
-      - See: https://github.com/danro/easing-js/blob/master/easing.js
-  - [ ] Generate index.html
-      - [ ] May need JS to fetch d-low.com/data/content.js, with loading indicator, etc
+  - [ ] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
+  - [ ] Webpack production build
+  - [ ] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
+  - [ ] Use minimal .htaccess to enable CORS etc.
+  
+- **Future Work**:  
+  - Admin
+    - [ ] Upgrade to React 15.5.0
+    - [ ] Generate index.html
       - See: 
         - https://www.npmjs.com/package/html-webpack-plugin
         - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
-  - [ ] Use consistent coding style for presentation components definition
-
-- [ ] Posts
-  - [ ] Image carousel
-      - [ ] Reduce top margin above `.image-slider__itemsWrapper` on larger screens
-  - [ ] Read more link to toggle long text on mobile?
+    - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
+        run the app.
+  - CSS
+    - [ ] Use consistent heading styles 
+    - [ ] Explore easing algorithms for home page down arrow scroll down animation timing
+      - See: https://github.com/danro/easing-js/blob/master/easing.js
+  - [ ] Fade in background image issues:
+    - [ ] Clear image cache after X images inserted?
+    - [ ] Previously loaded images aren't displayed immediately
+  - React Router
+    - [ ] Use mobile page transitions (à la Clip Artist App)?
+    - [ ] Can we reduce the number of re-rendered components when navigating from home page?
+  - Code Review
+    - [ ] Use consistent coding style for presentation components definition 
