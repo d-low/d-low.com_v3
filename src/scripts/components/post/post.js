@@ -1,7 +1,6 @@
 /* eslint react/no-danger: 0, no-console: 0, no-script-url: 0 */
 
 import React from 'react';
-import { Link } from 'react-router';
 import FadeInBackgroundImageWhenVisible from '../fade-in-background-image-when-visible.js';
 import ImageSlider from '../image-slider/image-slider.js';
 import styles from './post.css';
@@ -12,13 +11,16 @@ class Post extends React.Component {
 
     this.state = {
       currentImage: 0,
+      maxHeight: null,
       imageSliderVisible: false,
       text: '',
+      textExpanded: false,
     };
 
     this.changeCurrentImage = this.changeCurrentImage.bind(this);
     this.closeImageSlider = this.closeImageSlider.bind(this);
     this.viewImage = this.viewImage.bind(this);
+    this.toggleText = this.toggleText.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +33,24 @@ class Post extends React.Component {
         console.error('Unable to get link text');
         console.dir(exp);
       });
+  }
+
+  /**
+   * After updating if we have a reference to our text element and our text has
+   * been fetched then save the max height of the text element that will be
+   * transitioned to when expanding the text. This is done because we are
+   * transitioning on the max-height and we'll lose the animation if we set an
+   * arbitrary large value to transition to. i.e. transitioning from 300px to
+   * 10000px in 0.25s isn't perceivable, whereas transitioning to 500px is!
+   * @todo Set property, perhaps in state as we'll want to re-render, to not
+   * show the Read More button and cropped effect if the text expanded max
+   * height is with in a yet to be determined threshold.
+   */
+  componentDidUpdate() {
+    if (this.text && this.state.text && !this.textExpandedMaxHeight) {
+      const child = this.text.querySelector('div.eventContainer');
+      this.textExpandedMaxHeight = child.getBoundingClientRect().height;
+    }
   }
 
   populateImageSliderImages() {
@@ -74,6 +94,19 @@ class Post extends React.Component {
     });
   }
 
+  toggleText(e) {
+    e.preventDefault();
+    this.setState({
+      textExpanded: !this.state.textExpanded,
+      textExpandedMaxHeight: !this.state.textExpanded === true ?
+        `${this.textExpandedMaxHeight}px` : null,
+    });
+  }
+
+  /**
+   * @todo Hide toggle text button if text expanded max height is less than
+   * some yet to be determined threshold.
+   */
   render() {
     const imageSliderImages = this.populateImageSliderImages();
     const listItems = [];
@@ -85,8 +118,10 @@ class Post extends React.Component {
     // 100% of the available height and 64.5% of the available width. In the
     // reverse layout the first image is the hero image and it is positioned at
     // the top left. The other three images float to the right of it.
+
     this.props.link.images.forEach((image, index) => {
       // Determine image container class name
+
       if (this.props.link.images.length < 4 && index === 0) {
         imageContainerClassName = styles.singleImageContainer;
       } else if (this.props.isReverseLayout && index === 0) {
@@ -155,11 +190,13 @@ class Post extends React.Component {
             }
           </div>
           <div
-            className={styles.text}
-            dangerouslySetInnerHTML={{ __html: this.state.text }} />
-          <Link className={styles.readMoreLink} to={this.props.link.href}>
-            Read More
-          </Link>
+            className={`${styles.text} ${this.state.textExpanded ? styles.textExpanded : ''}`}
+            dangerouslySetInnerHTML={{ __html: this.state.text }}
+            ref={(el) => { this.text = el; }}
+            style={{ maxHeight: this.state.textExpandedMaxHeight }} />
+          <button className={styles.toggleTextButton} onClick={this.toggleText}>
+            {this.state.textExpanded ? 'Show Less' : 'Read More'}
+          </button>
         </div>
         <ImageSlider
           backgroundColor="black"

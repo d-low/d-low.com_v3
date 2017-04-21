@@ -1,6 +1,7 @@
 @value screen_small_min_width from '../../../styles/base/breakpoints.css';
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
 @value screen_large_min_width from '../../../styles/base/breakpoints.css';
+@value link_color from '../../../styles/base/colors.css';
 
 .container {
   composes: contentItem from '../../../styles/base/common.css';
@@ -213,8 +214,27 @@
  */
 
 .text {
-  margin: 0 auto 4rem auto;
+  margin: 0 auto 3rem auto;
+  max-height: 20rem;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.25s ease-out;
   width: 90%;
+}
+
+.text:after {
+  background: linear-gradient(to bottom, rgba(249, 249, 249, 0), rgba(249, 249, 249, 1) 100%);
+  bottom: 0;
+  content: "";
+  height: 3rem;
+  position: absolute;
+  text-align: right;
+  right: 0;
+  width: 100%;
+}
+
+.textExpanded:after {
+  display: none;
 }
 
 .text p {
@@ -224,12 +244,10 @@
 
 .text p > b:first-child {
   /* 
-   * REVIEW: This color comes from the SASS default styles so we don't have 
-   * access to it here. And we're specifying a color on this element to 
-   * override the default link color when this element is wrapped in an anchor.
-   * So there are some issues to review here...
+   * REVIEW: We're specifying a color on this element to  override the default
+   * link color when this element is wrapped in an anchor.
    */
-  color: #303030;
+  color: link_color;
   display: block;
   font-family: 'Passion One', Helvetica, sans-serif;
   font-size: 1.5rem;
@@ -258,6 +276,11 @@
   }
 }
 
-.readMoreLink {
-  display: none;
+.toggleTextButton {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  margin: 0 auto 2rem auto;
+  text-decoration: underline;
 }
