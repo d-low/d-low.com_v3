@@ -30,7 +30,7 @@ To Do
 ---
 
 - **Required for Launch**:
-  - [ ] Read more link to toggle lengthy text
+  - [x] Read more link to toggle lengthy text
   - [ ] Reduce top margin above `.image-slider__itemsWrapper` on larger screens
   - [ ] What's New/Article Page - Link to an internal anchor:
         e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`

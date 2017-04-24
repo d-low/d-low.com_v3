@@ -222,6 +222,10 @@
   width: 90%;
 }
 
+.alwaysExpandText {
+  max-height: none;
+}
+
 .text:after {
   background: linear-gradient(to bottom, rgba(249, 249, 249, 0), rgba(249, 249, 249, 1) 100%);
   bottom: 0;
@@ -234,6 +238,10 @@
 }
 
 .textExpanded:after {
+  display: none;
+}
+
+.alwaysExpandText:after {
   display: none;
 }
 
@@ -283,4 +291,8 @@
   line-height: 1.25rem;
   margin: 0 auto 2rem auto;
   text-decoration: underline;
+}
+
+.alwaysExpandText + .toggleTextButton {
+  display: none;
 }

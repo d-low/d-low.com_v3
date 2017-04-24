@@ -10,6 +10,7 @@ class Post extends React.Component {
     super();
 
     this.state = {
+      alwaysExpandText: false,
       currentImage: 0,
       maxHeight: null,
       imageSliderVisible: false,
@@ -23,6 +24,11 @@ class Post extends React.Component {
     this.toggleText = this.toggleText.bind(this);
   }
 
+  /**
+   * Once the component has mounted fetch the text copy from the server and set
+   * the state with its value once obtained. This will re-render the component
+   * displaying the post text.
+   */
   componentDidMount() {
     this.props.link
       .text()
@@ -42,14 +48,24 @@ class Post extends React.Component {
    * transitioning on the max-height and we'll lose the animation if we set an
    * arbitrary large value to transition to. i.e. transitioning from 300px to
    * 10000px in 0.25s isn't perceivable, whereas transitioning to 500px is!
-   * @todo Set property, perhaps in state as we'll want to re-render, to not
-   * show the Read More button and cropped effect if the text expanded max
-   * height is with in a yet to be determined threshold.
+   * If the height of the text element is less than 100px longer than the max
+   * height then we always expand the text hiding the expand/collapse UI.
    */
   componentDidUpdate() {
-    if (this.text && this.state.text && !this.textExpandedMaxHeight) {
-      const child = this.text.querySelector('div.eventContainer');
-      this.textExpandedMaxHeight = child.getBoundingClientRect().height;
+    if (this.state.alwaysExpandText) {
+      return;
+    }
+
+    if (this.textEl && this.state.text && !this.textExpandedMaxHeight) {
+      const child = this.textEl.querySelector('div.eventContainer');
+      const textHeight = child.getBoundingClientRect().height;
+      const maxHeight = parseInt(window.getComputedStyle(this.textEl).maxHeight, 10);
+
+      if (textHeight > maxHeight + 100) {
+        this.textExpandedMaxHeight = textHeight;
+      } else {
+        window.setTimeout(() => this.setState({ alwaysExpandText: true }), 0);
+      }
     }
   }
 
@@ -103,10 +119,6 @@ class Post extends React.Component {
     });
   }
 
-  /**
-   * @todo Hide toggle text button if text expanded max height is less than
-   * some yet to be determined threshold.
-   */
   render() {
     const imageSliderImages = this.populateImageSliderImages();
     const listItems = [];
@@ -167,6 +179,14 @@ class Post extends React.Component {
       showMoreImagesClassName = styles.showMoreImagesReverse;
     }
 
+    let textClassName = styles.text;
+
+    if (this.state.textExpanded) {
+      textClassName = `${textClassName} ${styles.textExpanded}`;
+    } else if (this.state.alwaysExpandText) {
+      textClassName = `${textClassName} ${styles.alwaysExpandText}`;
+    }
+
     return (
       <div className={styles.container}>
         <div>
@@ -190,9 +210,9 @@ class Post extends React.Component {
             }
           </div>
           <div
-            className={`${styles.text} ${this.state.textExpanded ? styles.textExpanded : ''}`}
+            className={textClassName}
             dangerouslySetInnerHTML={{ __html: this.state.text }}
-            ref={(el) => { this.text = el; }}
+            ref={(el) => { this.textEl = el; }}
             style={{ maxHeight: this.state.textExpandedMaxHeight }} />
           <button className={styles.toggleTextButton} onClick={this.toggleText}>
             {this.state.textExpanded ? 'Show Less' : 'Read More'}
