@@ -185,20 +185,6 @@
   }
 }
 
-@media screen and screen_medium_min_width {
-  .closeButton {
-    right: 2rem;
-    top: 2rem;
-  }
-}
-
-@media screen and screen_large_min_width {
-  .closeButton {
-    right: 3rem;
-    top: 3rem;
-  }
-}
-
 .closeButtonText {
   color: white;
   display: inline-block;
@@ -218,23 +204,14 @@
 
 @media screen and screen_small_min_width {
   .itemsWrapper {
-    height: calc(100% - 4rem);
-    margin-top: 4rem;
+    height: calc(100% - 1.5rem);
+    margin-top: 1.5rem;
   }
 }
 
 @media screen and screen_medium_min_width {
   .itemsWrapper {
-    height: calc(100% - 5rem);
-    margin-top: 5rem;
     max-height: none;
-  }
-}
-
-@media screen and screen_large_min_width {
-  .itemsWrapper {
-    height: calc(100% - 6rem);
-    margin-top: 6rem;
   }
 }
 
