@@ -1,3 +1,4 @@
+@value screen_small_max_width from '../../../styles/base/breakpoints.css';
 @value screen_small_min_width from '../../../styles/base/breakpoints.css';
 @value screen_medium_min_width from '../../../styles/base/breakpoints.css';
 @value screen_large_min_width from '../../../styles/base/breakpoints.css';
@@ -200,6 +201,14 @@
   margin-top: 3.5rem;
   max-height: 600px;
   position: relative;
+}
+
+@media screen and screen_small_max_width and (orientation: landscape) {
+  .itemsWrapper {
+    height: 100%;
+    margin-top: 0;
+    max-height: none;
+  }
 }
 
 @media screen and screen_small_min_width {

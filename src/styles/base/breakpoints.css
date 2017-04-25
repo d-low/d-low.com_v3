@@ -2,6 +2,7 @@
  * Breakpoints (Bootstrap)
  */
 
+@value screen_small_max_width: (max-width: 767px);
 @value screen_small_min_width: (min-width: 768px);
 @value screen_medium_min_width: (min-width: 992px);
 @value screen_large_min_width: (min-width: 1200px);
