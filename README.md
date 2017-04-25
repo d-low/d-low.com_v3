@@ -62,3 +62,6 @@ To Do
     - [ ] Can we reduce the number of re-rendered components when navigating from home page?
   - Code Review
     - [ ] Use consistent coding style for presentation components definition 
+  - Image Slider
+    - [ ] Cycle to first image from last, and to last from first, with out going through all images (i.e. loop animation) or indicate to user that you're at the beginning/end (e.g. pulse animation left/right)
+    - [ ] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation) 
