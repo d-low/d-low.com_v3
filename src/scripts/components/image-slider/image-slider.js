@@ -129,9 +129,9 @@ class ImageSlider extends React.Component {
    * coded their values, 2 and 4, here.
    */
   handleSwipe(e) {
-    if (e.direction === 2 && this.props.currentImage + 1 < this.props.images.length - 1) {
+    if (e.direction === 2) {
       this.nextImage();
-    } else if (e.direction === 4 && this.props.currentImage - 1 >= 0) {
+    } else if (e.direction === 4) {
       this.prevImage();
     }
   }
