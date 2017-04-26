@@ -3,11 +3,17 @@
 
 .container {
   border-top: 1px solid light_gray;
-  margin: 1.875rem auto 0 auto;
+  margin: 1.875rem auto 5rem auto;
   padding: 1.875rem 0 3.125rem 0;
   width: 80%;
 }
   
+@media screen and screen_small_min_width {
+  .container {
+    margin-bottom: 0;
+  }
+}
+
 .listItemNav { 
   text-align: center;
 }
@@ -21,7 +27,7 @@
 .listItemLink:visited,
 .listItemLink:hover,
 .listItemLink:active { 
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .listItemText {

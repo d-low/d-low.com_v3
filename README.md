@@ -36,7 +36,9 @@ To Do
   - [x] Too much top margin above `.image-slider__itemsWrapper` on small screens in landscape view
   - [ ] What's New/Article Page - Link to an internal anchor:
         e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`
-  - [ ] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
+  - [x] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
+    - [ ] Fix sticky hover on mobile after clicking on link
+    - [ ] More elegant side fade out styles, or remove when link hover/active
   - [ ] Webpack production build
   - [ ] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
   - [ ] Use minimal .htaccess to enable CORS etc.
@@ -50,10 +52,12 @@ To Do
         - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
     - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
         run the app.
+    - [ ] Webpack doesn't reload CSS in site when updated!
   - CSS
     - [ ] Use consistent heading styles 
     - [ ] Explore easing algorithms for home page down arrow scroll down animation timing
       - See: https://github.com/danro/easing-js/blob/master/easing.js
+    - [ ] Use single z_index.css file for all z-index on site
   - [ ] Fade in background image issues:
     - [ ] Clear image cache after X images inserted?
     - [ ] Previously loaded images aren't displayed immediately

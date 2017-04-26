@@ -1,123 +1,102 @@
 @value border_gray from '../../../styles/base/colors.css';
+@value header_gray from '../../../styles/base/colors.css';
 @value screen_small_min_width, screen_medium_min_width from '../../../styles/base/breakpoints.css';
 
-.button {
-  height: 30px;
-  position: absolute;
-  top: 5px;
-  width: 30px;
-}
-
-.actionButton {
-  composes: button;
-  left: 5px;
-  z-index: 50;
-}
-
-@media screen and screen_small_min_width {
-  .actionButton {
-    display: none;
-  }
-}
-
-.actionButtonIcon { 
-  composes: iconMenu from '../../../styles/base/icons/icons.css';
-  composes: header-gray from '../../../styles/base/colors.css';
-}
-
-.closeButton {
-  composes: button;
-  display: none;
-  right: 5px;
-  z-index: 150;
-}
-
-.closeButtonExpanded {
-  composes: closeButton;
+.container {
+  background-image: linear-gradient(to bottom, rgba(153, 153, 153, 1), rgba(255, 255, 255, 1));
+  border-top: 1px solid header_gray;
+  bottom: 0;
   display: block;
-}
-
-@media screen and screen_small_min_width {
-  .closeButton {
-    display: none;
-  }
-}
-
-.closeButtonIcon {
-  composes: iconClose from '../../../styles/base/icons/icons.css';
-}
-
-.links {
-  background-image: linear-gradient(to bottom, rgba(153, 153, 153, 0.95), rgba(255, 255, 255, 0.95));
-  display: block;
+  height: 5rem;
+  left: 0;
   line-height: 5rem;
-  list-style: none;
-  min-height: 100vh;
-  position: absolute;
-  text-align: left;
-  transform: translateX(125%);
-  transition: transform .25s ease-in;
-  top: 0;
+  min-height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: fixed;
+  text-align: center;
   width: 100%;
   z-index: 100;
 }
 
-.linksExpanded {
-  composes: links;
-  transform: translateX(0);
+.container::before, 
+.container::after {
+  background-image: linear-gradient(to bottom, rgba(153, 153, 153, 0.75), rgba(255, 255, 255, 0.75));
+  bottom: 0;
+  content: "";
+  height: calc(5rem - 1px);
+  position: fixed;
+  transition: opacity 500ms ease;
+  width: 2rem;
+  z-index: 150;
+}
+
+.container:before {  
+  left: 0;
+}
+
+.container:after {
+  right: 0;
 }
 
 @media screen and screen_small_min_width {
-  .links {
+  .container {
     background-image: linear-gradient(to bottom, rgba(153, 153, 153, 0.75), rgba(255, 255, 255, 0.75));
     border-bottom: 1px solid border_gray;
-    display: block;
-    height: 5rem;
-    left: 0;
-    min-height: auto;
-    opacity: 1;
-    overflow-x: auto;
-    overflow-y: hidden;
+    border-top: 0 none;
+    bottom: auto;
     padding: 0 3rem 0 3rem;
-    position: fixed;
-    text-align: center;
-    transform: translateX(0);
-    transition: none;
+    top: 0;
+  }
+
+  .container::before,
+  .container::after {
+    display: none;
   }
 }
 
 @media screen and screen_medium_min_width {
-  .links {
+  .container {
     padding: 0 5rem 0 5rem;
   }
 }
 
-.link {
-  border-bottom: 1px solid border_gray;
-  display: block;
-  padding: 0 0.25rem 0 0.25rem;
+.links {
+  display: inline-block;
+  padding: 0 1rem 0 1rem;
+  white-space: nowrap;
 }
 
 @media screen and screen_small_min_width {
-  .link {
-    border-bottom: 0 none;
-    border-left: 1px solid border_gray;
-    display: inline-block;
-    height: 100%;
-    min-width: 14.28%;
+  .links {
     padding: 0;
+    width: 100%;
   }
 }
 
+.link {
+  border-bottom: 0 none;
+  border-left: 1px solid border_gray;
+  display: inline-block;
+  height: 100%;
+  min-width: 7rem;
+  padding: 0;
+}
+
+.link:last-child {
+  border-right: 1px solid border_gray;
+}
+
 @media screen and screen_small_min_width {
-  .link:last-child {
-    border-right: 1px solid border_gray;
+  .link { 
+    min-width: 14.28%;
   }
 }
 
 .linkText {
   display: inline-block;
-  padding-left: 1rem;
+  height: 100%;
+  padding: 0 1rem 0 1rem;
   transition: background-color 500ms ease;
   width: 100%;
 }
@@ -126,10 +105,4 @@
 .linkText:active,
 .linkText:focus {
   background-color: white;
-}
-
-@media screen and screen_small_min_width {
-  .linkText {
-    padding: 0 1rem 0 1rem;
-  }
 }
