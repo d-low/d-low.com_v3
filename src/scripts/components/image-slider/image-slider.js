@@ -36,6 +36,10 @@ class ImageSlider extends React.Component {
     this.items = null;
     this.item = [];
 
+    // Flag used to indicate that the keyup event handler is already bound so
+    // we avoid binding it over and over again.
+    this.keyupBound = false;
+
     // Keep track of the translate X value of the items so that the proper item
     // is slid into view.
     this.translateX = '0';
@@ -68,12 +72,15 @@ class ImageSlider extends React.Component {
   /**
    * @description After rendering, if the component is visible, the add an
    * event listener for the keyup event on the document to handle keyboard
-   * navigation.
+   * navigation, if we haven't already done so. And similarly, remove the keyup
+   * event handler when the component is no longer visible if we've added one.
    */
   componentDidUpdate() {
-    if (this.props.visible) {
+    if (this.props.visible && !this.keyupBound) {
+      this.keyupBound = true;
       document.addEventListener('keyup', this.handleKeyUp);
-    } else {
+    } else if (!this.props.visible && this.keyupBound) {
+      this.keyupBound = false;
       document.removeEventListener('keyup', this.handleKeyUp);
     }
   }
