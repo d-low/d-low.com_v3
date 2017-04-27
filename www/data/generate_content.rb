@@ -57,10 +57,12 @@ def directory_hash(path, name=nil)
 
     images = Dir.glob(post_path + '/*.*').
               select { |f| f =~ /\.jpg$/i }.
+              sort_by { |f| File.mtime(f) }.
               map! { |f| File.basename(f) }
 
     thumbnails = Dir.glob(post_path + '/thumbnails/*.*').
               select { |f| f =~ /\.jpg$/i }.
+              sort_by { |f| File.mtime(f) }.
               map! { |f| File.basename(f) }
 
     # Rather than duplicating the thumbnail names, which takes up many KB and
