@@ -12,7 +12,6 @@ import getPostListingData from './actions/get-post-listing-data.js';
 import HomeView from './containers/home-view.js';
 import ListingView from './containers/listing-view.js';
 import PostListingView from './containers/post-listing-view.js';
-import PostView from './containers/post-view.js';
 
 import Utils from './utils.js';
 
@@ -43,15 +42,10 @@ const onPostListingEnter = function onPostListingEnter(nextState, replace, done)
     });
 };
 
-const onPostEnter = function onPostEnter() {
-  // TODO: ...
-};
-
 export default (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={HomeView} onEnter={onHomeEnter} />
-      <Route path="/:place/:year/:season/:post" component={PostView} onEnter={onPostEnter} />
       <Route path="/04-Central_America/:year" component={PostListingView} onEnter={onPostListingEnter} />
       <Route path="/02-South_America/:month" component={PostListingView} onEnter={onPostListingEnter} />
       <Route path="/03-CDT/:month" component={PostListingView} onEnter={onPostListingEnter} />

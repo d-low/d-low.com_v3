@@ -167,14 +167,20 @@ export const getLinks = function getLinks(
   if (includeMostRecent && window.Dlow.mostRecentPostPath) {
     let mostRecentNode = window.Dlow.content || window.Dlow.Content;
 
+    // TEMP: Use different most recent path to test internal anchors
+    // 05-Colorado/11-Colorado-2016/03-Summer/03-Pawnee_Buchanan_Loop-Jul_30_2016';
+
     window.Dlow.mostRecentPostPath.split('/').forEach((part) => {
       mostRecentNode = mostRecentNode[part];
     });
 
+    // TEMP: Replace last "/" with an "#" so we can link to an internal hash.
+    // TODO: When generate_content.rb adds a "#" then this can be removed.
+    // SEE: http://stackoverflow.com/questions/5497318/replace-last-occurrence-of-character-in-string
     if (mostRecentNode) {
       links.splice(0, 0, {
         name: 'What\'s new?',
-        href: `/${window.Dlow.mostRecentPostPath}`,
+        href: `/${window.Dlow.mostRecentPostPath.replace(/\/([^/]*)$/, '#$1')}`,
         image: findRandomImage(mostRecentNode),
       });
     }

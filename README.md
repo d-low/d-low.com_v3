@@ -34,7 +34,7 @@ To Do
   - [x] Reduce top margin above `.image-slider__itemsWrapper` on larger screens
   - [x] Only bind key up event handlers in ImageSlider component once, on initial update.
   - [x] Too much top margin above `.image-slider__itemsWrapper` on small screens in landscape view
-  - [ ] What's New/Article Page - Link to an internal anchor:
+  - [x] What's New/Article Page - Link to an internal anchor:
         e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`
   - [x] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
     - [ ] Fix sticky hover on mobile after clicking on link

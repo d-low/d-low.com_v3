@@ -66,6 +66,11 @@ class Post extends React.Component {
       } else {
         window.setTimeout(() => this.setState({ alwaysExpandText: true }), 0);
       }
+
+      // Inform parent component that we've been rendered so that once all
+      // posts are available if a specific one was requested it can be scrolled
+      // into view.
+      this.props.onPostRendered();
     }
   }
 
@@ -240,6 +245,7 @@ Post.propTypes = {
     thumbnails: React.PropTypes.arrayOf(React.PropTypes.string),
   }).isRequired,
   isReverseLayout: React.PropTypes.bool,
+  onPostRendered: React.PropTypes.func.isRequired,
 };
 
 Post.defaultProps = {
