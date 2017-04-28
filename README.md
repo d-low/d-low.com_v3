@@ -38,6 +38,8 @@ To Do
         e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`
   - [x] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
     - [ ] Fix sticky hover on mobile after clicking on link
+      - http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793
+      - https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/
     - [ ] More elegant side fade out styles, or remove when link hover/active
   - [ ] Webpack production build
   - [ ] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
