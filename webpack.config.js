@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -14,7 +15,7 @@ const config = {
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'www'),
+    path: path.join(__dirname, 'build'),
   },
   devtool: 'source-map',
   module: {
@@ -80,6 +81,10 @@ const config = {
     new ExtractTextPlugin({
       filename: '[name].css',
       ignoreOrder: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      title: 'd-low.com - The website of Mike DiLorenzo: Hikes and Travels in Colorado, Latin America, and on the CDT',
     }),
     new webpack.ProvidePlugin({
       Promise: 'es6-promise',

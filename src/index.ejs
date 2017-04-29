@@ -2,19 +2,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,maximum-scale=1,minimum-scale=1">
-    <link rel="stylesheet" href="/app.css" />
-    <title>
-      d-low.com - The website of Mike DiLorenzo: Hikes and Travels in Colorado, Latin America, and on the CDT
-    </title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <main class="main-container js-main-container">
     </main>
     <script>
-      // TODO: Remove when new generate_content.rb used on d-low.com!
+      // TODO: Remove when new generate_content.rb is used on d-low.com!
       window.Dlow = window.Dlow || {};
     </script>
     <script src="http://www.d-low.com/data/content.js"></script>
-    <script src="/app.js"></script>
   </body>
 </html
