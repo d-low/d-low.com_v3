@@ -48,7 +48,7 @@ To Do
 - **Future Work**:  
   - Admin
     - [ ] Upgrade to React 15.5.0
-    - [ ] Generate index.html
+    - [x] Generate index.html
       - See: 
         - https://www.npmjs.com/package/html-webpack-plugin
         - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
