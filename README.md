@@ -30,24 +30,18 @@ To Do
 ---
 
 - **Required for Launch**:
-  - [x] Read more link to toggle lengthy text
-  - [x] Reduce top margin above `.image-slider__itemsWrapper` on larger screens
-  - [x] Only bind key up event handlers in ImageSlider component once, on initial update.
-  - [x] Too much top margin above `.image-slider__itemsWrapper` on small screens in landscape view
-  - [x] What's New/Article Page - Link to an internal anchor:
-        e.g.: `/05-Colorado/11-Colorado-2016/04-Fall#02-The_Walkway-Nov_25_2016`
   - [x] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
     - [ ] Fix sticky hover on mobile after clicking on link
       - http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793
       - https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/
     - [ ] More elegant side fade out styles, or remove when link hover/active
-  - [x] Webpack production build
   - [ ] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
    - Use a solution similar to how `$rootScope.$on('$locationChangeStart', ...)` is handled
      in [`mobile UI`](http://d20h79ce57am7k.cloudfront.net/fed06fe9da4f890fd3cc20be7fc4059ef472eabc/scripts/app.js)?
    - Use the [`onEnter()`](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md#onenternextstate-replace-callback) event to redirect from `#content/05-Colorado/12-Colorado-2017/02-Spring/01-Spring_Break_In_New_Mexico-Mar_25_2017` to `/05-Colorado/12-Colorado-2017/02-Spring/01-Spring_Break_In_New_Mexico-Mar_25_2017`.
   - [ ] Use minimal .htaccess to enable CORS etc.
     - See: https://gist.github.com/davemackintosh/8ac35fff747dbf2c95e1
+  - [ ] Sort images by file name in `generate_content.rb`
   
 - **Future Work**:  
   - Admin
