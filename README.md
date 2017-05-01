@@ -41,7 +41,7 @@ To Do
       - http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793
       - https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/
     - [ ] More elegant side fade out styles, or remove when link hover/active
-  - [ ] Webpack production build
+  - [x] Webpack production build
   - [ ] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
   - [ ] Use minimal .htaccess to enable CORS etc.
   

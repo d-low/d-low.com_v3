@@ -2,23 +2,24 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const isProd = process.argv.indexOf('-p') !== -1;
 
 const config = {
   entry: {
     app: './src/scripts/main.js',
   },
   output: {
-    filename: '[name].js',
+    filename: isProd ? '[name].[chunkhash:8].js' : '[name].js',
     path: path.join(__dirname, 'build'),
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.js$/, 
+        test: /\.js$/,
         enforce: 'pre',
         include: __dirname + '/src/scripts',
-        loader: 'eslint-loader', 
+        loader: 'eslint-loader',
         exclude: /node_modules/,
         options: {
           configFile: './.eslintrc',
@@ -28,9 +29,9 @@ const config = {
         test: /\.js$/,
         include: __dirname + '/src/scripts',
         loader: 'babel-loader',
-      }, 
-      { 
-        test: /\.css$/, 
+      },
+      {
+        test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -48,32 +49,32 @@ const config = {
             },
           ],
         }),
-      }, 
+      },
       {
         test: /\.html/,
         loader: 'html-loader',
-      }, 
+      },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
-          limit: 50000,
+          name: isProd ? 'fonts/[name].[hash:8].[ext]' : 'fonts/[name].[ext]',
         },
-      }, 
+      },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif)$/i,
         loader: 'file-loader',
         options: {
           hash: 'sha512',
           digest: 'hex',
-          name: '[hash].[ext]',
+          name: isProd ? 'images/[name].[hash:8].[ext]' : 'images/[name].[ext]',
         },
       },
     ],
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name].css',
+      filename: isProd ? '[name].[contenthash:8].css' : '[name].css',
       ignoreOrder: true,
     }),
     new HtmlWebpackPlugin({

@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/scripts/main.js",
   "scripts": {
-    "build": "rm build/* && webpack -p --config webpack.config.prod.js",
-    "start": "webpack-dev-server --debug --output-pathinfo --content-base build/ --inline --hot --host 0.0.0.0 --history-api-fallback",
+    "build": "(rm -rf build/* || exit 0) && webpack -p",
+    "start": "(rm -rf build/* || exit 0) && webpack-dev-server --output-pathinfo --content-base build/ --inline --hot --host 0.0.0.0 --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
