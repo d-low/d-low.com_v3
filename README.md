@@ -43,7 +43,11 @@ To Do
     - [ ] More elegant side fade out styles, or remove when link hover/active
   - [x] Webpack production build
   - [ ] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
+   - Use a solution similar to how `$rootScope.$on('$locationChangeStart', ...)` is handled
+     in [`mobile UI`](http://d20h79ce57am7k.cloudfront.net/fed06fe9da4f890fd3cc20be7fc4059ef472eabc/scripts/app.js)?
+   - Use the [`onEnter()`](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md#onenternextstate-replace-callback) event to redirect from `#content/05-Colorado/12-Colorado-2017/02-Spring/01-Spring_Break_In_New_Mexico-Mar_25_2017` to `/05-Colorado/12-Colorado-2017/02-Spring/01-Spring_Break_In_New_Mexico-Mar_25_2017`.
   - [ ] Use minimal .htaccess to enable CORS etc.
+    - See: https://gist.github.com/davemackintosh/8ac35fff747dbf2c95e1
   
 - **Future Work**:  
   - Admin
