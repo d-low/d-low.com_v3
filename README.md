@@ -71,3 +71,4 @@ To Do
   - Image Slider
     - [ ] Cycle to first image from last, and to last from first, with out going through all images (i.e. loop animation) or indicate to user that you're at the beginning/end (e.g. pulse animation left/right)
     - [ ] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation) 
+    - [ ] Display loading indicator if image not loaded in X sec after navigating to image
