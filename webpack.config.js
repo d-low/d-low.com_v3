@@ -11,6 +11,7 @@ const config = {
   output: {
     filename: isProd ? '[name].[chunkhash:8].js' : '[name].js',
     path: path.join(__dirname, 'build'),
+    publicPath: '/',
   },
   devtool: 'source-map',
   module: {
