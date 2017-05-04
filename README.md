@@ -29,12 +29,17 @@ To Do
 ---
 
 - **Bugs**:
+  - Mobile Rendering
+    - [ ] On Firefox mobile the tiles on the home page aren't rendered properly
+    - [ ] On Safari mobile the home page hero image doesn't cover the viewport properly as seen on an iPhone 5
+    - [ ] Need to account for address bar in browsers and show down arrow on home page above the fold
   - Mobile site header 
-    - [ ] Fix sticky hover on mobile after clicking on link
-      - http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793
-      - https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/
+    - [ ] Fix sticky hover on mobile after clicking on link. Solutions discussed [here](http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793) and [here](https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/)
+    - [ ] Site header can be shorter (see Stitcher's playbar for an example)
     - [ ] More elegant side fade out styles, or remove when link hover/active
-  - [ ] Sort images by file name in `generate_content.rb`
+  - `generate_content.rb`
+    - [ ] Sort images by file name
+    - [ ] Sort top level links by filen name
   
 - **Future Work**:  
   - Admin
