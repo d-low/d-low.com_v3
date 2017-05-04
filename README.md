@@ -20,38 +20,26 @@ fourth iteration is hosted in the _v3_ repository in GitHub.
  
 Setup
 ---
- 
-```
-npm install
-npm run watch 
-```
+
+- Install dependencies: `npm install`
+- Run locally: `npm start`
+- Build distribution: `npm run build`
 
 To Do
 ---
 
-- **Required for Launch**:
-  - [x] Use scrollable site header with right fade instead of a [hamburger](https://uxplanet.org/great-alternatives-to-hamburger-menus-d4c76d9414dd) in mobile view
+- **Bugs**:
+  - Mobile site header 
     - [ ] Fix sticky hover on mobile after clicking on link
       - http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793
       - https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/
     - [ ] More elegant side fade out styles, or remove when link hover/active
-  - [x] Handle old "#content/" routes to remap Backbone routes, _perhaps in Apache config_?
-   - Use a solution similar to how `$rootScope.$on('$locationChangeStart', ...)` is handled
-     in [`mobile UI`](http://d20h79ce57am7k.cloudfront.net/fed06fe9da4f890fd3cc20be7fc4059ef472eabc/scripts/app.js)?
-   - Use the [`onEnter()`](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md#onenternextstate-replace-callback) event to redirect from `#content/05-Colorado/12-Colorado-2017/02-Spring/01-Spring_Break_In_New_Mexico-Mar_25_2017` to `/05-Colorado/12-Colorado-2017/02-Spring/01-Spring_Break_In_New_Mexico-Mar_25_2017`.
-  - [ ] Use minimal .htaccess to enable CORS etc.
-    - See: https://gist.github.com/davemackintosh/8ac35fff747dbf2c95e1
   - [ ] Sort images by file name in `generate_content.rb`
   
 - **Future Work**:  
   - Admin
     - [ ] Upgrade to React 15.5.0
-    - [x] Generate index.html
-      - See: 
-        - https://www.npmjs.com/package/html-webpack-plugin
-        - https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html
-    - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded 
-        run the app.
+    - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded run the app.
     - [ ] Webpack doesn't reload CSS in site when updated!
   - CSS
     - [ ] Use consistent heading styles 
@@ -69,4 +57,4 @@ To Do
   - Image Slider
     - [ ] Cycle to first image from last, and to last from first, with out going through all images (i.e. loop animation) or indicate to user that you're at the beginning/end (e.g. pulse animation left/right)
     - [ ] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation) 
-    - [ ] Display loading indicator if image not loaded in X sec after navigating to image
+    - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
