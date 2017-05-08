@@ -197,8 +197,8 @@ class Post extends React.Component {
         <div>
           <h3 className={styles.title}>{this.props.link.name}</h3>
           <h4 className={styles.date}>{this.props.link.date}</h4>
-          <div className={`${styles.imagesContainer} clearfix`}>
-            <ul>
+          <div className={styles.imagesContainer}>
+            <ul className={`${styles.images} clearfix`}>
               {listItems}
             </ul>
             { this.props.link.images.length > 4 &&
