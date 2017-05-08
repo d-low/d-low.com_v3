@@ -30,19 +30,20 @@ To Do
 
 - **Bugs**:
   - Rendering
-    - [ ] On Firefox desktop and mobile the tiles on the home page aren't rendered properly
+    - [x] On Firefox desktop and mobile the tiles on the home page aren't rendered properly
       - This is caused by setting `display: flex;` on the parent `<ul>`. Can we still have the items 
         rendered properly and use the flex blox layout? Or do we need to resort to the technique
         seen [here](http://d-low.com/demos/inline-block-with-expanded-item-bottom-margin.html)?
     - [ ] On Safari mobile the home page hero image doesn't cover the viewport properly as seen on an iPhone 5
     - [ ] Need to account for address bar in mobile browsers and show down arrow on home page above the fold
+    - [ ] Site doesn't render on IE 11.
   - Mobile site header 
     - [ ] Fix sticky hover on mobile after clicking on link. Solutions discussed [here](http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793) and [here](https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/)
     - [ ] Site header can be shorter (see Stitcher's playbar for an example)
     - [ ] More elegant side fade out styles, or remove when link hover/active
   - `generate_content.rb`
-    - [ ] Sort images by file name
-    - [ ] Sort top level links by filen name
+  - [ ] Sort images by file name
+  - [ ] Sort top level links by filen name
   
 - **Future Work**:  
   - Admin
