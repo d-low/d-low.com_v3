@@ -44,7 +44,12 @@
 
 .imageHomePage {
   composes: image;
-  background-attachment: fixed;
+}
+
+@media screen and screen_small_min_width {
+  .imageHomePage {
+    background-attachment: fixed;
+  }
 }
 
 .imageContentPage {
