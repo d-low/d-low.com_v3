@@ -39,8 +39,8 @@ To Do
     - [ ] Site doesn't render on IE 11.
   - Mobile site header 
     - [ ] Fix sticky hover on mobile after clicking on link. Solutions discussed [here](http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793) and [here](https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/)
-    - [ ] Site header can be shorter (see Stitcher's playbar for an example)
-    - [ ] More elegant side fade out styles, or remove when link hover/active
+    - [x] Site header can be shorter (see Stitcher's playbar for an example)
+    - [ ] Show fixed bottom header when scrolling up, hide when scrolling down.
   - `generate_content.rb`
     - [ ] Sort images by file name
     - [ ] Sort top level links by file name

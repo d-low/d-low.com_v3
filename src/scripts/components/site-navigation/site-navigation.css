@@ -7,9 +7,9 @@
   border-top: 1px solid header_gray;
   bottom: 0;
   display: block;
-  height: 5rem;
+  height: 4rem;
   left: 0;
-  line-height: 5rem;
+  line-height: 4rem;
   min-height: auto;
   overflow-x: auto;
   overflow-y: hidden;
@@ -19,25 +19,6 @@
   z-index: 100;
 }
 
-.container::before, 
-.container::after {
-  background-image: linear-gradient(to bottom, rgba(153, 153, 153, 0.75), rgba(255, 255, 255, 0.75));
-  bottom: 0;
-  content: "";
-  height: calc(5rem - 1px);
-  position: fixed;
-  transition: opacity 500ms ease;
-  width: 2rem;
-  z-index: 150;
-}
-
-.container:before {  
-  left: 0;
-}
-
-.container:after {
-  right: 0;
-}
 
 @media screen and screen_small_min_width {
   .container {
@@ -45,6 +26,8 @@
     border-bottom: 1px solid border_gray;
     border-top: 0 none;
     bottom: auto;
+    height: 5rem;
+    line-height: 5rem;
     padding: 0 3rem 0 3rem;
     top: 0;
   }
@@ -63,7 +46,7 @@
 
 .links {
   display: inline-block;
-  padding: 0 1rem 0 1rem;
+  padding: 0 0.5rem 0 0.5rem;
   white-space: nowrap;
 }
 
