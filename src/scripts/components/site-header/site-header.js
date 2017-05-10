@@ -16,10 +16,6 @@ class SiteHeader extends React.Component {
   constructor() {
     super();
 
-    this.didScroll = false;
-    this.scrollInterval = null;
-    this.scrollStopTimeout = null;
-
     this.checkIfScrolled = this.checkIfScrolled.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.handleScrollStop = this.handleScrollStop.bind(this);
