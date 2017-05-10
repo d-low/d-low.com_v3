@@ -84,6 +84,20 @@ const getPostImages = function getPostImages(path) {
     images.push(`http://www.d-low.com/data${path}/${img}`);
   });
 
+  // Sort images in ascending order so they're displayed in chronological order
+  images.sort((a, b) => {
+    const aLower = a.toLowerCase();
+    const bLower = b.toLowerCase();
+
+    if (aLower < bLower) {
+      return -1;
+    } else if (aLower > bLower) {
+      return 1;
+    }
+
+    return 0;
+  });
+
   return images;
 };
 
@@ -105,6 +119,20 @@ const getPostThumbnails = function getPostThumbnails(path, imageToExclude = '') 
     if (!imageToExclude.match(img)) {
       thumbnails.push(`http://www.d-low.com/data${path}/thumbnails/${img}`);
     }
+  });
+
+  // Sort images in ascending order so they're displayed in chronological order
+  thumbnails.sort((a, b) => {
+    const aLower = a.toLowerCase();
+    const bLower = b.toLowerCase();
+
+    if (aLower < bLower) {
+      return -1;
+    } else if (aLower > bLower) {
+      return 1;
+    }
+
+    return 0;
   });
 
   return thumbnails;
@@ -156,6 +184,21 @@ export const getLinks = function getLinks(
     });
   });
 
+  // First sort links in ascending order by href
+  links.sort((a, b) => {
+    const aHref = a.href.toLowerCase();
+    const bHref = b.href.toLowerCase();
+
+    if (aHref < bHref) {
+      return -1;
+    } else if (aHref > bHref) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  // Then reverse if requested
   if (descending === true) {
     links.reverse();
   }

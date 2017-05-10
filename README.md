@@ -42,8 +42,8 @@ To Do
     - [x] Site header can be shorter (see Stitcher's playbar for an example)
     - [ ] Show fixed bottom header when scrolling up, hide when scrolling down.
   - `generate_content.rb`
-    - [ ] Sort images by file name
-    - [ ] Sort top level links by file name
+    - [x] Sort images by file name
+    - [x] Sort top level links by file name
   
 - **Future Work**:  
   - Admin
