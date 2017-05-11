@@ -3,7 +3,7 @@
 
 .container {
   border-top: 1px solid light_gray;
-  margin: 1.875rem auto 4rem auto;
+  margin: 1.875rem auto 0 auto;
   padding: 1.875rem 0 3.125rem 0;
   width: 80%;
 }

@@ -22,13 +22,24 @@ function scrollEventsHandler(WrappedComponent) {
       this.scrollInterval = null;
       this.scrollStopTimeout = null;
 
+      this.scrollDirection = undefined;
+      this.prevPageYOffset = undefined;
+
       this.checkIfScrolled = this.checkIfScrolled.bind(this);
       this.handleScroll = this.handleScroll.bind(this);
       this.handleScrollStop = this.handleScrollStop.bind(this);
+
+      this.SCROLL_DIRECTION = {
+        DOWN: 'DOWN',
+        UP: 'UP',
+      };
     }
 
     componentDidMount() {
-      super.componentDidMount();
+      if (typeof super.componentDidMount === 'function') {
+        super.componentDidMount();
+      }
+
       window.addEventListener('scroll', this.handleScroll);
     }
 
@@ -46,6 +57,15 @@ function scrollEventsHandler(WrappedComponent) {
         this.removeEventListener();
         return;
       }
+
+      if (this.prevPageYOffset < window.pageYOffset) {
+        this.scrollDirection = this.SCROLL_DIRECTION.DOWN;
+      } else if (this.prevPageYOffset > window.pageYOffset) {
+        this.scrollDirection = this.SCROLL_DIRECTION.UP;
+      }
+
+      this.prevPageYOffset = window.pageYOffset;
+
       this.didScroll = true;
 
       if (!this.scrollInterval) {
