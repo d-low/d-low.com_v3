@@ -11,23 +11,34 @@ class SiteNavigation extends React.Component {
     super();
 
     this.ignoreScroll = false;
+    this.prevLocation = {};
+
     this.state = {
       isHidden: true,
     };
 
     this.linkClick = this.linkClick.bind(this);
 
-    // Scroll events are ignored after the URL changes (via History API) so
-    // that we don't accidentally show the site navigation component again
-    // after hiding it when one of it's links is clicked and the page is
-    // scrolled to the top before rendering the new content.
+    // When the URL changes (via the history API) hide the site navigation
+    // component, it may already be hidden, and ignore scroll events until 2.5s
+    // after the URL changes to allow for the page to be scrolled up and for
+    // React to re-render. If this wasn't done then the site navigation
+    // component might be hidden in linkClick() only to be shown again when
+    // scrolling up right after the URL changes and before the new page is
+    // rendered.
 
     browserHistory.listen((location) => {
-      window.setTimeout(() => {
-        if (location.path !== this.prevLocation.path) {
-          this.ignoreScroll = false;
-        }
-      }, 2500);
+      if (this.prevLocation.path !== location.path) {
+        this.setState({
+          isHidden: true,
+        });
+
+        this.ignoreScroll = true;
+
+        window.setTimeout(() => { this.ignoreScroll = false; }, 2500);
+
+        this.prevLocation = location;
+      }
     });
   }
 
