@@ -4,6 +4,24 @@
  */
 const Utils = {
   /**
+   * @description Parse a URI using the regex noted in RFC3986 and return an
+   * object with fields for each of it's components.
+   * @see https://tools.ietf.org/html/rfc3986#appendix-B
+   */
+  parseUri: function parseUri(url) {
+    const parsedUrl = String(url).match(
+      /^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/);
+
+    return {
+      scheme: parsedUrl[2],
+      authority: parsedUrl[4],
+      path: parsedUrl[5],
+      query: parsedUrl[7],
+      fragment: parsedUrl[9],
+    };
+  },
+
+  /**
    * @description Scroll to requested Y position using easing transition and
    * request animation frame.
    * @see http://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#26808520
