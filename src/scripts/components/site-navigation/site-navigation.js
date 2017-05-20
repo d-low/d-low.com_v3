@@ -1,7 +1,8 @@
-/* eslint class-methods-use-this: 0 */
+/* eslint no-console: 0, class-methods-use-this: 0 */
 
 import React from 'react';
 import { browserHistory, Link } from 'react-router';
+import Utils from '../../utils.js';
 import scrollEventsHandler from '../scroll-events-handler/scroll-events-handler.js';
 import styles from './site-navigation.css';
 
@@ -9,32 +10,46 @@ class SiteNavigation extends React.Component {
   constructor() {
     super();
 
+    this.ignoreScroll = false;
     this.state = {
       isHidden: true,
     };
 
     this.linkClick = this.linkClick.bind(this);
+
+    // Scroll events are ignored after the URL changes (via History API) so
+    // that we don't accidentally show the site navigation component again
+    // after hiding it when one of it's links is clicked and the page is
+    // scrolled to the top before rendering the new content.
+
+    browserHistory.listen((location) => {
+      window.setTimeout(() => {
+        if (location.path !== this.prevLocation.path) {
+          this.ignoreScroll = false;
+        }
+      }, 2500);
+    });
   }
 
   linkClick(e) {
     e.preventDefault();
-    const location = e.target.href;
 
-    // TODO: After updating the browser history the page is scrolled up and we
-    // may show ourself again as a result of that scroll. We don't want to do
-    // this. The net effect is to hide the nav bar, scroll up, navigate to a new
-    // page and show it again. We do not want to show it again. To resolve this
-    // if seems like an ignoreScroll flag should be set when a link is clicked
-    // and then that flat should be cleared when the page navigation completes.
+    this.prevLocation = Utils.parseUri(window.location);
+    this.newLocation = Utils.parseUri(e.target.href);
+    this.ignoreScroll = true;
 
     this.setState({
       isHidden: true,
     }, () => window.setTimeout(() => {
-      browserHistory.push(location);
+      browserHistory.push(this.newLocation.path);
     }, 250));
   }
 
   scroll() {
+    if (this.ignoreScroll) {
+      return;
+    }
+
     if (this.scrollDirection === this.SCROLL_DIRECTION.UP) {
       this.setState({ isHidden: false });
     } else if (this.scrollDirection === this.SCROLL_DIRECTION.DOWN) {
