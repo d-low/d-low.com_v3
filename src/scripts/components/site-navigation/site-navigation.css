@@ -108,7 +108,6 @@
   }
 }
 
-
 /* SEE https://bugzilla.mozilla.org/show_bug.cgi?id=1035774#c9 */
 @media (-moz-touch-enabled: 1), (pointer: coarse) {
   .linkText:active {
