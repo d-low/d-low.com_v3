@@ -30,23 +30,15 @@ To Do
 
 - **Bugs**:
   - Rendering
-    - [x] On Firefox desktop and mobile the tiles on the home page aren't rendered properly
-      - This is caused by setting `display: flex;` on the parent `<ul>`. Can we still have the items 
-        rendered properly and use the flex blox layout? Or do we need to resort to the technique
-        seen [here](http://d-low.com/demos/inline-block-with-expanded-item-bottom-margin.html)?
-    - [x] On Safari mobile the home page hero image doesn't cover the viewport properly as seen on an iPhone 5
-    - [x] Need to account for address bar in mobile browsers and show down arrow on home page above the fold
     - [ ] Site doesn't render on IE 11.
   - Mobile site header 
-    - [ ] Fix sticky hover on mobile after clicking on link. Solutions discussed [here](http://stackoverflow.com/questions/2741816/is-it-possible-to-force-ignore-the-hover-pseudoclass-for-iphone-ipad-users/27680370#40617793) and [here](https://www.jonathanfielding.com/an-introduction-to-interaction-media-features/)
-    - [x] Scroll to start position when route changes and component hidden
-    - [x] Site header can be shorter (see Stitcher's playbar for an example)
-    - [x] Show fixed bottom header when scrolling up, hide when scrolling down.
-  - `generate_content.rb`
-    - [x] Sort images by file name
-    - [x] Sort top level links by file name
+    - [ ] Scroll to start position when route changes and component hidden
   
 - **Future Work**:  
+  - Image Slider
+    - [ ] Cycle to first image from last, and to last from first, with out going through all images (i.e. loop animation) or indicate to user that you're at the begining/end (e.g. pulse animation left/right)
+    - [ ] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation) 
+    - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
   - Admin
     - [ ] Upgrade to React 15.5.0
     - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded run the app.
@@ -64,7 +56,3 @@ To Do
     - [ ] Can we reduce the number of re-rendered components when navigating from home page?
   - Code Review
     - [ ] Use consistent coding style for presentation components definition 
-  - Image Slider
-    - [ ] Cycle to first image from last, and to last from first, with out going through all images (i.e. loop animation) or indicate to user that you're at the beginning/end (e.g. pulse animation left/right)
-    - [ ] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation) 
-    - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
