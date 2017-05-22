@@ -64,8 +64,16 @@
   z-index: z_index_nav_button;
 }
 
-.hasTouch .navButton {
-  display: none;
+@media (hover: none), (pointer: coarse) {
+  .navButton {
+    display: none;
+  }
+}
+
+@media (-moz-touch-enabled: 1), (pointer: coarse) {
+  .navButton {
+    display: none;
+  }
 }
 
 @media screen and screen_small_min_width {

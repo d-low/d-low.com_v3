@@ -191,7 +191,6 @@ class ImageSlider extends React.Component {
       }, 0);
     }
 
-    const hasTouch = 'ontouchstart' in window;
     const listItems = this.props.images.map((image, index) =>
       <li
         className={styles.item}
@@ -211,7 +210,7 @@ class ImageSlider extends React.Component {
 
     return (
       <div
-        className={`${styles.container} ${hasTouch ? styles.hasTouch : ''}`}
+        className={styles.container}
         ref={(el) => { this.container = el; }} >
         <button className={styles.closeButton} onClick={this.closeSlider}>
           <span className={styles.closeButtonText}>+</span>
