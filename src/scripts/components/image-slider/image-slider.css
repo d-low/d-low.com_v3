@@ -242,6 +242,10 @@
   z-index: z_index_items;
 }
 
+.itemsPanning {
+  transition: none;
+}
+
 .itemsShowing {
   margin-top: 0;
 }
