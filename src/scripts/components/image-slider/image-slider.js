@@ -1,5 +1,3 @@
-/* eslint no-console: 0, class-methods-use-this: 0 */
-
 import React from 'react';
 import Hammer from 'react-hammerjs';
 import FadeInBackgroundImage from '../fade-in-background-image/fade-in-background-image.js';
@@ -29,15 +27,14 @@ class ImageSlider extends React.Component {
     // Member variables used for image navigation
     this.state = {
       currentImage: this.props.currentImage,
-      isPanning: false,
+      deltaX: null,
+      isNavigating: false,
     };
 
     // Bound event handlers
     this.handleKeyUp = this.handleKeyUp.bind(this);
-    // this.handlePan = this.handlePan.bind(this);
-    // this.handlePanEnd = this.handlePanEnd.bind(this);
-    // this.handlePanStart = this.handlePanStart.bind(this);
-    this.handleSwipe = this.handleSwipe.bind(this);
+    this.handlePan = this.handlePan.bind(this);
+    this.handlePanEnd = this.handlePanEnd.bind(this);
     this.nextNavClick = this.nextNavClick.bind(this);
     this.prevNavClick = this.prevNavClick.bind(this);
     this.closeSlider = this.closeSlider.bind(this);
@@ -73,14 +70,26 @@ class ImageSlider extends React.Component {
   }
 
   /**
-   * Prior to updating if the current image in the next state isn't the same as
-   * our current state then we preload images and set the translate X value for
-   * the next state.
+   * Prior to updating we preload images and/or set the new translate X value.
+   * There are four handled cases:
+   *
+   * 1) Navigating to a new image after a swipe
+   * 2) Navigating to a new image after a click on a nav button or arrow key
+   * 3) Panning to view image but not a swipe to view a new one
+   * 4) Finishing panning to view image and not navigating to a new one
    */
   componentWillUpdate(nextProps, nextState) {
-    if (nextState.currentImage !== this.state.currentImage) {
+    if (nextState.currentImage !== this.state.currentImage &&
+        !nextState.deltaX && this.state.deltaX) {
+      this.preloadImages(nextState.currentImage);
+      this.setTranslateX(nextState.currentImage, nextState.deltaX);
+    } else if (nextState.currentImage !== this.state.currentImage) {
       this.preloadImages(nextState.currentImage);
       this.setTranslateX(nextState.currentImage);
+    } else if (nextState.deltaX && nextState.deltaX !== this.state.deltaX) {
+      this.setTranslateX(undefined, nextState.deltaX);
+    } else if (!nextState.deltaX && this.state.deltaX) {
+      this.setTranslateX(nextState.currentImage, null);
     }
   }
 
@@ -102,13 +111,12 @@ class ImageSlider extends React.Component {
 
   /**
    * @description Set the translateX position of the items based on the index
-   * of the image being shown. Note that if we don't have a ref to each of the
-   * items yet, then we have to hard code knowlege of our CSS here to set the
-   * left margin, which is a bit of a hack, but only done for the first render.
-   * @param deltaX Optional delta X parameter used when panning to move the
-   * current image as the user drags it
+   * of the image being shown and an optional delta X parameter set when
+   * panning. Note that if we don't have a ref to each of the items yet, then
+   * we have to hard code knowlege of our CSS here to set the left margin,
+   * which is a bit of a hack, but only done for the first render.
    */
-  setTranslateX(currentImage = this.state.currentImage, deltaX) {
+  setTranslateX(currentImage = this.state.currentImage, deltaX = this.state.deltaX) {
     let marginLeft = null;
 
     if (this.item.length && this.item[currentImage]) {
@@ -135,13 +143,6 @@ class ImageSlider extends React.Component {
     }
   }
 
-  setItemsTransform(deltaX) {
-    window.requestAnimationFrame(() => {
-      this.setTranslateX(deltaX);
-      this.items.setAttribute('style', `transform: translateX(${this.translateX})`);
-    });
-  }
-
   preloadImages(currentImage = this.state.currentImage) {
     this.imageVisible[currentImage] = true;
 
@@ -161,45 +162,40 @@ class ImageSlider extends React.Component {
   /**
    * @todo Resolve the following panning issues:
    *
-   * 0) To pan properly we likely need to set a raw translate X value and then
-   *    use that when rendering. In this manner we can just add/remove the pan
-   *    delta X to the current image offset. We will no longer save the current
-   *    image as a state parameter, but rather as a private variable, that is
-   *    used only for internal calculations.
-   * 1) deltaX not removed when navigating to next/prev image when panning ends.
-   *    This will likely be resolved in #0 above.
-   * 2) Swipe events don't work well that we're handling pan events. We likely
-   *    need to handle only pan events and replicate the veolicy and timing
-   *    logic from HammerJS to determine when a pan is actually a swipe.
-   * 3) The image may be shown prematurely after closing the image slider after
-   *    panning and then reopening it. This is because we need to reset
-   *    state.isPanning after closing the image slider.
-   * 4) Not related to panning, per se, but dragging/scrolling up/down when the
-   *    image slider is displayed causes the main page to scroll up/down. The
-   *    main page should scroll in this situation.
+   * 1) Display a notification, of sorts, when the user tries to pan before the
+   *    first image or after the last. This is seen in both Facebook and Google
+   *    Photos.
+   * 2) Prevent scrolling on the main page when the image slider is displayed.
+   *    While not related to panning, per se, the main page can be scrolled
+   *    the image slider is visible.
    */
   handlePan(e) {
-    this.setItemsTransform(e.deltaX);
-  }
-
-  handlePanEnd(e) {
-    this.setState({ isPanning: false }, () => {
-      const halfWindowWidth = window.outerWidth / 2;
-
-      if (e.distance >= halfWindowWidth) {
-        if (e.direction === 2) {
-          this.nextImage();
-        } else if (e.direction === 4) {
-          this.prevImage();
-        }
-      } else {
-        this.setItemsTransform();
-      }
+    this.setState({
+      deltaX: e.deltaX,
+      isNavigating: false,
     });
   }
 
-  handlePanStart() {
-    this.setState({ isPanning: true });
+  /**
+   * If the pan velocity and distance are greater great enough to be considered
+   * a swipe, using HammerJS's Swipe thresholds, then navigate to the next or
+   * previous image.
+   * @see https://github.com/hammerjs/hammer.js/blob/master/src/recognizers/swipe.js#L11
+   */
+  handlePanEnd(e) {
+    if (Math.abs(e.velocityX) >= window.Hammer.Swipe.prototype.defaults.velocity &&
+        Math.abs(e.distance) >= window.Hammer.Swipe.prototype.defaults.threshold) {
+      if (e.direction === window.Hammer.DIRECTION_LEFT) {
+        this.nextImage();
+      } else if (e.direction === window.Hammer.DIRECTION_RIGHT) {
+        this.prevImage();
+      }
+    } else {
+      this.setState({
+        deltaX: null,
+        isNavigating: true,
+      });
+    }
   }
 
   /**
@@ -216,19 +212,6 @@ class ImageSlider extends React.Component {
     }
   }
 
-  /**
-   * @todo Note that the Hammer.DIRECTION_LEFT and Hammer.DIRECTION_RIGHT
-   * constants are not available on the React Hammer component so we've hard
-   * coded their values, 2 and 4, here.
-   */
-  handleSwipe(e) {
-    if (e.direction === 2) {
-      this.nextImage();
-    } else if (e.direction === 4) {
-      this.prevImage();
-    }
-  }
-
   nextNavClick(e) {
     e.preventDefault();
     this.nextImage();
@@ -240,7 +223,14 @@ class ImageSlider extends React.Component {
   }
 
   closeSlider() {
-    window.setTimeout(() => this.props.onCloseImageSlider(), 700);
+    window.setTimeout(() => {
+      this.setState({
+        deltaX: null,
+        isNavigating: false,
+      });
+      this.props.onCloseImageSlider();
+    }, 700);
+
     this.container.classList.add(styles.containerHiding);
     this.items.classList.add(styles.itemsHiding);
   }
@@ -249,10 +239,14 @@ class ImageSlider extends React.Component {
     if (this.state.currentImage < this.props.images.length - 1) {
       this.setState({
         currentImage: this.state.currentImage + 1,
+        deltaX: null,
+        isNavigating: true,
       });
     } else {
       this.setState({
         currentImage: 0,
+        deltaX: null,
+        isNavigating: true,
       });
     }
   }
@@ -261,10 +255,14 @@ class ImageSlider extends React.Component {
     if (this.state.currentImage - 1 >= 0) {
       this.setState({
         currentImage: this.state.currentImage - 1,
+        deltaX: null,
+        isNavigating: true,
       });
     } else {
       this.setState({
         currentImage: this.props.images.length - 1,
+        deltaX: null,
+        isNavigating: true,
       });
     }
   }
@@ -290,8 +288,8 @@ class ImageSlider extends React.Component {
     if (this.container) {
       itemsClassName = `${itemsClassName} ${styles.itemsShowing}`;
     }
-    if (this.state.isPanning) {
-      itemsClassName = `${itemsClassName} ${styles.itemsPanning}`;
+    if (this.state.isNavigating) {
+      itemsClassName = `${itemsClassName} ${styles.itemsNavigating}`;
     }
 
     const listItems = this.props.images.map((image, index) =>
@@ -320,10 +318,8 @@ class ImageSlider extends React.Component {
         </button>
         <div className={styles.itemsWrapper}>
           <Hammer
-            // onPan={this.handlePan}
-            // onPanEnd={this.handlePanEnd}
-            // onPanStart={this.handlePanStart}
-            onSwipe={this.handleSwipe}>
+            onPan={this.handlePan}
+            onPanEnd={this.handlePanEnd}>
             <ul
               className={itemsClassName}
               ref={(el) => { this.items = el; }}

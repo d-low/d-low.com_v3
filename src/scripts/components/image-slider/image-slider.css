@@ -237,13 +237,13 @@
   list-style: none;
   margin-top: -125vh;
   position: absolute;
-  transition: transform 700ms ease-out, 500ms margin-top 250ms ease-in;
+  transition: 500ms margin-top 250ms ease-in;
   white-space: nowrap;
   z-index: z_index_items;
 }
 
-.itemsPanning {
-  transition: none;
+.itemsNavigating {
+  transition: transform 700ms ease-out,
 }
 
 .itemsShowing {
