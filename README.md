@@ -36,9 +36,11 @@ To Do
   
 - **Future Work**:  
   - Image Slider
-    - [ ] Cycle to first image from last, and to last from first, with out going through all images (i.e. loop animation) or indicate to user that you're at the begining/end (e.g. pulse animation left/right)
-    - [ ] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation) 
+    - [x] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation)
+    - [ ] Use pulse animation to indicate to user that you're at the begining/end of images 
     - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
+    - [ ] Use faster transition between images
+    - [ ] Prevent scrolling on main page when image slider is visible
   - Admin
     - [ ] Upgrade to React 15.5.0
     - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded run the app.
