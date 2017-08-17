@@ -31,7 +31,8 @@ To Do
 - **Bugs**:
   - Rendering
     - [ ] Site doesn't render on IE 11.
-  - Mobile site header 
+    - [ ] content.js isn't reloaded after update on disk
+  - Mobile site header 
     - [ ] Scroll to start position when route changes and component hidden
   
 - **Future Work**:  
