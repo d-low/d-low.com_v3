@@ -52,6 +52,7 @@ To Do
       - See: https://github.com/danro/easing-js/blob/master/easing.js
     - [ ] Use single z_index.css file for all z-index on site
   - [ ] Fade in background image issues:
+    - [ ] Use [Intersection Observer](https://deanhume.com/Home/BlogPost/lazy-loading-images-using-intersection-observer/10163) instead of monitoring the scroll position
     - [ ] Clear image cache after X images inserted?
     - [ ] Previously loaded images aren't displayed immediately
   - React Router
