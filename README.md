@@ -39,6 +39,7 @@ To Do
   - Image Slider
     - [x] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation)
     - [ ] Use pulse animation to indicate to user that you're at the begining/end of images 
+    - [ ] Make label stationary, keeping position the same as images transition, and fade out/in new text.
     - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
     - [ ] Use faster transition between images
     - [ ] Prevent scrolling on main page when image slider is visible
