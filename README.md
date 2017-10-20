@@ -43,6 +43,7 @@ To Do
     - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
     - [ ] Use faster transition between images
     - [ ] Prevent scrolling on main page when image slider is visible
+    - [ ] Don't display old images more than 1.5x larger than dimensions on disk
   - Admin
     - [ ] Upgrade to React 15.5.0
     - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded run the app.
