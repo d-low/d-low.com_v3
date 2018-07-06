@@ -30,28 +30,27 @@ To Do
 
 - **Bugs**:
   - Rendering
+    - [ ] Add description and keyword `<meta>` tags to have _basic_ SEO!!!
+    - [ ] content.js isn't reloaded after update on disk
     - [ ] Site doesn't render on IE 11.
-    - [ ] content.js isn't reloaded after update on disk
-  - Mobile site header 
+  - Mobile site header 
     - [ ] Scroll to start position when route changes and component hidden
   
-- **Future Work**:  
+- **Improvements**
   - Image Slider
-    - [x] Handle pan events to drag through images naturally (e.g. Facebook app large image navigation)
-    - [ ] Use pulse animation to indicate to user that you're at the begining/end of images 
+    - [ ] Display as new _page_ on mobile instead of in a modal
+    - [ ] Use pulse animation to indicate first/last image
     - [ ] Make label stationary, keeping position the same as images transition, and fade out/in new text.
     - [ ] Display loading indicator if image not loaded in X sec after image scrolled into view
     - [ ] Use faster transition between images
     - [ ] Prevent scrolling on main page when image slider is visible
     - [ ] Don't display old images more than 1.5x larger than dimensions on disk
   - Admin
-    - [ ] Upgrade to React 15.5.0
+    - [ ] Upgrade to newest React, Webpack, etc.
     - [ ] Load data (/data/content.js) asynchrounously on page load and once loaded run the app.
     - [ ] Webpack doesn't reload CSS in site when updated!
   - CSS
     - [ ] Use consistent heading styles 
-    - [ ] Explore easing algorithms for home page down arrow scroll down animation timing
-      - See: https://github.com/danro/easing-js/blob/master/easing.js
     - [ ] Use single z_index.css file for all z-index on site
     - [ ] Use CSS grid for layout as described in this [article](https://medium.com/deemaze-software/css-grid-responsive-layouts-and-components-eee1badd5a2f)
   - Fade in background image issues:
