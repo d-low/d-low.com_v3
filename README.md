@@ -33,6 +33,7 @@ To Do
     - [ ] Add description and keyword `<meta>` tags to have _basic_ SEO!!!
     - [ ] content.js isn't reloaded after update on disk
     - [ ] Site doesn't render on IE 11.
+    - [ ] Sort posts in ascending, not reverse, chronological order
   - Mobile site header 
     - [ ] Scroll to start position when route changes and component hidden
   
