@@ -3,6 +3,8 @@
  * node processing methods. We need to rename it appropriately.
  */
 
+const host = 'https://www.d-low.com';
+
 /**
  * Remove initial digits, split on the title/date separator and keeping both
  * the title and the date, and then replace underscores with white space.
@@ -81,7 +83,7 @@ const getPostImages = function getPostImages(path) {
   }
 
   node.imgs.forEach((img) => {
-    images.push(`http://www.d-low.com/data${path}/${img}`);
+    images.push(`${host}/data${path}/${img}`);
   });
 
   // Sort images in ascending order so they're displayed in chronological order
@@ -117,7 +119,7 @@ const getPostThumbnails = function getPostThumbnails(path, imageToExclude = '') 
 
   node.imgs.forEach((img) => {
     if (!imageToExclude.match(img)) {
-      thumbnails.push(`http://www.d-low.com/data${path}/thumbnails/${img}`);
+      thumbnails.push(`${host}/data${path}/thumbnails/${img}`);
     }
   });
 
@@ -233,7 +235,7 @@ export const getLinks = function getLinks(
   const mappedLinks = links.map(link => ({
     name: link.name,
     href: link.href,
-    image: `http://www.d-low.com${link.image}`,
+    image: `${host}${link.image}`,
   }));
 
   return mappedLinks;
@@ -252,7 +254,7 @@ export const getPost = function getPost(link, path) {
     images: getPostImages(link2.href),
     text: () => new Promise((resolve, reject) => {
       try {
-        fetch(`http://www.d-low.com/data${link2.href}/index.html`)
+        fetch(`${host}/data${link2.href}/index.html`)
           .then(response => response.text())
           .then(text => resolve(text))
           .catch(exp => reject(exp));
