@@ -43,7 +43,7 @@ const PostListingPage = ({ links, title, topLinks }) => {
     }
   };
 
-  const listItems = links.map((link, index) => {
+  const listItems = links.reverse().map((link, index) => {
     const parts = link.href.split('/');
     const id = parts[parts.length - 1];
 
